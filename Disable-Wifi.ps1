@@ -1,4 +1,3 @@
-function Disable-Wifi
-{
+function Disable-Wifi {
     Invoke-Expression -Command "nmcli radio wifi off"
 }

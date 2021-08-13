@@ -1,5 +1,4 @@
-function Add-FlatpakRepository
-{
+function Add-FlatpakRepository {
     param(
         [Parameter(Mandatory = $true)][string]$name,
         [Parameter(Mandatory = $true)][string]$location

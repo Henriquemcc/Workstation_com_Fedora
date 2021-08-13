@@ -3,8 +3,7 @@
 using module "./VisualStudioCode.psm1"
 using module "./Install-RustLang.ps1"
 
-function ConfigurarGnomeShell
-{
+function ConfigurarGnomeShell {
 
     # Desabilitando hot corners
     gsettings set org.gnome.desktop.interface enable-hot-corners false
@@ -25,68 +24,66 @@ function ConfigurarGnomeShell
     gsettings set org.gnome.desktop.media-handling autorun-never true
 }
 
-function InstalarExtensoesVisualStudioCode
-{
+function InstalarExtensoesVisualStudioCode {
 
     Install-VisualStudioCode
 
     $extensoes = @(
-    # Tradução do VS Code em Português
-    "ms-ceintl.vscode-language-pack-pt-br",
+        # Tradução do VS Code em Português
+        "ms-ceintl.vscode-language-pack-pt-br",
 
-    # Linguagem C/C++
-    "ms-vscode.cpptools",
-    "ms-vscode.cmake-Tools",
-    "austin.code-gnu-global",
+        # Linguagem C/C++
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-Tools",
+        "austin.code-gnu-global",
 
-    # Linguagem C#
-    "ms-dotnettools.csharp",
+        # Linguagem C#
+        "ms-dotnettools.csharp",
 
-    # Linguagem Java
-    "vscjava.vscode-java-debug",
-    "vscjava.vscode-maven",
-    "vscjava.vscode-java-dependency",
-    "vscjava.vscode-java-pack",
-    "vscjava.vscode-java-test",
-    "redhat.java",
+        # Linguagem Java
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-java-test",
+        "redhat.java",
 
-    # Linguagem Rust
-    "matklad.rust-analyzer",
-    "vadimcn.vscode-lldb",
-    "rust-lang.rust",
+        # Linguagem Rust
+        "matklad.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "rust-lang.rust",
 
-    # Linguagem Go
-    "golang.Go",
+        # Linguagem Go
+        "golang.Go",
 
-    # HTML, CSS e Javascript
-    "ecmel.vscode-html-css",
-    "firefox-devtools.vscode-firefox-debug",
-    "msjsdiag.debugger-for-chrome",
-    "dbaeumer.vscode-eslint",
+        # HTML, CSS e Javascript
+        "ecmel.vscode-html-css",
+        "firefox-devtools.vscode-firefox-debug",
+        "msjsdiag.debugger-for-chrome",
+        "dbaeumer.vscode-eslint",
 
-    # Tema do VS Code
-    "GitHub.github-vscode-theme",
+        # Tema do VS Code
+        "GitHub.github-vscode-theme",
 
-    # Markdown
-    "DavidAnson.vscode-markdownlint",
+        # Markdown
+        "DavidAnson.vscode-markdownlint",
 
-    # Powershell
-    " ms-vscode.PowerShell",
+        # Powershell
+        " ms-vscode.PowerShell",
 
-    # Indentação de código
-    "NathanRidley.autotrim",
-    "esbenp.prettier-vscode",
+        # Indentação de código
+        "NathanRidley.autotrim",
+        "esbenp.prettier-vscode",
 
-    # AI-assisted IntelliSense
-    "VisualStudioExptTeam.vscodeintellicode"
+        # AI-assisted IntelliSense
+        "VisualStudioExptTeam.vscodeintellicode"
     )
 
     Install-VisualStudioCodeExtension -extension $extensoes
 
 }
 
-function Main
-{
+function Main {
     ConfigurarGnomeShell
     InstalarExtensoesVisualStudioCode
     Install-RustLang

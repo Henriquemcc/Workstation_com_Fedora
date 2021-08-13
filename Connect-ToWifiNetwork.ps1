@@ -1,5 +1,4 @@
-function Connect-ToWifiNetwork
-{
+function Connect-ToWifiNetwork {
     param(
         [Parameter(Mandatory = $true)][String]$ssid,
         [Parameter(Mandatory = $true)][SecureString]$password

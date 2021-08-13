@@ -1,32 +1,25 @@
-function Install-FlatpakPackage
-{
+function Install-FlatpakPackage {
     param(
         [Parameter(Mandatory = $true)]$package,
         [Parameter(Mandatory = $false)][switch]$user
     )
 
-    if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]])
-    {
-        foreach ($p in $package)
-        {
+    if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]]) {
+        foreach ($p in $package) {
             Install-FlatpakPackage -package $p
         }
     }
 
-    elseif ($package.GetType() -eq [System.String])
-    {
+    elseif ($package.GetType() -eq [System.String]) {
 
-        if ( $package.Contains(" "))
-        {
+        if ( $package.Contains(" ")) {
             Install-FlatpakPackage -package $package.Split(" ")
         }
 
-        else
-        {
+        else {
             $command = "flatpak install --assumeyes"
 
-            if (-not$user)
-            {
+            if (-not$user) {
                 $command += " --system"
             }
 

@@ -1,27 +1,21 @@
-function Install-VisualStudioCodeExtension
-{
+function Install-VisualStudioCodeExtension {
     param (
         [Parameter(Mandatory = $true)] $extension
     )
 
-    if ($extension.GetType() -eq [System.Object[]] -or $extension.GetType() -eq [System.String[]])
-    {
-        foreach ($e in $extension)
-        {
+    if ($extension.GetType() -eq [System.Object[]] -or $extension.GetType() -eq [System.String[]]) {
+        foreach ($e in $extension) {
             Install-VisualStudioCodeExtension -extension $e
         }
     }
 
-    elseif ($extension.GetType() -eq [System.String])
-    {
+    elseif ($extension.GetType() -eq [System.String]) {
 
-        if ( $extension.Contains(" "))
-        {
+        if ( $extension.Contains(" ")) {
             Install-VisualStudioCodeExtension -extension $extension.Split(" ")
         }
 
-        else
-        {
+        else {
             Invoke-Expression -Command "code --install-extension $extension"
         }
     }
