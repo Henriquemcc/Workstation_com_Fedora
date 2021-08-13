@@ -9,10 +9,15 @@ function InstalarPacotesDnf {
     Enable-RpmFusion
     Update-DnfPackages
 
+    $urlMicrosoftTeams = (Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US").BaseResponse.RequestMessage.RequestUri.AbsoluteUri
+
     $packages = @(
         # Programas externos
         #   Google Chrome
         "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm",
+
+        # Microsoft Teams
+        $urlMicrosoftTeams,
 
         #   Peazip
         "https://github.com/peazip/PeaZip/releases/download/8.1.0/peazip-8.1.0.LINUX.GTK2-1.x86_64.rpm",
@@ -22,6 +27,9 @@ function InstalarPacotesDnf {
 
         # Nvidia
         "akmod-nvidia",
+
+        # KeepassXC
+        "keepassxc",
 
         # Libreoffice
         "libreoffice-writer", "libreoffice-calc", "libreoffice-impress", "libreoffice-math", "libreoffice-draw",
@@ -64,7 +72,6 @@ function InstalarPacotesDnf {
 function InstalarPacotesSnap {
 
     Install-Snapd
-    Install-SnapPackage -package "keepassxc" -devmode
     Install-SnapPackage -package "spotify"
     Install-SnapPackage -package "code" -classic
     Install-SnapPackage -package "intellij-idea-community" -classic
