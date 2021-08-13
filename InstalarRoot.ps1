@@ -6,11 +6,17 @@ using module "./Flatpak.psm1"
 using module "./Wifi.psm1"
 
 function InstalarPacotesDnf {
-    Enable-RpmFusion
-    Update-DnfPackages
 
+    # Habilitando o RPM Fusion
+    Enable-RpmFusion
+
+    # Adicionando repositório do GitHub CLI
+    Add-DnfRepository -repository "https://cli.github.com/packages/rpm/gh-cli.repo"
+
+    # Obtendo a Url do .RPM do Microsoft Teams
     $urlMicrosoftTeams = (Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US").BaseResponse.RequestMessage.RequestUri.AbsoluteUri
 
+    # Instalando os pacotes DNF
     $packages = @(
         # Programas externos
         #   Google Chrome
@@ -64,14 +70,18 @@ function InstalarPacotesDnf {
         # Reportar erro automaticamente
         "abrt-desktop", "abrt-java-connector"
     )
-
     Install-DnfPackage -package $packages
+
+    # Atualizando pacotes DNF
     Update-DnfPackages
 }
 
 function InstalarPacotesSnap {
 
+    # Instalando o Snapd
     Install-Snapd
+
+    # Instalando pacotes snap
     Install-SnapPackage -package "spotify"
     Install-SnapPackage -package "code" -classic
     Install-SnapPackage -package "intellij-idea-community" -classic
@@ -79,12 +89,17 @@ function InstalarPacotesSnap {
     Install-SnapPackage -package "flutter" -classic
     Install-SnapPackage -package "kotlin" -classic
     Install-SnapPackage -package "skype" -classic
+
+    # Atualizando pacotes Snap
     Update-SnapPackages
 }
 
 function InstalarPacotesFlatpak {
+
+    # Instalando o FlatHub
     Install-FlatHub
 
+    # Instalando os pacotes FlatPak
     $pacotes = @(
         "https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref",
         "https://dl.flathub.org/repo/appstream/com.discordapp.Discord.flatpakref",
@@ -92,11 +107,18 @@ function InstalarPacotesFlatpak {
         "https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref"
     )
     Install-FlatpakPackage -package $pacotes
+
+    # Atualizando os pacotes FlatPak
     Update-FlatpackPackages
 }
 
 function InstalarPacotesPython3Pip {
-    Install-Python3Pip -package "protonvpn-cli"
+
+    # Instalando o Pip do Python 3
+    Install-Python3Pip
+
+    # Instalando os pacotes Pip
+    Install-Python3PipPackage -package "protonvpn-cli"
 }
 
 function Main {
