@@ -1,9 +1,15 @@
+using module "./Test-Root.ps1"
+
 function Install-SnapPackage {
     param(
         [Parameter(mandatory = $true)]$package,
         [Parameter(mandatory = $false)][switch]$classic,
         [Parameter(mandatory = $false)][switch]$devmode
     )
+
+    if (-not (Test-Root)) {
+        throw "Not root"
+    }
 
     if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]]) {
         foreach ($p in $package) {

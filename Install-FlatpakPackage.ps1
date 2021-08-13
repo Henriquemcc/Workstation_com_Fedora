@@ -1,8 +1,14 @@
+using module "./Test-Root.ps1"
+
 function Install-FlatpakPackage {
     param(
         [Parameter(Mandatory = $true)]$package,
         [Parameter(Mandatory = $false)][switch]$user
     )
+
+    if (-not (Test-Root)) {
+        throw "Not root"
+    }
 
     if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]]) {
         foreach ($p in $package) {
