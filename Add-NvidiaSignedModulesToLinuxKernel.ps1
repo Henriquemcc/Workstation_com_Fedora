@@ -1,6 +1,6 @@
 using module "./Test-Root.ps1"
 
-function Add-VirtualboxSignedModulesToLinuxKernel {
+function Add-NvidiaSignedModulesToLinuxKernel {
 
     param(
         [Parameter(Mandatory = $false)] $pathPublicKey = "/root/signed-modules/MOK.der" ,
@@ -11,9 +11,9 @@ function Add-VirtualboxSignedModulesToLinuxKernel {
         throw "Not root"
     }
 
-    $vboxdrv = Get-Item -Path (Invoke-Expression -Command "modinfo -n vboxdrv")
-    $vboxdrvParentFolder = Get-ChildItem $vboxdrv.Directory
-    $modFiles = $vboxdrvParentFolder.Where{
+    $nvidia = Get-Item -Path (Invoke-Expression -Command "modinfo -n nvidia")
+    $nvidiaParentFolder = Get-ChildItem $nvidia.Directory
+    $modFiles = $nvidiaParentFolder.Where{
         $_.Extension -eq ".ko"
     }
 

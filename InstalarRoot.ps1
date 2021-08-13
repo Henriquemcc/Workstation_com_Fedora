@@ -4,7 +4,8 @@ using module "./Dnf.psm1"
 using module "./Snap.psm1"
 using module "./Flatpak.psm1"
 using module "./Wifi.psm1"
-using module "./New-VirtualboxAsymmetricPairOfKeys.ps1"
+using module "./.ps1"
+using module "./Install-SignedKernelModules.ps1"
 
 function InstalarPacotesDnf {
 
@@ -123,7 +124,7 @@ function InstalarPacotesPython3Pip {
 }
 
 function ConfigurarVirtualbox {
-    New-VirtualboxAsymmetricPairOfKeys
+    Install-SignedKernelModules
 }
 
 function Main {

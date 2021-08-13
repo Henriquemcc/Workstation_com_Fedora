@@ -1,6 +1,6 @@
 using module "./Dnf.psm1"
 using module "./Test-Root.ps1"
-function New-VirtualboxAsymmetricPairOfKeys {
+function New-AsymmetricPairOfKeysToSignKernelModules {
 
     if (-not (Test-Root)) {
         throw "Not root"
@@ -23,5 +23,7 @@ function New-VirtualboxAsymmetricPairOfKeys {
     Invoke-Expression -Command "chmod 600 $pathMokPriv"
 
     Invoke-Expression -Command "mokutil --import $pathMokDer"
+
+    return $pathMokDer, $pathMokPriv
 
 }
