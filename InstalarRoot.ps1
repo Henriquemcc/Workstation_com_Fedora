@@ -43,6 +43,9 @@ function InstalarPacotesDnf {
         "libreoffice-writer", "libreoffice-calc", "libreoffice-impress", "libreoffice-math", "libreoffice-draw",
         "libreoffice-langpack-pt-BR", "libreoffice-langpack-en", "unoconv",
 
+        # File Roller
+        "file-roller", "file-roller-nautilus",
+
         # Impressora HP
         "hplip",
 
