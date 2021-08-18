@@ -10,13 +10,13 @@ function Install-FlatpakPackage {
         throw "Not root"
     }
 
-    if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]]) {
+    if ($package -is [System.Collections.IEnumerable]) {
         foreach ($p in $package) {
             Install-FlatpakPackage -package $p
         }
     }
 
-    elseif ($package.GetType() -eq [System.String]) {
+    elseif ($package -is [System.String]) {
 
         if ( $package.Contains(" ")) {
             Install-FlatpakPackage -package $package.Split(" ")
