@@ -3,13 +3,13 @@ function Install-VisualStudioCodeExtension {
         [Parameter(Mandatory = $true)] $extension
     )
 
-    if ($extension.GetType() -eq [System.Object[]] -or $extension.GetType() -eq [System.String[]]) {
+    if ($extension -is [System.Collections.IEnumerable]) {
         foreach ($e in $extension) {
             Install-VisualStudioCodeExtension -extension $e
         }
     }
 
-    elseif ($extension.GetType() -eq [System.String]) {
+    elseif ($extension -is [System.String]) {
 
         if ( $extension.Contains(" ")) {
             Install-VisualStudioCodeExtension -extension $extension.Split(" ")
