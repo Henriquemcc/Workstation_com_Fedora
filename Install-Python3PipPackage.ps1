@@ -3,13 +3,13 @@ function Install-Python3PipPackage {
         [Parameter(Mandatory = $true)]$package
     )
 
-    if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]]) {
+    if ($package -is [System.Collections.IEnumerable]) {
         foreach ($p in $package) {
             Install-Python3PipPackage -package $p
         }
     }
 
-    elseif ($package.GetType() -eq [System.String]) {
+    elseif ($package -is [System.String]) {
 
         if ( $package.Contains(" ")) {
             Install-Python3PipPackage -package $package.Split(" ")
