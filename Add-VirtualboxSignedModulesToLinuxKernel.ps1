@@ -1,4 +1,5 @@
 using module "./Test-Root.ps1"
+using module "./Install-DnfPackage.ps1"
 
 function Add-VirtualboxSignedModulesToLinuxKernel {
 
@@ -23,5 +24,13 @@ function Add-VirtualboxSignedModulesToLinuxKernel {
     foreach ($modFile in $modFiles) {
         Invoke-Expression "$signFilePath sha256 $pathPrivateKey $pathPublicKey $($modFile.FullName)"
     }
+
+
+    $unameR = Invoke-Expression -Command "uname -r"
+    Install-DnfPackage -package "akmod-VirtualBox", "kernel-devel-$unameR"
+
+    Invoke-Expression -Command "akmods"
+
+    Invoke-Expression -Command "systemctl restart vboxdrv.service"
 
 }
