@@ -6,10 +6,6 @@ function Install-FlatpakPackage {
         [Parameter(Mandatory = $false)][switch]$user
     )
 
-    if (-not (Test-Root)) {
-        throw "Not root"
-    }
-
     if ($package -is [System.Collections.IEnumerable]) {
         foreach ($p in $package) {
             Install-FlatpakPackage -package $p
