@@ -11,13 +11,13 @@ function Install-SnapPackage {
         throw "Not root"
     }
 
-    if ($package.GetType() -eq [System.Object[]] -or $package.GetType() -eq [System.String[]]) {
+    if ($package -is [System.Collections.IEnumerable]) {
         foreach ($p in $package) {
             Install-SnapPackage -package $p -classic:$classic -devmode:$devmode
         }
     }
 
-    elseif ($package.GetType() -eq [System.String]) {
+    elseif ($package -is [System.String]) {
         if ( $package.Contains(" ")) {
             Install-SnapPackage -package $package.Split(" ") -classic:$classic -devmode:$devmode
         }
