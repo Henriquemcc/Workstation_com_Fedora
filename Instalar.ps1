@@ -1,11 +1,9 @@
-#!/bin/pwsh
-
 using module "./Dnf.psm1"
 using module "./Snap.psm1"
 using module "./Flatpak.psm1"
-using module "./Wifi.psm1"
-using module "./.ps1"
 using module "./Install-SignedKernelModules.ps1"
+using module "./VisualStudioCode.psm1"
+using module "./Install-RustLang.ps1"
 
 function InstalarPacotesDnf {
 
@@ -13,7 +11,7 @@ function InstalarPacotesDnf {
     Enable-RpmFusion
 
     # Adicionando repositório do GitHub CLI
-    Add-DnfRepository -repository "https://cli.github.com/packages/rpm/gh-cli.repo"
+    Add-DnfRepository -Repository "https://cli.github.com/packages/rpm/gh-cli.repo"
 
     # Obtendo a Url do .RPM do Microsoft Teams
     $urlMicrosoftTeams = (Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US").BaseResponse.RequestMessage.RequestUri.AbsoluteUri
@@ -75,7 +73,7 @@ function InstalarPacotesDnf {
         # Reportar erro automaticamente
         "abrt-desktop", "abrt-java-connector"
     )
-    Install-DnfPackage -package $packages
+    Install-DnfPackage -Package $packages
 
     # Atualizando pacotes DNF
     Update-DnfPackages
@@ -87,13 +85,13 @@ function InstalarPacotesSnap {
     Install-Snapd
 
     # Instalando pacotes snap
-    Install-SnapPackage -package "spotify"
-    Install-SnapPackage -package "code" -classic
-    Install-SnapPackage -package "intellij-idea-community" -classic
-    Install-SnapPackage -package "pycharm-community" -classic
-    Install-SnapPackage -package "flutter" -classic
-    Install-SnapPackage -package "kotlin" -classic
-    Install-SnapPackage -package "skype" -classic
+    Install-SnapPackage -Package "spotify"
+    Install-SnapPackage -Package "code" -classic
+    Install-SnapPackage -Package "intellij-idea-community" -classic
+    Install-SnapPackage -Package "pycharm-community" -classic
+    Install-SnapPackage -Package "flutter" -classic
+    Install-SnapPackage -Package "kotlin" -classic
+    Install-SnapPackage -Package "skype" -classic
 
     # Atualizando pacotes Snap
     Update-SnapPackages
@@ -111,7 +109,7 @@ function InstalarPacotesFlatpak {
         "https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref",
         "https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref"
     )
-    Install-FlatpakPackage -package $pacotes
+    Install-FlatpakPackage -Package $pacotes
 
     # Atualizando os pacotes FlatPak
     Update-FlatpackPackages
@@ -123,19 +121,100 @@ function InstalarPacotesPython3Pip {
     Install-Python3Pip
 
     # Instalando os pacotes Pip
-    Install-Python3PipPackage -package "protonvpn-cli"
+    Install-Python3PipPackage -Package "protonvpn-cli"
 }
 
 function ConfigurarVirtualbox {
     Install-SignedKernelModules
 }
 
-function Main {
+function ConfigurarGnomeShell {
+
+    # Desabilitando hot corners
+    gsettings set org.gnome.desktop.interface enable-hot-corners false
+
+    # Mostrar segundos
+    gsettings set org.gnome.desktop.interface clock-show-seconds true
+
+    # Mostrar dia da semana
+    gsettings set org.gnome.desktop.interface clock-show-weekday true
+
+    # Mostrar porcentagem da bateria
+    gsettings set org.gnome.desktop.interface show-battery-percentage true
+
+    # Habilitar atualização de fuso horário
+    gsettings set org.gnome.desktop.datetime automatic-timezone true
+
+    # Desabilitar autorun
+    gsettings set org.gnome.desktop.media-handling autorun-never true
+}
+
+function InstalarExtensoesVisualStudioCode {
+
+    Install-VisualStudioCode
+
+    $extensoes = @(
+        # Tradução do VS Code em Português
+        "ms-ceintl.vscode-language-pack-pt-br",
+
+        # Linguagem C/C++
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-Tools",
+        "austin.code-gnu-global",
+
+        # Linguagem C#
+        "ms-dotnettools.csharp",
+
+        # Linguagem Java
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-java-test",
+        "redhat.java",
+
+        # Linguagem Rust
+        "matklad.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "rust-lang.rust",
+
+        # Linguagem Go
+        "golang.Go",
+
+        # HTML, CSS e Javascript
+        "ecmel.vscode-html-css",
+        "firefox-devtools.vscode-firefox-debug",
+        "msjsdiag.debugger-for-chrome",
+        "dbaeumer.vscode-eslint",
+
+        # Tema do VS Code
+        "GitHub.github-vscode-theme",
+
+        # Markdown
+        "DavidAnson.vscode-markdownlint",
+
+        # Powershell
+        " ms-vscode.PowerShell",
+
+        # Indentação de código
+        "NathanRidley.autotrim",
+        "esbenp.prettier-vscode",
+
+        # AI-assisted IntelliSense
+        "VisualStudioExptTeam.vscodeintellicode"
+    )
+
+    Install-VisualStudioCodeExtension -Extension $extensoes
+
+}
+
+function Instalar {
     InstalarPacotesDnf
     InstalarPacotesSnap
     InstalarPacotesFlatpak
     InstalarPacotesPython3Pip
     ConfigurarVirtualbox
+    ConfigurarGnomeShell
+    InstalarExtensoesVisualStudioCode
+    Install-RustLang
 }
-
-Main

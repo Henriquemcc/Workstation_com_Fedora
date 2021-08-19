@@ -1,5 +1,5 @@
 using module "./Add-FlatpakRepository.ps1"
 function Install-FlatHub {
 
-    Add-FlatpakRepository -name "flathub" -location "https://flathub.org/repo/flathub.flatpakrepo"
+    Add-FlatpakRepository -Name "flathub" -Location "https://flathub.org/repo/flathub.flatpakrepo"
 }

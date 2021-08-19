@@ -2,35 +2,31 @@ using module "./Test-Root.ps1"
 
 function Install-SnapPackage {
     param(
-        [Parameter(mandatory = $true)]$package,
-        [Parameter(mandatory = $false)][switch]$classic,
-        [Parameter(mandatory = $false)][switch]$devmode
+        [Parameter(mandatory = $true)]$Package,
+        [Parameter(mandatory = $false)][switch]$Classic,
+        [Parameter(mandatory = $false)][switch]$Devmode
     )
 
-    if (-not (Test-Root)) {
-        throw "Not root"
-    }
-
-    if ($package -is [System.Collections.IEnumerable]) {
-        foreach ($p in $package) {
-            Install-SnapPackage -package $p -classic:$classic -devmode:$devmode
+    if ($Package -is [System.Collections.IEnumerable]) {
+        foreach ($p in $Package) {
+            Install-SnapPackage -Package $p -Classic:$Classic -Devmode:$Devmode
         }
     }
 
-    elseif ($package -is [System.String]) {
-        if ( $package.Contains(" ")) {
-            Install-SnapPackage -package $package.Split(" ") -classic:$classic -devmode:$devmode
+    elseif ($Package -is [System.String]) {
+        if ( $Package.Contains(" ")) {
+            Install-SnapPackage -Package $Package.Split(" ") -Classic:$Classic -Devmode:$Devmode
         }
 
         else {
 
-            $command = "snap install $package"
+            $command = "sudo snap install $Package"
 
-            if ($classic) {
+            if ($Classic) {
                 $command += " --classic"
             }
 
-            if ($devmode) {
+            if ($Devmode) {
                 $command += " --devmode"
             }
 

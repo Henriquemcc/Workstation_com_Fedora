@@ -1,13 +1,15 @@
 using module "./Test-Root.ps1"
 function Connect-ToWifiNetwork {
     param(
-        [Parameter(Mandatory = $true)][String]$ssid,
-        [Parameter(Mandatory = $true)][SecureString]$password
+        [Parameter(Mandatory = $true)][String]$Ssid,
+        [Parameter(Mandatory = $false)][SecureString]$Password = $null
     )
 
-    if (-not (Test-Root)) {
-        throw "Not root"
+    $command = "sudo nmcli device wifi connect $Ssid"
+
+    if ($null -ne $Password) {
+        $command += " password $Password"
     }
 
-    Invoke-Expression -Command "nmcli device wifi connect $ssid password $password"
+    Invoke-Expression -Command $command
 }

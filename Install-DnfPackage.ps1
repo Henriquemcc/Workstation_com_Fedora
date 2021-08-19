@@ -1,26 +1,23 @@
 using module "./Test-Root.ps1"
+using module "./Invoke-CommandAsRoot.ps1"
 
 function Install-DnfPackage {
     param(
-        [Parameter(mandatory = $true)]$package
+        [Parameter(mandatory = $true)]$Package
     )
 
-    if (-not (Test-Root)) {
-        throw "Not root"
-    }
-
-    if ($package -is [System.Collections.IEnumerable]) {
-        foreach ($p in $package) {
-            Install-DnfPackage -package $p
+    if ($Package -is [System.Collections.IEnumerable]) {
+        foreach ($p in $Package) {
+            Install-DnfPackage -Package $p
         }
     }
 
-    elseif ($package -is [System.String]) {
-        if ( $package.Contains(" ")) {
-            Install-DnfPackage -package $package.Split(" ")
+    elseif ($Package -is [System.String]) {
+        if ( $Package.Contains(" ")) {
+            Install-DnfPackage -Package $Package.Split(" ")
         }
         else {
-            Invoke-Expression -Command "dnf --assumeyes --best install $package"
+            Invoke-Expression -Command "sudo dnf --assumeyes --best install $Package"
         }
     }
 }

@@ -2,12 +2,8 @@ using module "./Dnf.psm1"
 using module "./Test-Root.ps1"
 function New-AsymmetricPairOfKeysToSignKernelModules {
 
-    if (-not (Test-Root)) {
-        throw "Not root"
-    }
-
     Update-DnfPackages
-    Install-DnfPackage -package @("mokutil", "openssl")
+    Install-DnfPackage -Package @("mokutil", "openssl")
 
     $pathSignedModulesFolder = "/root/signed-modules"
 
@@ -18,11 +14,11 @@ function New-AsymmetricPairOfKeysToSignKernelModules {
 
     $pathMokDer = Join-Path -Path $pathSignedModulesFolder -ChildPath "MOK.der"
 
-    Invoke-Expression -Command "openssl req -new -x509 -newkey rsa:2048 -keyout $pathMokPriv -outform DER -out $pathMokDer -nodes -days 36500 -subj ""/CN=VirtualBox/"""
+    Invoke-Expression -Command "sudo openssl req -new -x509 -newkey rsa:2048 -keyout $pathMokPriv -outform DER -out $pathMokDer -nodes -days 36500 -subj ""/CN=VirtualBox/"""
 
-    Invoke-Expression -Command "chmod 600 $pathMokPriv"
+    Invoke-Expression -Command "sudo chmod 600 $pathMokPriv"
 
-    Invoke-Expression -Command "mokutil --import $pathMokDer"
+    Invoke-Expression -Command "sudo mokutil --import $pathMokDer"
 
     return $pathMokDer, $pathMokPriv
 

@@ -2,12 +2,8 @@ using module "./Test-Root.ps1"
 
 function Add-DnfRepository {
     param (
-        [Parameter(Mandatory = $true)]$repository
+        [Parameter(Mandatory = $true)]$Repository
     )
 
-    if (-not (Test-Root)) {
-        throw "Not root"
-    }
-
-    Invoke-Expression -Command "dnf --assumeyes config-manager --add-repo=$repository"
+    Invoke-Expression -Command "sudo dnf --assumeyes config-manager --add-repo=$Repository"
 }

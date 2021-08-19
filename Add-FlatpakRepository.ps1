@@ -2,13 +2,23 @@ using module "./Test-Root.ps1"
 
 function Add-FlatpakRepository {
     param(
-        [Parameter(Mandatory = $true)][string]$name,
-        [Parameter(Mandatory = $true)][string]$location
+        [Parameter(Mandatory = $true)][string]$Name,
+        [Parameter(Mandatory = $true)][string]$Location,
+        [Parameter(Mandatory = $false)][switch]$User
     )
 
-    if (-not (Test-Root)) {
-        throw "Not root"
+    $command = "flatpak remote-add --if-not-exists"
+
+    if ($User) {
+        $command += " --user"
     }
 
-    Invoke-Expression -Command "flatpak remote-add --if-not-exists $name $location"
+    else {
+        $command += " --system"
+        $command = "sudo $command"
+    }
+
+    $command += " $Name $Location"
+
+    Invoke-Expression -Command $command
 }

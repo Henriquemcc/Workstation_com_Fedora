@@ -1,8 +1,19 @@
 using module "./Test-Root.ps1"
 function Update-FlatpackPackages {
-    if (-not (Test-Root)) {
-        throw "Not root"
+    param(
+        [Parameter(Mandatory = $false)][switch]$User
+    )
+
+    $command = "flatpak update --assumeyes"
+
+    if ($User) {
+        $command += " --user"
     }
 
-    Invoke-Expression -Command "flatpak update --assumeyes"
+    else {
+        $command += " --system"
+        $command = "sudo $command"
+    }
+
+    Invoke-Expression -Command $command
 }

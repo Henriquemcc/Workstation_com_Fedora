@@ -1,22 +1,22 @@
 function Install-VisualStudioCodeExtension {
     param (
-        [Parameter(Mandatory = $true)] $extension
+        [Parameter(Mandatory = $true)] $Extension
     )
 
-    if ($extension -is [System.Collections.IEnumerable]) {
-        foreach ($e in $extension) {
-            Install-VisualStudioCodeExtension -extension $e
+    if ($Extension -is [System.Collections.IEnumerable]) {
+        foreach ($e in $Extension) {
+            Install-VisualStudioCodeExtension -Extension $e
         }
     }
 
-    elseif ($extension -is [System.String]) {
+    elseif ($Extension -is [System.String]) {
 
-        if ( $extension.Contains(" ")) {
-            Install-VisualStudioCodeExtension -extension $extension.Split(" ")
+        if ( $Extension.Contains(" ")) {
+            Install-VisualStudioCodeExtension -Extension $Extension.Split(" ")
         }
 
         else {
-            Invoke-Expression -Command "code --install-extension $extension"
+            Invoke-Expression -Command "code --install-extension $Extension"
         }
     }
 }

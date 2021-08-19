@@ -1,22 +1,22 @@
 function Install-Python3PipPackage {
     param(
-        [Parameter(Mandatory = $true)]$package
+        [Parameter(Mandatory = $true)]$Package
     )
 
-    if ($package -is [System.Collections.IEnumerable]) {
-        foreach ($p in $package) {
-            Install-Python3PipPackage -package $p
+    if ($Package -is [System.Collections.IEnumerable]) {
+        foreach ($p in $Package) {
+            Install-Python3PipPackage -Package $p
         }
     }
 
-    elseif ($package -is [System.String]) {
+    elseif ($Package -is [System.String]) {
 
-        if ( $package.Contains(" ")) {
-            Install-Python3PipPackage -package $package.Split(" ")
+        if ( $Package.Contains(" ")) {
+            Install-Python3PipPackage -Package $Package.Split(" ")
         }
 
         else {
-            Invoke-Expression -Command "pip3 install $package"
+            Invoke-Expression -Command "pip3 install $Package"
         }
     }
 

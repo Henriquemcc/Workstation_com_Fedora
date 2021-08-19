@@ -5,10 +5,6 @@ using module "./Test-Root.ps1"
 
 function Install-SignedKernelModules {
 
-    if (-not (Test-Root)) {
-        throw "Not root"
-    }
-
     # Criando um par de chaves
     $pairOfKeys = New-AsymmetricPairOfKeysToSignKernelModules
 
@@ -18,5 +14,3 @@ function Install-SignedKernelModules {
     # Adicionando módulos do VirtualBox no Kernel
     Add-VirtualboxSignedModulesToLinuxKernel $pairOfKeys[0] $pairOfKeys[1]
 }
-
-Main

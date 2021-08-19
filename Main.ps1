@@ -1,5 +1,10 @@
 using module "./Write-Title.ps1"
 using module "./MyIO.psm1"
+using module "./Instalar.ps1"
+using module "./Update-Packages.ps1"
+using module "./Install-SignedKernelModules.ps1"
+using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
+using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
 
 function ObterOpcao {
 
@@ -31,19 +36,19 @@ function Menu {
         $opcaoSelecionada = ObterOpcao
 
         if ($opcaoSelecionada -eq 1) {
-            Invoke-Expression -Command "pwsh ./InstalarProgramas.ps1"
+            Instalar
         }
         elseif ($opcaoSelecionada -eq 2) {
-            Invoke-Expression -Command "sudo pwsh ./AtualizarPacotes.ps1"
+            Update-Packages
         }
         elseif ($opcaoSelecionada -eq 3) {
-            Invoke-Expression -Command "sudo pwsh ./GerarChavesEAdicionarAUEFI.ps1"
+            Install-SignedKernelModules
         }
         elseif ($opcaoSelecionada -eq 4) {
-            Invoke-Expression -Command "sudo pwsh ./AdicionarModulosNvidiaAoKernelLinux.ps1"
+            Add-NvidiaSignedModulesToLinuxKernel
         }
         elseif ($opcaoSelecionada -eq 5) {
-            Invoke-Expression -Command "sudo pwsh ./AdicionarModulosVirtualboxAoKernelLinux.ps1"
+            Add-VirtualboxSignedModulesToLinuxKernel
         }
     }
 }
