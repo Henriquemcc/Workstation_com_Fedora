@@ -1,12 +1,11 @@
 using module "./Test-Root.ps1"
-using module "./Invoke-CommandAsRoot.ps1"
 
 function Install-DnfPackage {
     param(
         [Parameter(mandatory = $true)]$Package
     )
 
-    if ($Package -is [System.Collections.IEnumerable]) {
+    elseif ($Package -is [System.Collections.IEnumerable]) {
         foreach ($p in $Package) {
             Install-DnfPackage -Package $p
         }
