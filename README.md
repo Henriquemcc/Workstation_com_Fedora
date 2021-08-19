@@ -10,5 +10,5 @@ Linux) [Fedora](https://getfedora.org)
 Com o Fedora estando instalado em seu computador, abra o programa 'Terminal' e nele copie e cole o seguinte comando:
 
 ```
-wget "https://github.com/Henriquemcc/Workstation_com_Fedora/archive/refs/heads/main.zip";unzip "main.zip";cd "Workstation_com_Fedora-main";bash "./Executar.sh";
+wget --no-cache "https://github.com/Henriquemcc/Workstation_com_Fedora/archive/refs/heads/main.zip" -O "main.zip";unzip "main.zip";cd "Workstation_com_Fedora-main";bash ./Executar.sh;
 ```
