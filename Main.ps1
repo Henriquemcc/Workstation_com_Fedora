@@ -6,7 +6,8 @@ using module "./Install-SignedKernelModules.ps1"
 using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
 using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
 
-function ObterOpcao {
+function ObterOpcao
+{
 
     $mensagemOpcoes = @"
 O que deseja fazer?
@@ -20,41 +21,47 @@ O que deseja fazer?
 "@
 
     $opcaoSelecionada = $null
-    while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt 5)) {
+    while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt 5))
+    {
         $opcaoSelecionada = Read-Byte -Prompt $mensagemOpcoes
     }
 
     return $opcaoSelecionada
 }
 
-function Menu {
-
+function Menu
+{
     $opcaoSelecionada = $null
 
-    while ($opcaoSelecionada -ne 0) {
-
+    while ($opcaoSelecionada -ne 0)
+    {
         $opcaoSelecionada = ObterOpcao
 
-        if ($opcaoSelecionada -eq 1) {
+        if ($opcaoSelecionada -eq 1)
+        {
             Instalar
         }
-        elseif ($opcaoSelecionada -eq 2) {
+        elseif ($opcaoSelecionada -eq 2)
+        {
             Update-Packages
         }
-        elseif ($opcaoSelecionada -eq 3) {
+        elseif ($opcaoSelecionada -eq 3)
+        {
             Install-SignedKernelModules
         }
-        elseif ($opcaoSelecionada -eq 4) {
+        elseif ($opcaoSelecionada -eq 4)
+        {
             Add-NvidiaSignedModulesToLinuxKernel
         }
-        elseif ($opcaoSelecionada -eq 5) {
+        elseif ($opcaoSelecionada -eq 5)
+        {
             Add-VirtualboxSignedModulesToLinuxKernel
         }
     }
 }
 
-function Main {
-
+function Main
+{
     Write-Title "Workstation com Fedora"
     Write-Host
     Menu

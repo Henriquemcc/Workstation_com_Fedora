@@ -1,7 +1,6 @@
 using module "./Dnf.psm1"
-using module "./Test-Root.ps1"
-function New-AsymmetricPairOfKeysToSignKernelModules {
-
+function New-AsymmetricPairOfKeysToSignKernelModules
+{
     Update-DnfPackages
     Install-DnfPackage -Package @("mokutil", "openssl")
 
@@ -21,5 +20,4 @@ function New-AsymmetricPairOfKeysToSignKernelModules {
     Invoke-Expression -Command "sudo mokutil --import $pathMokDer"
 
     return $pathMokDer, $pathMokPriv
-
 }

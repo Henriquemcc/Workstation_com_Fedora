@@ -1,31 +1,29 @@
-using module "./Test-Root.ps1"
-
-function Install-FlatpakPackage {
+function Install-FlatpakPackage
+{
     param(
         [Parameter(Mandatory = $true)]$Package,
         [Parameter(Mandatory = $false)][switch]$User
     )
 
-    if ($Package -is [System.Collections.IEnumerable]) {
-        foreach ($p in $Package) {
-            Install-FlatpakPackage -Package $p -User:$User
-        }
-    }
+    if ($Package -is [System.String])
+    {
 
-    elseif ($Package -is [System.String]) {
-
-        if ( $Package.Contains(" ")) {
+        if ( $Package.Contains(" "))
+        {
             Install-FlatpakPackage -Package $Package.Split(" ") -User:$User
         }
 
-        else {
+        else
+        {
             $command = "flatpak install --assumeyes"
 
-            if ($User) {
+            if ($User)
+            {
                 $command += " --user"
             }
 
-            else {
+            else
+            {
                 $command += " --system"
                 $command = "sudo $command"
             }
@@ -33,6 +31,14 @@ function Install-FlatpakPackage {
             $command += " $Package"
 
             Invoke-Expression -Command $command
+        }
+    }
+
+    elseif ($Package -is [System.Collections.IEnumerable])
+    {
+        foreach ($p in $Package)
+        {
+            Install-FlatpakPackage -Package $p -User:$User
         }
     }
 }

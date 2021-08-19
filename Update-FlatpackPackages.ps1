@@ -1,16 +1,18 @@
-using module "./Test-Root.ps1"
-function Update-FlatpackPackages {
+function Update-FlatpackPackages
+{
     param(
         [Parameter(Mandatory = $false)][switch]$User
     )
 
     $command = "flatpak update --assumeyes"
 
-    if ($User) {
+    if ($User)
+    {
         $command += " --user"
     }
 
-    else {
+    else
+    {
         $command += " --system"
         $command = "sudo $command"
     }

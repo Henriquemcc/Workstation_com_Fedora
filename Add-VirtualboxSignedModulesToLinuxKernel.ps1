@@ -1,10 +1,9 @@
-using module "./Test-Root.ps1"
 using module "./Install-DnfPackage.ps1"
 
-function Add-VirtualboxSignedModulesToLinuxKernel {
-
+function Add-VirtualboxSignedModulesToLinuxKernel
+{
     param(
-        [Parameter(Mandatory = $false)] $PathPublicKey = "/root/signed-modules/MOK.der" ,
+        [Parameter(Mandatory = $false)] $PathPublicKey = "/root/signed-modules/MOK.der",
         [Parameter(Mandatory = $false)] $PathPrivateKey = "/root/signed-modules/MOK.priv"
     )
 
@@ -17,16 +16,14 @@ function Add-VirtualboxSignedModulesToLinuxKernel {
     $uname = Invoke-Expression -Command "uname -r"
     $signFilePath = "/usr/src/kernels/$uname/scripts/sign-file"
 
-    foreach ($modFile in $modFiles) {
-        Invoke-Expression "sudo $signFilePath sha256 $PathPrivateKey $PathPublicKey $($modFile.FullName)"
+    foreach ($modFile in $modFiles)
+    {
+        Invoke-Expression "sudo $signFilePath sha256 $PathPrivateKey $PathPublicKey $( $modFile.FullName )"
     }
 
-
-    $unameR = Invoke-Expression -Command "uname -r"
-    Install-DnfPackage -Package "akmod-VirtualBox", "kernel-devel-$unameR"
+    Install-DnfPackage -Package @("akmod-VirtualBox", "kernel-devel")
 
     Invoke-Expression -Command "sudo akmods"
 
     Invoke-Expression -Command "sudo systemctl restart vboxdrv.service"
-
 }

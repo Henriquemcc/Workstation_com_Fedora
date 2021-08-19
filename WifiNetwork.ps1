@@ -1,4 +1,5 @@
-class WifiNetwork {
+class WifiNetwork
+{
     [string] $ssid
     [securestring] $password
 }

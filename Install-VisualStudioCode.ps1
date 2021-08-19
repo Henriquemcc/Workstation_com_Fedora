@@ -1,4 +1,5 @@
 using module "./Install-SnapPackage.ps1"
-function Install-VisualStudioCode {
+function Install-VisualStudioCode
+{
     Install-SnapPackage -Package "code" -Classic
 }

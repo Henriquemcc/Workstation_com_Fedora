@@ -1,6 +1,5 @@
-using module "./Test-Root.ps1"
-
-function Add-DnfRepository {
+function Add-DnfRepository
+{
     param (
         [Parameter(Mandatory = $true)]$Repository
     )

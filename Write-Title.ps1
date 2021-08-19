@@ -1,5 +1,5 @@
-function Write-Title {
-
+function Write-Title
+{
     param(
         [Parameter(Mandatory = $true)] [String] $Title
     )

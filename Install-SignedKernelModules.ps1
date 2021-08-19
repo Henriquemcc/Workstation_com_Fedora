@@ -1,10 +1,9 @@
 using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
 using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
 using module "./New-AsymmetricPairOfKeysToSignKernelModules.ps1"
-using module "./Test-Root.ps1"
 
-function Install-SignedKernelModules {
-
+function Install-SignedKernelModules
+{
     # Criando um par de chaves
     $pairOfKeys = New-AsymmetricPairOfKeysToSignKernelModules
 

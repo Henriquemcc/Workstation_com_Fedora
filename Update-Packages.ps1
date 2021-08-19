@@ -3,29 +3,35 @@ using module "./Update-DnfPackages.ps1"
 using module "./Update-FlatpackPackages.ps1"
 using module "./Update-SnapPackages.ps1"
 
-function Update-Packages {
-
-    try {
+function Update-Packages
+{
+    try
+    {
         Update-DnfPackages
     }
 
-    catch {
+    catch
+    {
         Write-Error $_
     }
 
-    try {
+    try
+    {
         Update-FlatpackPackages
     }
 
-    catch {
+    catch
+    {
         Write-Error $_
     }
 
-    try {
+    try
+    {
         Update-SnapPackages
     }
 
-    catch {
+    catch
+    {
         Write-Error $_
     }
 }
