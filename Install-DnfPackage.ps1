@@ -5,7 +5,7 @@ function Install-DnfPackage {
         [Parameter(mandatory = $true)]$Package
     )
 
-    elseif ($Package -is [System.Collections.IEnumerable]) {
+    if ($Package -is [System.Collections.IEnumerable]) {
         foreach ($p in $Package) {
             Install-DnfPackage -Package $p
         }
