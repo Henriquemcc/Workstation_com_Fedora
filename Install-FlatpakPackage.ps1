@@ -34,7 +34,7 @@ function Install-FlatpakPackage
         }
     }
 
-    elseif ($Package -is [System.Collections.IEnumerable])
+    elseif ($Package -is [System.Collections.ICollection])
     {
         foreach ($p in $Package)
         {
