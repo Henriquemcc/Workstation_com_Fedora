@@ -1,5 +1,6 @@
 using module "./Python3Pip.psm1"
 using module "./VisualStudioCode.psm1"
+using module "./Install-Gradle.ps1"
 
 function InstalarPacotesPython3Pip
 {
@@ -94,6 +95,7 @@ function Main
     InstalarPacotesPython3Pip
     ConfigurarGnomeShell
     InstalarExtensoesVisualStudioCode
+    Install-Gradle
 }
 
 Main
