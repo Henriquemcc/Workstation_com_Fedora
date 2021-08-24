@@ -27,7 +27,7 @@ function New-Shortcut
         [Parameter(Mandatory = $false)]$StartupWMClass = $null,
         [Parameter(Mandatory = $false)]$URL = $null,
         [Parameter(Mandatory = $false)]$PrefersNonDefaultGPU = $null,
-        [Parameter(Mandatory = $false)][Switch]$AllUsers = $false,
+        [Parameter(Mandatory = $false)][Switch]$AllUsers,
         [Parameter(Mandatory = $true)]$FileName
     )
 
@@ -314,8 +314,8 @@ function New-Shortcut
     {
         $pathDestinationFolder = "/usr/share/applications"
         $newDesktopFileLocation = Join-Path -Path $pathDestinationFolder -ChildPath $FileName
-        Invoke-Command "sudo mv $desktopFileLocation $newDesktopFileLocation"
-        Invoke-Command "sudo chmod 644 ""$newDesktopFileLocation"""
+        Invoke-Expression "sudo mv ""$desktopFileLocation"" ""$newDesktopFileLocation"""
+        Invoke-Expression "sudo chmod 755 ""$newDesktopFileLocation"""
     }
     else
     {
