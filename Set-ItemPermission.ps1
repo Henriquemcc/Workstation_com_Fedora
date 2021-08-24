@@ -99,7 +99,7 @@ function Set-ItemPermission
 
     if ($null -ne $mode)
     {
-        if ($mode -is [System.Collections.IEnumerable])
+        if ($mode -is [System.Collections.ICollection])
         {
 
             $modeString = ""
@@ -122,7 +122,7 @@ function Set-ItemPermission
 
     if ($null -ne $file)
     {
-        if ($file -is [System.Collections.IEnumerable])
+        if ($file -is [System.Collections.ICollection])
         {
 
             $fileString = ""
