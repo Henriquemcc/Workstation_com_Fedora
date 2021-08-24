@@ -1,39 +1,34 @@
-enum DesktopEntryType
-{
-    Application = 1
-    Link = 2
-    Directory = 3
-}
+using module "./DesktopEntryType.ps1"
 
 function New-Shortcut
 {
     param(
         [Parameter(Mandatory = $true)][DesktopEntryType]$Type,
-        [Parameter(Mandatory = $false)][System.String]$Version = $null,
-        [Parameter(Mandatory = $true)][System.String]$Name,
-        [Parameter(Mandatory = $false)][System.String]$GenericName = $null,
-        [Parameter(Mandatory = $false)][System.Boolean]$NoDisplay = $null,
-        [Parameter(Mandatory = $false)][System.String]$Comment = $null,
-        [Parameter(Mandatory = $false)][System.String]$Icon = $null,
-        [Parameter(Mandatory = $false)][System.Boolean]$Hidden = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$OnlyShowIn = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$NotShowIn = $null,
-        [Parameter(Mandatory = $false)][System.Boolean]$DBusActivatable = $null,
-        [Parameter(Mandatory = $false)][System.String]$TryExec = $null,
-        [Parameter(Mandatory = $false)][System.String]$Exec = $null,
-        [Parameter(Mandatory = $false)][System.String]$Path = $null,
-        [Parameter(Mandatory = $false)][System.Boolean]$Terminal = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$Actions = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$MimeType = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$Categories = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$Implements = $null,
-        [Parameter(Mandatory = $false)][System.Collections.ICollection]$Keywords = $null,
-        [Parameter(Mandatory = $false)][System.Boolean]$StartupNotify = $null,
-        [Parameter(Mandatory = $false)][System.String]$StartupWMClass = $null,
-        [Parameter(Mandatory = $false)][System.String]$URL = $null,
-        [Parameter(Mandatory = $false)][System.Boolean]$PrefersNonDefaultGPU = $null,
+        [Parameter(Mandatory = $false)]$Version = $null,
+        [Parameter(Mandatory = $true)]$Name,
+        [Parameter(Mandatory = $false)]$GenericName = $null,
+        [Parameter(Mandatory = $false)]$NoDisplay = $null,
+        [Parameter(Mandatory = $false)]$Comment = $null,
+        [Parameter(Mandatory = $false)]$Icon = $null,
+        [Parameter(Mandatory = $false)]$Hidden = $null,
+        [Parameter(Mandatory = $false)]$OnlyShowIn = $null,
+        [Parameter(Mandatory = $false)]$NotShowIn = $null,
+        [Parameter(Mandatory = $false)]$DBusActivatable = $null,
+        [Parameter(Mandatory = $false)]$TryExec = $null,
+        [Parameter(Mandatory = $false)]$Exec = $null,
+        [Parameter(Mandatory = $false)]$Path = $null,
+        [Parameter(Mandatory = $false)]$Terminal = $null,
+        [Parameter(Mandatory = $false)]$Actions = $null,
+        [Parameter(Mandatory = $false)]$MimeType = $null,
+        [Parameter(Mandatory = $false)]$Categories = $null,
+        [Parameter(Mandatory = $false)]$Implements = $null,
+        [Parameter(Mandatory = $false)]$Keywords = $null,
+        [Parameter(Mandatory = $false)]$StartupNotify = $null,
+        [Parameter(Mandatory = $false)]$StartupWMClass = $null,
+        [Parameter(Mandatory = $false)]$URL = $null,
+        [Parameter(Mandatory = $false)]$PrefersNonDefaultGPU = $null,
         [Parameter(Mandatory = $false)][Switch]$AllUsers = $false,
-        [Parameter(Mandatory = $true)][System.String]$FileName
+        [Parameter(Mandatory = $true)]$FileName
     )
 
     if (($null -ne $TryExec) -and ($Type -ne [DesktopEntryType]::Application))
