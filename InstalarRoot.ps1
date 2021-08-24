@@ -2,7 +2,7 @@ using module "./Dnf.psm1"
 using module "./Snap.psm1"
 using module "./Flatpak.psm1"
 using module "./Install-SignedKernelModules.ps1"
-using module "./Install-RustLang.ps1"
+using module "./New-Shortcut.ps1"
 
 function InstalarPacotesDnf
 {
@@ -114,23 +114,29 @@ function InstalarPacotesFlatpak
     Update-FlatpackPackages
 }
 
-
-function ConfigurarVirtualbox
+function ConfigurarJava
 {
-    Install-SignedKernelModules
+    #Criando o comando Java8
+    Invoke-Expression -Command "sudo ln --symbolic /usr/lib/jvm/java-1.8.0/bin/java /bin/java8"
+
+    #Criando o comando Javac8
+    Invoke-Expression -Command "sudo ln --symbolic /usr/lib/jvm/java-1.8.0/bin/javac /bin/javac8"
+
+    #Criando o atalho para o Java 8
+    New-Shortcut -Name "Java Runtime Environment 8" -GenericName "Java 8" -Keywords @("java", "runtime", "environment", "8", "jre") -Exec "java8 -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java8.desktop"
+
+    #Criando o atalho para o Java
+    New-Shortcut -Name "Java Runtime Environment" -GenericName "Java" -Keywords @("java", "runtime", "environment", "jre") -Exec "java -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java.desktop"
+
 }
 
 function Main
 {
-
     InstalarPacotesDnf
     InstalarPacotesSnap
     InstalarPacotesFlatpak
-    InstalarPacotesPython3Pip
-    ConfigurarVirtualbox
-    ConfigurarGnomeShell
-    InstalarExtensoesVisualStudioCode
-    Install-RustLang
+    Install-SignedKernelModules
+    ConfigurarJava
 }
 
 Main
