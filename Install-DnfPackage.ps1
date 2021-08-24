@@ -16,7 +16,7 @@ function Install-DnfPackage
         }
     }
 
-    elseif ($Package -is [System.Collections.IEnumerable])
+    elseif ($Package -is [System.Collections.ICollection])
     {
         foreach ($p in $Package)
         {
