@@ -17,7 +17,7 @@ function Install-VisualStudioCodeExtension
         }
     }
 
-    elseif ($Extension -is [System.Collections.IEnumerable])
+    elseif ($Extension -is [System.Collections.ICollection])
     {
         foreach ($e in $Extension)
         {
