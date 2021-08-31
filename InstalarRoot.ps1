@@ -103,7 +103,6 @@ function InstalarPacotesFlatpak
 
     # Instalando os pacotes FlatPak
     $pacotes = @(
-    "https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref",
     "https://dl.flathub.org/repo/appstream/com.discordapp.Discord.flatpakref",
     "https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref",
     "https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref"
