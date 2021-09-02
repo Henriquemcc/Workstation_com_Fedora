@@ -4,6 +4,21 @@ function Install-Python3PipPackage
         [Parameter(Mandatory = $true)]$Package
     )
 
+    <#
+    .SYNOPSIS
+        Installs Python 3 Pip package.
+    .DESCRIPTION
+        This function installs Python 3 Pip packages.
+    .PARAMETER Package
+        Package name or list of packages' name to be installed.
+    .EXAMPLE
+        PS /> Install-Python3PipPackage -Package "youtube_dl"
+        This example installs 'youtube-dl'.
+    .EXAMPLE
+        PS /> Install-Python3PipPackage -Package @("youtube_dl", "protonvpn-cli")
+        This example installs 'youtube-dl' and 'protonvpn-cli'.
+    #>
+
     if ($Package -is [System.String])
     {
         if ( $Package.Contains(" "))

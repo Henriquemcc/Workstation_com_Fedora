@@ -4,6 +4,21 @@ function Install-DnfPackage
         [Parameter(mandatory = $true)]$Package
     )
 
+    <#
+    .SYNOPSIS
+        Installs a DNF package.
+    .DESCRIPTION
+        This function installs DNF packages.
+    .PARAMETER Package
+        Package name or list of packages' name to be installed.
+    .EXAMPLE
+        PS /> Install-DnfPackage -Package "gcc"
+        This example installs the Gnu Compiler Collection package.
+    .EXAMPLE
+        PS /> Install-DnfPackage -Package @("gcc", "make", "gdb")
+        This example installs the packages 'gcc', 'make' and 'gdb'.
+    #>
+
     if ($Package -is [System.String])
     {
         if ( $Package.Contains(" "))

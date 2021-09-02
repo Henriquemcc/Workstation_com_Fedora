@@ -7,6 +7,17 @@ function Add-VirtualboxSignedModulesToLinuxKernel
         [Parameter(Mandatory = $false)] $PathPrivateKey = "/root/signed-modules/MOK.priv"
     )
 
+    <#
+    .SYNOPSIS
+        Signs and adds VirtualBox kernel modules.
+    .DESCRIPTION
+        This function signs and adds VirtualBox kernel modules so that it can run with UEFI and Secure Boot.
+    .PARAMETER PathPublicKey
+        The path to the public key file.
+    .PARAMETER PathPrivateKey
+        The path to the private key file.
+    #>
+
     $vboxdrv = Get-Item -Path (Invoke-Expression -Command "modinfo -n vboxdrv")
     $vboxdrvParentFolder = Get-ChildItem $vboxdrv.Directory
     $modFiles = $vboxdrvParentFolder.Where{

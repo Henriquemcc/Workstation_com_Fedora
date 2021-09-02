@@ -4,20 +4,22 @@ function Read-Int32
         [Parameter(Mandatory = $false)] [String] $Prompt
     )
 
+    <#
+    .SYNOPSIS
+        Reads a int32 value from input.
+    .DESCRIPTION
+        This function reads a int32 value from standard input, ensuring that the typed value is int32.
+    .PARAMETER Prompt
+        Message to be prompted before reading input.
+    #>
+
     $int32Read = $null
     while (($null -eq $int32Read) -or ($int32Read -isnot [System.Int32]))
     {
         try
         {
-            $inputString = $null
-            if (($null -eq $Prompt) -or ($Prompt.Length -le 0))
-            {
-                $inputString = Read-Host
-            }
-            else
-            {
-                $inputString = Read-Host -Prompt $Prompt
-            }
+
+            $inputString = Read-Host -Prompt:$Prompt
 
             if (($null -eq $inputString) -or ($inputString.Length -le 0))
             {

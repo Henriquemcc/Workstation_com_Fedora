@@ -5,6 +5,12 @@ using module "./Update-SnapPackages.ps1"
 
 function Update-Packages
 {
+    <#
+    .SYNOPSIS
+        Updates all packages to the latest version.
+    .DESCRIPTION
+        This function updates all packages from DNF, Snap and Flatpak to the latest version.
+    #>
     try
     {
         Update-DnfPackages

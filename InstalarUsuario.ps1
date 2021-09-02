@@ -4,6 +4,13 @@ using module "./Install-Gradle.ps1"
 
 function InstalarPacotesPython3Pip
 {
+    <#
+    .SYNOPSIS
+        Instala os pacotes Python 3 Pip.
+    .DESCRIPTION
+        Esta função realiza a instalação dos pacotes Python 3 Pip que utilizo em minha máquina com o sistema operacional Fedora.
+    #>
+
     # Instalando o Pip do Python 3
     Install-Python3Pip
 
@@ -13,6 +20,14 @@ function InstalarPacotesPython3Pip
 
 function ConfigurarGnomeShell
 {
+
+    <#
+    .SYNOPSIS
+        Configura e personaliza o Gnome Shell.
+    .DESCRIPTION
+        Esta função realiza a configuração e a personalização do Gnome Shell.
+    #>
+
     # Desabilitando hot corners
     gsettings set org.gnome.desktop.interface enable-hot-corners false
 
@@ -34,6 +49,14 @@ function ConfigurarGnomeShell
 
 function InstalarExtensoesVisualStudioCode
 {
+
+    <#
+    .SYNOPSIS
+        Instala as extensões do Visual Studio Code.
+    .DESCRIPTION
+        Esta função instala as extensões que utilizo no Visual Studio Code.
+    #>
+
     Install-VisualStudioCode
 
     $extensoes = @(
@@ -92,6 +115,14 @@ function InstalarExtensoesVisualStudioCode
 
 function Main
 {
+
+    <#
+    .SYNOPSIS
+        Função principal.
+    .DESCRIPTION
+        Esta é a função principal deste script.
+    #>
+
     InstalarPacotesPython3Pip
     ConfigurarGnomeShell
     InstalarExtensoesVisualStudioCode

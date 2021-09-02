@@ -6,6 +6,28 @@ function Install-SnapPackage
         [Parameter(mandatory = $false)][switch]$Devmode
     )
 
+    <#
+    .SYNOPSIS
+        Install Snap package.
+    .DESCRIPTION
+        This function installs Snap packages.
+    .PARAMETER Package
+        Package's name to be installed or list of packages' name.
+    .PARAMETER Classic
+        Put snap in classic mode and disable security confinement.
+    .PARAMETER Devmode
+        Put snap in development mode and disable security confinement.
+    .EXAMPLE
+        PS /> Install-SnapPackage -Package "spotify"
+        This example installs Spotify.
+    .EXAMPLE
+        PS /> Install-SnapPackage -Package @("spotify", "skype")
+        This example installs Spotify and Skype.
+    .EXAMPLE
+        PS /> Install-SnapPackage -Package "code" -Classic
+        This example installs Visual Studio Code in classic mode, without security confinement.
+    #>
+
     if ($Package -is [System.String])
     {
         if ( $Package.Contains(" "))

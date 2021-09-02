@@ -4,12 +4,19 @@ using module "./New-AsymmetricPairOfKeysToSignKernelModules.ps1"
 
 function Install-SignedKernelModules
 {
-    # Criando um par de chaves
+    <#
+    .SYNOPSIS
+        Sign and install kernel modules.
+    .DESCRIPTION
+        This function sign and install Linux kernel modules from Nvidia and VirtualBox.
+    #>
+
+    # Creating a pair of assimetric keys
     $pairOfKeys = New-AsymmetricPairOfKeysToSignKernelModules
 
-    # Adicionando módulos da Nvidia no kernel
+    # Adding Nvidia kernel modules
     Add-NvidiaSignedModulesToLinuxKernel $pairOfKeys[0] $pairOfKeys[1]
 
-    # Adicionando módulos do VirtualBox no Kernel
+    # Adding VirtualBox kernel modules
     Add-VirtualboxSignedModulesToLinuxKernel $pairOfKeys[0] $pairOfKeys[1]
 }

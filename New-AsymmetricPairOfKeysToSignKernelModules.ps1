@@ -1,6 +1,12 @@
 using module "./Dnf.psm1"
 function New-AsymmetricPairOfKeysToSignKernelModules
 {
+    <#
+    .SYNOPSIS
+        Generates a new pair of assimetric keys.
+    .DESCRIPTION
+        This function generates a new pair of assimetric key, and add it to the UEFI.
+    #>
     Update-DnfPackages
     Install-DnfPackage -Package @("mokutil", "openssl")
 

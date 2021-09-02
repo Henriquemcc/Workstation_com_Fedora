@@ -4,20 +4,21 @@ function Read-Int16
         [Parameter(Mandatory = $false)] [String] $Prompt
     )
 
+    <#
+    .SYNOPSIS
+        Reads a int16 value from input.
+    .DESCRIPTION
+        This function reads a int16 value from standard input, ensuring that the typed value is int16.
+    .PARAMETER Prompt
+        Message to be prompted before reading input.
+    #>
+
     $int16Read = $null
     while (($null -eq $int16Read) -or ($int16Read -isnot [System.Int16]))
     {
         try
         {
-            $inputString = $null
-            if (($null -eq $Prompt) -or ($Prompt.Length -le 0))
-            {
-                $inputString = Read-Host
-            }
-            else
-            {
-                $inputString = Read-Host -Prompt $Prompt
-            }
+            $inputString = Read-Host -Prompt:$Prompt
 
             if (($null -eq $inputString) -or ($inputString.Length -le 0))
             {
@@ -34,6 +35,4 @@ function Read-Int16
     }
 
     return $int16Read
-
-
 }

@@ -4,20 +4,22 @@ function Read-Double
         [Parameter(Mandatory = $false)] [String] $Prompt
     )
 
+    <#
+    .SYNOPSIS
+        Reads a double value from input.
+    .DESCRIPTION
+        This function reads a double value from standard input, ensuring that the typed value is double.
+    .PARAMETER Prompt
+        Message to be prompted before reading input.
+    #>
+
     $doubleRead = $null
     while (($null -eq $doubleRead) -or ($doubleRead -isnot [System.Double]))
     {
         try
         {
-            $inputString = $null
-            if (($null -eq $Prompt) -or ($Prompt.Length -le 0))
-            {
-                $inputString = Read-Host
-            }
-            else
-            {
-                $inputString = Read-Host -Prompt $Prompt
-            }
+
+            $inputString = Read-Host -Prompt:$Prompt
 
             if (($null -eq $inputString) -or ($inputString.Length -le 0))
             {

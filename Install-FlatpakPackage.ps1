@@ -5,6 +5,20 @@ function Install-FlatpakPackage
         [Parameter(Mandatory = $false)][switch]$User
     )
 
+    <#
+    .SYNOPSIS
+        Installs a Flatpak package.
+    .DESCRIPTION
+        This function installs a Flatpak packages.
+    .PARAMETER Package
+        Package name or list of packages' name to be installed.
+    .PARAMETER User
+        Installs the application or runtime in a per-user installation.
+    .EXAMPLE
+        PS /> Install-FlatpakPackage -Package "https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref"
+        This example installs GIMP.
+    #>
+
     if ($Package -is [System.String])
     {
 

@@ -4,20 +4,21 @@ function Read-Byte
         [Parameter(Mandatory = $false)] [String] $Prompt
     )
 
+    <#
+    .SYNOPSIS
+        Reads a byte value from input.
+    .DESCRIPTION
+        This function reads a byte value from standard input, ensuring that the typed value is byte.
+    .PARAMETER Prompt
+        Message to be prompted before reading input.
+    #>
+
     $byteRead = $null
     while (($null -eq $byteRead) -or ($byteRead -isnot [System.Byte]))
     {
         try
         {
-            $inputString = $null
-            if (($null -eq $Prompt) -or ($Prompt.Length -le 0))
-            {
-                $inputString = Read-Host
-            }
-            else
-            {
-                $inputString = Read-Host -Prompt $Prompt
-            }
+            $inputString = Read-Host -Prompt:$Prompt
 
             if (($null -eq $inputString) -or ($inputString.Length -le 0))
             {

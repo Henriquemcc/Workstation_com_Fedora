@@ -6,6 +6,14 @@ using module "./New-Shortcut.ps1"
 
 function InstalarPacotesDnf
 {
+
+    <#
+    .SYNOPSIS
+        Instala os pacotes DNF.
+    .DESCRIPTION
+        Esta função realiza a instalação dos pacotes DNF que utilizo em minha máquina com o sistema operacional Fedora.
+    #>
+
     # Habilitando o RPM Fusion
     Enable-RpmFusion
 
@@ -80,6 +88,14 @@ function InstalarPacotesDnf
 
 function InstalarPacotesSnap
 {
+
+    <#
+    .SYNOPSIS
+        Instala os pacotes Snap.
+    .DESCRIPTION
+        Esta função realiza a instalação dos pacotes Snap que utilizo em minha máquina com o sistema operacional Fedora.
+    #>
+
     # Instalando o Snapd
     Install-Snapd
 
@@ -98,6 +114,14 @@ function InstalarPacotesSnap
 
 function InstalarPacotesFlatpak
 {
+
+    <#
+    .SYNOPSIS
+        Instala os pacotes Flatpak.
+    .DESCRIPTION
+        Esta função realiza a instalação dos pacotes Flatpak que utilizo em minha máquina com o sistema operacional Fedora.
+    #>
+
     # Instalando o FlatHub
     Install-FlatHub
 
@@ -115,6 +139,14 @@ function InstalarPacotesFlatpak
 
 function ConfigurarJava
 {
+
+    <#
+    .SYNOPSIS
+        Configura o Java.
+    .DESCRIPTION
+        Esta função configura o Java para que seja criado os comandos java8 e javac8 além da criação do atalho do Java Runtime Environment 8 e do Java Runtime Environment última versão.
+    #>
+
     #Criando o comando Java8
     Invoke-Expression -Command "sudo ln --symbolic /usr/lib/jvm/java-1.8.0/bin/java /bin/java8"
 
@@ -131,6 +163,14 @@ function ConfigurarJava
 
 function Main
 {
+
+    <#
+    .SYNOPSIS
+        Função principal.
+    .DESCRIPTION
+        Esta é a função principal deste script.
+    #>
+
     InstalarPacotesDnf
     InstalarPacotesSnap
     InstalarPacotesFlatpak

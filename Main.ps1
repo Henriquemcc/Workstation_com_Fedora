@@ -9,6 +9,13 @@ using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
 function ObterOpcao
 {
 
+    <#
+    .SYNOPSIS
+        Obtém da entrada padrão a opção que o usuário deseja executar.
+    .DESCRIPTION
+        Esta funcção obtém do usuário qual opção ele deseja realizar.
+    #>
+
     $mensagemOpcoes = @"
 O que deseja fazer?
 0 - Sair
@@ -31,6 +38,14 @@ O que deseja fazer?
 
 function Menu
 {
+
+    <#
+    .SYNOPSIS
+        Exibe o menu de seleção
+    .DESCRIPTION
+        Esta função serve para exibir o menu de seleção e executar a ação escolhida pelo usuário.
+    #>
+
     $opcaoSelecionada = $null
 
     while ($opcaoSelecionada -ne 0)
@@ -62,6 +77,13 @@ function Menu
 
 function Main
 {
+    <#
+    .SYNOPSIS
+        Função principal.
+    .DESCRIPTION
+        Esta é a função principal deste script.
+    #>
+
     Write-Title "Workstation com Fedora"
     Write-Host
     Menu

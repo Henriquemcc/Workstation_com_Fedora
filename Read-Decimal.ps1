@@ -4,20 +4,21 @@ function Read-Decimal
         [Parameter(Mandatory = $false)] [String] $Prompt
     )
 
+    <#
+    .SYNOPSIS
+        Reads a decimal value from input.
+    .DESCRIPTION
+        This function reads a decimal value from standard input, ensuring that the typed value is decimal.
+    .PARAMETER Prompt
+        Message to be prompted before reading input.
+    #>
+
     $decimalRead = $null
     while (($null -eq $decimalRead) -or ($decimalRead -isnot [System.Decimal]))
     {
         try
         {
-            $inputString = $null
-            if (($null -eq $Prompt) -or ($Prompt.Length -le 0))
-            {
-                $inputString = Read-Host
-            }
-            else
-            {
-                $inputString = Read-Host -Prompt $Prompt
-            }
+            $inputString = Read-Host -Prompt:$Prompt
 
             if (($null -eq $inputString) -or ($inputString.Length -le 0))
             {
