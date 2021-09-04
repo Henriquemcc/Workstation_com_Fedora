@@ -1,6 +1,7 @@
 using module "./Python3Pip.psm1"
 using module "./VisualStudioCode.psm1"
 using module "./Install-Gradle.ps1"
+using module "./Install-RustLang.ps1"
 
 function InstalarPacotesPython3Pip
 {
@@ -113,6 +114,27 @@ function InstalarExtensoesVisualStudioCode
     Install-VisualStudioCodeExtension -Extension $extensoes
 }
 
+function ConfigurarPastaBin
+{
+    <#
+    .SYNOPSIS
+        Configura a pasta ~/bin.
+    .DESCRIPTION
+        Esta função configura a pasta bin que está dentro do diretório do usuário, contendo arquivos binários.
+    #>
+
+    # Adicionando a pasta ~/bin ao path do sistema
+    $bashDotRc = [System.IO.File]::AppendText("$( $env:HOME )/.bashrc")
+    $bashDotRc.WriteLine("export PATH=""$HOME/bin:$`PATH""")
+
+    # Criando link do adb na pasta ~/bin
+    $pathAdb = "$( $env:HOME )/Android/Sdk/platform-tools/adb"
+    if (Test-Path -Path $pathAdb)
+    {
+        New-Item -Path "$( $env:HOME )/bin/adb" -ItemType SymbolicLink -Target $pathAdb
+    }
+}
+
 function Main
 {
 
@@ -125,8 +147,10 @@ function Main
 
     InstalarPacotesPython3Pip
     ConfigurarGnomeShell
+    ConfigurarPastaBin
     InstalarExtensoesVisualStudioCode
     Install-Gradle
+    Install-RustLang
 }
 
 Main
