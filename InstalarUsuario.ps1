@@ -46,6 +46,9 @@ function ConfigurarGnomeShell
 
     # Desabilitar autorun
     gsettings set org.gnome.desktop.media-handling autorun-never true
+
+    # Habilitando botões minimizar e maximizar
+    gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,maximize,close"
 }
 
 function InstalarExtensoesVisualStudioCode
