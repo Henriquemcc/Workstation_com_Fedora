@@ -49,6 +49,12 @@ function ConfigurarGnomeShell
 
     # Habilitando botões minimizar e maximizar
     gsettings set org.gnome.desktop.wm.preferences button-layout "appmenu:minimize,maximize,close"
+
+    # Habilitando icones na área de trabalho
+    gsettings set org.gnome.desktop.background show-desktop-icons true
+
+    # Habilitando localização automatica gnome shell weather
+    gsettings set org.gnome.shell.weather automatic-location true
 }
 
 function InstalarExtensoesVisualStudioCode
