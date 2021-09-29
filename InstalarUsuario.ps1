@@ -55,6 +55,9 @@ function ConfigurarGnomeShell
 
     # Habilitando localização automatica gnome shell weather
     gsettings set org.gnome.shell.weather automatic-location true
+
+    # Habilitando o Fractional scaling
+    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 }
 
 function InstalarExtensoesVisualStudioCode
