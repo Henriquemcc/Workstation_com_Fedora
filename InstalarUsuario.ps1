@@ -16,7 +16,8 @@ function InstalarPacotesPython3Pip
     Install-Python3Pip
 
     # Instalando os pacotes Pip
-    Install-Python3PipPackage -Package "protonvpn-cli"
+    $pacotes = $()
+    Install-Python3PipPackage -Package $pacotes
 }
 
 function ConfigurarGnomeShell
@@ -60,72 +61,6 @@ function ConfigurarGnomeShell
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 }
 
-function InstalarExtensoesVisualStudioCode
-{
-
-    <#
-    .SYNOPSIS
-        Instala as extensões do Visual Studio Code.
-    .DESCRIPTION
-        Esta função instala as extensões que utilizo no Visual Studio Code.
-    #>
-
-    Install-VisualStudioCode
-
-    $extensoes = @(
-    # Tradução do VS Code em Português
-    "ms-ceintl.vscode-language-pack-pt-br",
-
-    # Linguagem C/C++
-    "ms-vscode.cpptools",
-    "ms-vscode.cmake-Tools",
-    "austin.code-gnu-global",
-
-    # Linguagem C#
-    "ms-dotnettools.csharp",
-
-    # Linguagem Java
-    "vscjava.vscode-java-debug",
-    "vscjava.vscode-maven",
-    "vscjava.vscode-java-dependency",
-    "vscjava.vscode-java-pack",
-    "vscjava.vscode-java-test",
-    "redhat.java",
-
-    # Linguagem Rust
-    "matklad.rust-analyzer",
-    "vadimcn.vscode-lldb",
-    "rust-lang.rust",
-
-    # Linguagem Go
-    "golang.Go",
-
-    # HTML, CSS e Javascript
-    "ecmel.vscode-html-css",
-    "firefox-devtools.vscode-firefox-debug",
-    "msjsdiag.debugger-for-chrome",
-    "dbaeumer.vscode-eslint",
-
-    # Tema do VS Code
-    "GitHub.github-vscode-theme",
-
-    # Markdown
-    "DavidAnson.vscode-markdownlint",
-
-    # Powershell
-    " ms-vscode.PowerShell",
-
-    # Indentação de código
-    "NathanRidley.autotrim",
-    "esbenp.prettier-vscode",
-
-    # AI-assisted IntelliSense
-    "VisualStudioExptTeam.vscodeintellicode"
-    )
-
-    Install-VisualStudioCodeExtension -Extension $extensoes
-}
-
 function ConfigurarPastaBin
 {
     <#
@@ -138,13 +73,6 @@ function ConfigurarPastaBin
     # Adicionando a pasta ~/bin ao path do sistema
     $bashDotRc = [System.IO.File]::AppendText("$( $env:HOME )/.bashrc")
     $bashDotRc.WriteLine("export PATH=""$HOME/bin:$`PATH""")
-
-    # Criando link do adb na pasta ~/bin
-    $pathAdb = "$( $env:HOME )/Android/Sdk/platform-tools/adb"
-    if (Test-Path -Path $pathAdb)
-    {
-        New-Item -Path "$( $env:HOME )/bin/adb" -ItemType SymbolicLink -Target $pathAdb
-    }
 }
 
 function Main
@@ -160,7 +88,6 @@ function Main
     InstalarPacotesPython3Pip
     ConfigurarGnomeShell
     ConfigurarPastaBin
-    InstalarExtensoesVisualStudioCode
     Install-Gradle
     Install-RustLang
 }
