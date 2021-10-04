@@ -33,10 +33,13 @@ function InstalarPacotesDnf
     $urlMicrosoftTeams,
 
     #   Peazip
-    "https://github.com/peazip/PeaZip/releases/download/8.1.0/peazip-8.1.0.LINUX.GTK2-1.x86_64.rpm",
+    "https://github.com/peazip/PeaZip/releases/download/8.2.0/peazip-8.2.0.LINUX.GTK2-1.x86_64.rpm",
 
     # R Studio
     "https://download1.rstudio.org/desktop/centos8/x86_64/rstudio-1.4.1717-x86_64.rpm",
+
+    # Proton VPN
+    "https://protonvpn.com/download/protonvpn-beta-release-1.0.0-1.noarch.rpm", "protonvpn",
 
     # Nvidia
     "akmod-nvidia",
@@ -75,7 +78,7 @@ function InstalarPacotesDnf
 
     # Outros programas
     "stacer", "qt5-qtcharts", "vlc", "qt5-qtsvg", "youtube-dl.noarch", "snapd", "flatpak", "transmission",
-    "ffmpeg", "steam", "VirtualBox", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor",
+    "ffmpeg", "steam", "VirtualBox", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor", "audacity",
 
     # Reportar erro automaticamente
     "abrt-desktop", "abrt-java-connector"
@@ -126,11 +129,7 @@ function InstalarPacotesFlatpak
     Install-FlatHub
 
     # Instalando os pacotes FlatPak
-    $pacotes = @(
-    "https://dl.flathub.org/repo/appstream/com.discordapp.Discord.flatpakref",
-    "https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref",
-    "https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref"
-    )
+    $pacotes = @()
     Install-FlatpakPackage -Package $pacotes
 
     # Atualizando os pacotes FlatPak
