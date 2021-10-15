@@ -1,4 +1,5 @@
 using module "./Install-Snapd.ps1"
+using module "./Test-Expression.ps1"
 
 function Install-SnapPackage
 {
@@ -30,7 +31,12 @@ function Install-SnapPackage
         This example installs Visual Studio Code in classic mode, without security confinement.
     #>
 
-    Install-Snapd
+    # Checking if snapd is installed
+    $snapdIsInstalled = Test-Expression -Command "snap"
+    if (-not $snapdIsInstalled){
+        Install-Snapd
+    }
+    
 
     if ($Package -is [System.String])
     {
