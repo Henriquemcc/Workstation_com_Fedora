@@ -11,6 +11,12 @@ function Update-FlatpackPackages
         This function updates all Flatpak packages to the latest version.
     #>
 
+    # Checking if flatpak is installed
+    $flatpakIsInstalled = Test-Expression -Command "flatpak"
+    if (-not $flatpakIsInstalled){
+        Install-Flatpak
+    }
+
     $command = "flatpak update --assumeyes"
 
     if ($User)
