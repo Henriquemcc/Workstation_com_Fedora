@@ -12,5 +12,5 @@ function Install-GitHubCli {
 
     Add-DnfRepository -Repository "https://cli.github.com/packages/rpm/gh-cli.repo"
 
-    Install-DnfPackage -Package "gh"
+    Install-DnfPackage -Package @("gh", "git", "git-lfs")
 }
