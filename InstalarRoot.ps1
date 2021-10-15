@@ -3,6 +3,7 @@ using module "./Snap.psm1"
 using module "./Flatpak.psm1"
 using module "./Install-SignedKernelModules.ps1"
 using module "./New-Shortcut.ps1"
+using module "./Install-DockerEngine.ps1"
 
 function InstalarPacotesDnf
 {
@@ -174,7 +175,9 @@ function Main
     InstalarPacotesSnap
     InstalarPacotesFlatpak
     Install-SignedKernelModules
+    Install-DockerEngine
     ConfigurarJava
+    
 }
 
 Main
