@@ -7,5 +7,6 @@ function Enable-Wifi
         This function enables the wifi adapter.
     #>
 
-    Invoke-Expression -Command "sudo nmcli radio wifi on"
+    Install-DnfPackage -Package @("sudo", "NetworkManager")
+    Invoke-Expression -Command "bash Enable-Wifi.sh"
 }
