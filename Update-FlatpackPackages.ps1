@@ -1,3 +1,6 @@
+using module "./Test-Expression.ps1"
+using module "./Install-Flatpak.ps1"
+
 function Update-FlatpackPackages
 {
     param(
