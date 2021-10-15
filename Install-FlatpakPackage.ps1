@@ -1,3 +1,5 @@
+using module "./Install-Flatpak.ps1"
+
 function Install-FlatpakPackage
 {
     param(
@@ -18,6 +20,8 @@ function Install-FlatpakPackage
         PS /> Install-FlatpakPackage -Package "https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref"
         This example installs GIMP.
     #>
+
+    Install-Flatpak
 
     if ($Package -is [System.String])
     {
