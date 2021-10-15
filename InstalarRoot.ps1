@@ -4,6 +4,13 @@ using module "./Flatpak.psm1"
 using module "./Install-SignedKernelModules.ps1"
 using module "./New-Shortcut.ps1"
 using module "./Install-DockerEngine.ps1"
+using module "./Install-GoogleChromeStable.ps1"
+using module "./Install-GitHubCli.ps1"
+using module "./Install-MicrosoftTeams.ps1"
+using module "./Install-MySQLWorkBench.ps1"
+using module "./Install-Peazip.ps1"
+using module "./Install-ProtonVPN.ps1"
+using module "./Install-RStudio.ps1"
 
 function InstalarPacotesDnf
 {
@@ -18,29 +25,8 @@ function InstalarPacotesDnf
     # Habilitando o RPM Fusion
     Enable-RpmFusion
 
-    # Adicionando repositório do GitHub CLI
-    Add-DnfRepository -Repository "https://cli.github.com/packages/rpm/gh-cli.repo"
-
-    # Obtendo a Url do .RPM do Microsoft Teams
-    $urlMicrosoftTeams = (Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US").BaseResponse.RequestMessage.RequestUri.AbsoluteUri
-
     # Instalando os pacotes DNF
     $packages = @(
-    # Programas externos
-    #   Google Chrome
-    "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm",
-
-    # Microsoft Teams
-    $urlMicrosoftTeams,
-
-    #   Peazip
-    "https://github.com/peazip/PeaZip/releases/download/8.2.0/peazip-8.2.0.LINUX.GTK2-1.x86_64.rpm",
-
-    # R Studio
-    "https://download1.rstudio.org/desktop/centos8/x86_64/rstudio-1.4.1717-x86_64.rpm",
-
-    # Proton VPN
-    "https://protonvpn.com/download/protonvpn-beta-release-1.0.0-1.noarch.rpm", "protonvpn",
 
     # Nvidia
     "akmod-nvidia",
@@ -75,10 +61,10 @@ function InstalarPacotesDnf
 
     # Ferramentas de desenvolvimento
     "java-latest-openjdk-devel", "java-1.8.0-openjdk-devel", "golang", "gcc", "dotnet-sdk-5.0",
-    "aspnetcore-runtime-5.0", "dotnet-runtime-5.0", "git", "git-lfs", "gh", "R", "android-tools",
+    "aspnetcore-runtime-5.0", "dotnet-runtime-5.0", "git", "git-lfs", "android-tools",
 
     # Outros programas
-    "stacer", "qt5-qtcharts", "vlc", "qt5-qtsvg", "youtube-dl.noarch", "snapd", "flatpak", "transmission",
+    "stacer", "qt5-qtcharts", "vlc", "qt5-qtsvg", "youtube-dl", "snapd", "flatpak", "transmission",
     "ffmpeg", "steam", "VirtualBox", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor", "audacity",
 
     # Reportar erro automaticamente
@@ -172,6 +158,13 @@ function Main
     #>
 
     InstalarPacotesDnf
+    Install-GitHubCli
+    Install-GoogleChromeStable
+    Install-MicrosoftTeams
+    Install-MySQLWorkBench
+    Install-Peazip
+    Install-ProtonVPN
+    Install-RStudio
     InstalarPacotesSnap
     InstalarPacotesFlatpak
     Install-SignedKernelModules
