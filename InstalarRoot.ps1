@@ -160,11 +160,11 @@ function Main
     InstalarPacotesDnf
     Install-GitHubCli
     Install-GoogleChromeStable
-    Install-MicrosoftTeams
+    # Install-MicrosoftTeams
     Install-MySQLWorkBench
     Install-Peazip
     Install-ProtonVPN
-    Install-RStudio
+    # Install-RStudio
     InstalarPacotesSnap
     InstalarPacotesFlatpak
     Install-SignedKernelModules
