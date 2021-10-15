@@ -1,3 +1,5 @@
+using module "./Install-Snapd.ps1"
+
 function Install-SnapPackage
 {
     param(
@@ -27,6 +29,8 @@ function Install-SnapPackage
         PS /> Install-SnapPackage -Package "code" -Classic
         This example installs Visual Studio Code in classic mode, without security confinement.
     #>
+
+    Install-Snapd
 
     if ($Package -is [System.String])
     {
