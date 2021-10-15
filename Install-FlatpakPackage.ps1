@@ -1,3 +1,4 @@
+using module "./Test-Expression.ps1"
 using module "./Install-Flatpak.ps1"
 
 function Install-FlatpakPackage
@@ -21,8 +22,13 @@ function Install-FlatpakPackage
         This example installs GIMP.
     #>
 
-    Install-Flatpak
+    # Checking if flatpak is installed
+    $flatpakIsInstalled = Test-Expression -Command "flatpak"
+    if (-not $flatpakIsInstalled){
+        Install-Flatpak
+    }
 
+    
     if ($Package -is [System.String])
     {
 
