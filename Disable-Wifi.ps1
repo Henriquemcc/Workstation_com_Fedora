@@ -6,5 +6,7 @@ function Disable-Wifi
     .DESCRIPTION
         This function disables the wifi adapter.
     #>
-    Invoke-Expression -Command "sudo nmcli radio wifi off"
+
+    Install-DnfPackage -Package @("sudo", "NetworkManager")
+    Invoke-Expression -Command "bash Disable-Wifi.sh"
 }
