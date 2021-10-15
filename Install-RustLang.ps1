@@ -1,3 +1,4 @@
+using module "./Install-DnfPackage.ps1"
 function Install-RustLang
 {
     <#
@@ -7,6 +8,6 @@ function Install-RustLang
         This function installs Rust programming language using Rustup.
     #>
 
-    Invoke-Expression -Command "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
-    Invoke-Expression -Command "source $HOME/.cargo/env"
+    Install-DnfPackage -Package "curl"
+    Invoke-Expression -Command "bash Install-RustLang.sh"
 }
