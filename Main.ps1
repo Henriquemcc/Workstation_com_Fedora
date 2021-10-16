@@ -1,10 +1,22 @@
 using module "./Write-Title.ps1"
-using module "./MyIO.psm1"
-using module "./Instalar.ps1"
 using module "./Update-Packages.ps1"
-using module "./Install-SignedKernelModules.ps1"
-using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
-using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
+using module "./Option.ps1"
+using module "./Read-Byte.ps1"
+
+$opcoes = @(
+    [Option]::new("Executar instalação padrão", {
+        ./Instalar.ps1
+    }),
+    [Option]::new("Atualizar todos os pacotes", {
+        Update-Packages
+    }),
+    [Option]::new("Configurar módulos do kernel", {
+        ./ConfigurarModulosKernelLinux.ps1
+    }),
+    [Option]::new("Instalar pacotes individualmente", {
+        ./InstalarPacotesIndividualmente.ps1
+    })
+)
 
 function ObterOpcao
 {
@@ -16,19 +28,18 @@ function ObterOpcao
         Esta funcção obtém do usuário qual opção ele deseja realizar.
     #>
 
-    $mensagemOpcoes = @"
-O que deseja fazer?
-0 - Sair
-1 - Executar a instalação dos programas
-2 - Atualizar todos os pacotes
-3 - Gerar chaves publica e privada e adicionar á UEFI
-4 - Adicionar módulos do driver da NVIDIA ao Kernel Linux
-5 - Adicionar módulos do VirtualBox ao Kernel Linux
->
-"@
+    $mensagemOpcoes = ""
+    $mensagemOpcoes += "O que deseja fazer?`n"
+    $mensagemOpcoes += "0 - Sair`n"
+
+    $index = 0
+    foreach ($opcao in $opcoes) {
+        $index++
+        $mensagemOpcoes += "$index - $($opcao.Name)`n"
+    }
 
     $opcaoSelecionada = $null
-    while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt 5))
+    while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt 6))
     {
         $opcaoSelecionada = Read-Byte -Prompt $mensagemOpcoes
     }
@@ -36,43 +47,17 @@ O que deseja fazer?
     return $opcaoSelecionada
 }
 
-function Menu
-{
-
-    <#
-    .SYNOPSIS
-        Exibe o menu de seleção
-    .DESCRIPTION
-        Esta função serve para exibir o menu de seleção e executar a ação escolhida pelo usuário.
-    #>
+function Menu {
 
     $opcaoSelecionada = $null
 
-    while ($opcaoSelecionada -ne 0)
-    {
+    while ($opcaoSelecionada -ne 0) {
         $opcaoSelecionada = ObterOpcao
-
-        if ($opcaoSelecionada -eq 1)
-        {
-            Instalar
-        }
-        elseif ($opcaoSelecionada -eq 2)
-        {
-            Update-Packages
-        }
-        elseif ($opcaoSelecionada -eq 3)
-        {
-            Install-SignedKernelModules
-        }
-        elseif ($opcaoSelecionada -eq 4)
-        {
-            Add-NvidiaSignedModulesToLinuxKernel
-        }
-        elseif ($opcaoSelecionada -eq 5)
-        {
-            Add-VirtualboxSignedModulesToLinuxKernel
+        if ($opcaoSelecionada -ne 0) {
+            Invoke-Command -ScriptBlock $opcoes.Get(($opcaoSelecionada - 1)).Script
         }
     }
+
 }
 
 function Main
