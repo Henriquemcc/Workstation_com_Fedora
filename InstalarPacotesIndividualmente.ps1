@@ -1,68 +1,68 @@
 using module "./Read-Int32.ps1"
-using module "./Option.ps1"
+using module "./MenuOption.ps1"
 
 $opcoes = @(
-[Option]::new("Docker Engine", {
+[MenuOption]::new("Docker Engine", {
     Import-Module -Name "./Install-DockerEngine.ps1"
     Install-DockerEngine
 }),
-[Option]::new("FlatHub", {
+[MenuOption]::new("FlatHub", {
     Import-Module -Name "./Install-FlatHub.ps1"
     Install-FlatHub
 }),
-[Option]::new("Flatpak", {
+[MenuOption]::new("Flatpak", {
     Import-Module -Name "./Install-Flatpak.ps1"
     Install-Flatpak
 }),
-[Option]::new("GitHub Cli", {
+[MenuOption]::new("GitHub Cli", {
     Import-Module -Name "./Install-GitHubCli.ps1"
     Install-GitHubCli
 }),
-[Option]::new("Google Chrome Stable", {
+[MenuOption]::new("Google Chrome Stable", {
     Import-Module -Name "./Install-GoogleChromeStable.ps1"
     Install-GoogleChromeStable
 }),
-[Option]::new("Gradle", {
+[MenuOption]::new("Gradle", {
     Import-Module -Name "./Install-Gradle.ps1"
     Install-Gradle
 }),
-[Option]::new("Microsoft Teams", {
+[MenuOption]::new("Microsoft Teams", {
     Import-Module -Name "./Install-MicrosoftTeams.ps1"
     Install-MicrosoftTeams
 }),
-[Option]::new("MySQL WorkBench", {
+[MenuOption]::new("MySQL WorkBench", {
     Import-Module -Name "./Install-MySQLWorkBench.ps1"
     Install-MySQLWorkBench
 }),
-[Option]::new("Peazip", {
+[MenuOption]::new("Peazip", {
     Import-Module -Name "./Install-Peazip.ps1"
     Install-Peazip
 }),
-[Option]::new("Proton VPN", {
+[MenuOption]::new("Proton VPN", {
     Import-Module -Name "./Install-ProtonVPN.ps1"
     Install-ProtonVPN
 }),
-[Option]::new("Python 3 Pip", {
+[MenuOption]::new("Python 3 Pip", {
     Import-Module -Name "./Install-Python3Pip.ps1"
     Install-Python3Pip
 }),
-[Option]::new("R Studio", {
+[MenuOption]::new("R Studio", {
     Import-Module -Name "./Install-RStudio.ps1"
     Install-RStudio
 }),
-[Option]::new("Rust Programming Language", {
+[MenuOption]::new("Rust Programming Language", {
     Import-Module -Name "./Install-RustLang.ps1"
     Install-RustLang
 }),
-[Option]::new("SDK Man", {
+[MenuOption]::new("SDK Man", {
     Import-Module -Name "./Install-SdkMan.ps1"
     Install-SdkMan
 }),
-[Option]::new("Snapd", {
+[MenuOption]::new("Snapd", {
     Import-Module -Name "./Install-Snapd.ps1"
     Install-Snapd
 }),
-[Option]::new("Visual Studio Code", {
+[MenuOption]::new("Visual Studio Code", {
     Import-Module -Name "./Install-VisualStudioCode.ps1"
     Install-VisualStudioCode
 })

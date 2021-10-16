@@ -1,19 +1,19 @@
 using module "./Write-Title.ps1"
 using module "./Update-Packages.ps1"
-using module "./Option.ps1"
+using module "./MenuOption.ps1"
 using module "./Read-Byte.ps1"
 
 $opcoes = @(
-[Option]::new("Executar instalação padrão", {
+[MenuOption]::new("Executar instalação padrão", {
     ./Instalar.ps1
 }),
-[Option]::new("Atualizar todos os pacotes", {
+[MenuOption]::new("Atualizar todos os pacotes", {
     Update-Packages
 }),
-[Option]::new("Configurar módulos do kernel", {
+[MenuOption]::new("Configurar módulos do kernel", {
     ./ConfigurarModulosKernelLinux.ps1
 }),
-[Option]::new("Instalar pacotes individualmente", {
+[MenuOption]::new("Instalar pacotes individualmente", {
     ./InstalarPacotesIndividualmente.ps1
 })
 )

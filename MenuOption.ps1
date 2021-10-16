@@ -1,4 +1,4 @@
-class Option: System.IComparable
+class MenuOption
 {
     [System.String]$Name
     [System.Management.Automation.ScriptBlock]$Script
