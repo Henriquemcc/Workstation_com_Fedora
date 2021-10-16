@@ -1,4 +1,4 @@
-using module "./MenuOption.ps1"
+using module "./MenuOption.psm1"
 using module "./Install-SignedKernelModules.ps1"
 using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
 using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"

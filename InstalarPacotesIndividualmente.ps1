@@ -1,5 +1,5 @@
 using module "./Read-Int32.ps1"
-using module "./MenuOption.ps1"
+using module "./MenuOption.psm1"
 
 $opcoes = @(
 [MenuOption]::new("Docker Engine", {

@@ -1,6 +1,6 @@
 using module "./Write-Title.ps1"
 using module "./Update-Packages.ps1"
-using module "./MenuOption.ps1"
+using module "./MenuOption.psm1"
 using module "./Read-Byte.ps1"
 
 $opcoes = @(
