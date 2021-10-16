@@ -11,7 +11,8 @@ function Update-SnapPackages
 
     # Checking if snapd is installed
     $snapdIsInstalled = Test-Expression -Command "snap"
-    if (-not $snapdIsInstalled){
+    if (-not$snapdIsInstalled)
+    {
         Install-Snapd
     }
 

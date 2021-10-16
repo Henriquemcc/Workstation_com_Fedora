@@ -1,6 +1,7 @@
 using module "./Install-DnfPackage.ps1"
 
-function Install-MySQLWorkBench{
+function Install-MySQLWorkBench
+{
 
     <#
     .SYNOPSIS

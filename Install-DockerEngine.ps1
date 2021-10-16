@@ -1,5 +1,6 @@
 using module "./Install-DnfPackage.ps1"
-function Install-DockerEngine {
+function Install-DockerEngine
+{
 
     <#
     .SYNOPSIS
@@ -7,7 +8,7 @@ function Install-DockerEngine {
     .DESCRIPTION
         Installs Docker Engine containerization technology.
     #>
-    
+
     Install-DnfPackage -Package @("curl", "sudo", "bash", "shadow-utils", "coreutils", "systemd")
-    Invoke-Expression -Command "bash Install-DockerEngine.sh"   
+    Invoke-Expression -Command "bash Install-DockerEngine.sh"
 }

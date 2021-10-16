@@ -24,11 +24,12 @@ function Install-FlatpakPackage
 
     # Checking if flatpak is installed
     $flatpakIsInstalled = Test-Expression -Command "flatpak"
-    if (-not $flatpakIsInstalled){
+    if (-not$flatpakIsInstalled)
+    {
         Install-Flatpak
     }
 
-    
+
     if ($Package -is [System.String])
     {
 

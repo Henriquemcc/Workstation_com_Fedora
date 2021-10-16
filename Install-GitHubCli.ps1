@@ -1,7 +1,8 @@
 using module "./Add-DnfRepository.ps1"
 using module "./Install-DnfPackage.ps1"
 
-function Install-GitHubCli {
+function Install-GitHubCli
+{
 
     <#
     .SYNOPSIS

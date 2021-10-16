@@ -1,6 +1,7 @@
 using module "./Install-DnfPackage.ps1"
 
-function Install-GoogleChromeStable {
+function Install-GoogleChromeStable
+{
     <#
     .SYNOPSIS
         Installs Google Chrome.

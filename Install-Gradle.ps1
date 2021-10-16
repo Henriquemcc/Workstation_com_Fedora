@@ -1,7 +1,8 @@
 using module "./SdkMan.ps1"
 using module "./Test-Expression.ps1"
 
-function Install-Gradle {
+function Install-Gradle
+{
     <#
     .SYNOPSIS
         Installs Gradle build tool.
@@ -11,7 +12,8 @@ function Install-Gradle {
 
     # Checking if sdkMan is installed
     $sdkManIsInstalled = Test-Expression -Command "sdk"
-    if (-not $sdkManIsInstalled) {
+    if (-not$sdkManIsInstalled)
+    {
         Install-SdkMan
     }
 

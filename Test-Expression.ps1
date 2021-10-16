@@ -1,4 +1,5 @@
-function Test-Expression{
+function Test-Expression
+{
     param(
         [Parameter(Mandatory = $true)][System.String]$Command
     )

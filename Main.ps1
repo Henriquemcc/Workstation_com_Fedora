@@ -4,18 +4,18 @@ using module "./Option.ps1"
 using module "./Read-Byte.ps1"
 
 $opcoes = @(
-    [Option]::new("Executar instalação padrão", {
-        ./Instalar.ps1
-    }),
-    [Option]::new("Atualizar todos os pacotes", {
-        Update-Packages
-    }),
-    [Option]::new("Configurar módulos do kernel", {
-        ./ConfigurarModulosKernelLinux.ps1
-    }),
-    [Option]::new("Instalar pacotes individualmente", {
-        ./InstalarPacotesIndividualmente.ps1
-    })
+[Option]::new("Executar instalação padrão", {
+    ./Instalar.ps1
+}),
+[Option]::new("Atualizar todos os pacotes", {
+    Update-Packages
+}),
+[Option]::new("Configurar módulos do kernel", {
+    ./ConfigurarModulosKernelLinux.ps1
+}),
+[Option]::new("Instalar pacotes individualmente", {
+    ./InstalarPacotesIndividualmente.ps1
+})
 )
 
 function ObterOpcao
@@ -33,9 +33,10 @@ function ObterOpcao
     $mensagemOpcoes += "0 - Sair`n"
 
     $index = 0
-    foreach ($opcao in $opcoes) {
+    foreach ($opcao in $opcoes)
+    {
         $index++
-        $mensagemOpcoes += "$index - $($opcao.Name)`n"
+        $mensagemOpcoes += "$index - $( $opcao.Name )`n"
     }
 
     $opcaoSelecionada = $null
@@ -47,13 +48,16 @@ function ObterOpcao
     return $opcaoSelecionada
 }
 
-function Menu {
+function Menu
+{
 
     $opcaoSelecionada = $null
 
-    while ($opcaoSelecionada -ne 0) {
+    while ($opcaoSelecionada -ne 0)
+    {
         $opcaoSelecionada = ObterOpcao
-        if ($opcaoSelecionada -ne 0) {
+        if ($opcaoSelecionada -ne 0)
+        {
             Invoke-Command -ScriptBlock $opcoes.Get(($opcaoSelecionada - 1)).Script
         }
     }

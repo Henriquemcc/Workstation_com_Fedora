@@ -16,7 +16,7 @@ function InstalarPacotesPython3Pip
     Install-Python3Pip
 
     # Instalando os pacotes Pip
-    $pacotes = $()
+    $pacotes = $( )
     Install-Python3PipPackage -Package $pacotes
 }
 
