@@ -13,17 +13,13 @@ class Option : System.IComparable {
     [System.Int32] CompareTo([System.Object]$other) {
         $difference = 0
 
-        if ($other -isnot [Option]) {
+        if ($other -isnot $this.GetType()) {
             $difference = [System.Int32]::MaxValue
         }
         else {
-            $difference = $this.CompareTo([Option]($other))
+            $difference = $this.Name.CompareTo($other.Name)
         }
 
         return $difference
-    }
-
-    [System.Int32] CompareTo([Option]$other) {
-        return $this.Name.CompareTo($other.Name)
     }
 }
