@@ -1,4 +1,4 @@
-using module "./MenuOption.ps1"
+using module "./Option.ps1"
 using module "./Install-SignedKernelModules.ps1"
 using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
 using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
@@ -46,3 +46,5 @@ function Menu {
     }
 
 }
+
+Menu
