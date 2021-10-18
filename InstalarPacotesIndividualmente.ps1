@@ -6,6 +6,9 @@ $opcoes = @(
     Import-Module -Name "./Install-DockerEngine.ps1"
     Install-DockerEngine
 }),
+[MenuOption]::new("Driver Nvidia", {
+    sudo pwsh InstalarDriverNvidia.ps1
+}),
 [MenuOption]::new("FlatHub", {
     Import-Module -Name "./Install-FlatHub.ps1"
     Install-FlatHub
@@ -17,6 +20,10 @@ $opcoes = @(
 [MenuOption]::new("GitHub Cli", {
     Import-Module -Name "./Install-GitHubCli.ps1"
     Install-GitHubCli
+}),
+[MenuOption]::new("Git Repo", {
+    Import-Module -Name "./Install-GitRepo.ps1"
+    Install-GitRepo
 }),
 [MenuOption]::new("Google Chrome Stable", {
     Import-Module -Name "./Install-GoogleChromeStable.ps1"
@@ -61,6 +68,9 @@ $opcoes = @(
 [MenuOption]::new("Snapd", {
     Import-Module -Name "./Install-Snapd.ps1"
     Install-Snapd
+}),
+[MenuOption]::new("VirtualBox", {
+    sudo pwsh InstalarVirtualBox.ps1
 }),
 [MenuOption]::new("Visual Studio Code", {
     Import-Module -Name "./Install-VisualStudioCode.ps1"
