@@ -11,7 +11,7 @@ $opcoes = @(
     Update-Packages
 }),
 [MenuOption]::new("Configurar módulos do kernel", {
-    ./ConfigurarModulosKernelLinux.ps1
+    sudo pwsh ./ConfigurarModulosKernelLinux.ps1
 }),
 [MenuOption]::new("Instalar pacotes individualmente", {
     ./InstalarPacotesIndividualmente.ps1
