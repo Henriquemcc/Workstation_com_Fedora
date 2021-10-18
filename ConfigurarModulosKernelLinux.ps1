@@ -1,18 +1,16 @@
 using module "./MenuOption.psm1"
 using module "./Install-SignedKernelModules.ps1"
-using module "./Add-NvidiaSignedModulesToLinuxKernel.ps1"
-using module "./Add-VirtualboxSignedModulesToLinuxKernel.ps1"
+using module "./Install-NvidiaSignedKernelModules.ps1"
+using module "./Install-VirtualBoxSignedKernelModules.ps1"
 using module "./Read-Int32.ps1"
 
 $opcoes = @(
-[MenuOption]::new("Gerar chaves publica e privada e adicionar á UEFI", {
-    Install-SignedKernelModules
-}),
+
 [MenuOption]::new("Adicionar módulos do driver da NVIDIA ao Kernel Linux", {
-    Add-NvidiaSignedModulesToLinuxKernel
+    Install-NvidiaSignedKernelModules
 }),
 [MenuOption]::new("Adicionar módulos do VirtualBox ao Kernel Linux", {
-    Add-VirtualboxSignedModulesToLinuxKernel
+    Install-VirtualBoxSignedKernelModules
 })
 )
 
