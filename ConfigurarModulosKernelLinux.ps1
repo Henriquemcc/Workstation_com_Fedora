@@ -1,5 +1,4 @@
 using module "./MenuOption.psm1"
-using module "./Install-SignedKernelModules.ps1"
 using module "./Install-NvidiaSignedKernelModules.ps1"
 using module "./Install-VirtualBoxSignedKernelModules.ps1"
 using module "./Read-Int32.ps1"
