@@ -1,16 +1,15 @@
 using module "./Dnf.psm1"
 using module "./Snap.psm1"
 using module "./Flatpak.psm1"
-using module "./Install-SignedKernelModules.ps1"
 using module "./New-Shortcut.ps1"
 using module "./Install-DockerEngine.ps1"
 using module "./Install-GoogleChromeStable.ps1"
 using module "./Install-GitHubCli.ps1"
-using module "./Install-MicrosoftTeams.ps1"
 using module "./Install-MySQLWorkBench.ps1"
 using module "./Install-Peazip.ps1"
 using module "./Install-ProtonVPN.ps1"
-using module "./Install-RStudio.ps1"
+using module "./Install-VirtualBox.ps1"
+using module "./Install-NvidiaDriver.ps1"
 
 function InstalarPacotesDnf
 {
@@ -27,9 +26,6 @@ function InstalarPacotesDnf
 
     # Instalando os pacotes DNF
     $packages = @(
-
-    # Nvidia
-    "akmod-nvidia",
 
     # KeepassXC
     "keepassxc",
@@ -65,7 +61,7 @@ function InstalarPacotesDnf
 
     # Outros programas
     "stacer", "qt5-qtcharts", "vlc", "qt5-qtsvg", "youtube-dl", "snapd", "flatpak", "transmission",
-    "ffmpeg", "steam", "VirtualBox", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor", "audacity",
+    "ffmpeg", "steam", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor", "audacity",
 
     # Reportar erro automaticamente
     "abrt-desktop", "abrt-java-connector"
@@ -157,17 +153,16 @@ function Main
         Esta é a função principal deste script.
     #>
 
+    Install-NvidiaDriver -SignLinuxKernelModules
     InstalarPacotesDnf
     Install-GitHubCli
     Install-GoogleChromeStable
-    # Install-MicrosoftTeams
+    Install-VirtualBox -InstallExtensionPack -SignLinuxKernelModules
     Install-MySQLWorkBench
     Install-Peazip
     Install-ProtonVPN
-    # Install-RStudio
     InstalarPacotesSnap
     InstalarPacotesFlatpak
-    Install-SignedKernelModules
     Install-DockerEngine
     ConfigurarJava
 
