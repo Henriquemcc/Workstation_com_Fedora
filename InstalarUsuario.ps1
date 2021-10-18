@@ -2,6 +2,7 @@ using module "./Python3Pip.psm1"
 using module "./VisualStudioCode.psm1"
 using module "./Install-Gradle.ps1"
 using module "./Install-RustLang.ps1"
+using module "./Add-HomeDotBinDirectoryToPath.ps1"
 
 function InstalarPacotesPython3Pip
 {
@@ -90,6 +91,7 @@ function Main
     ConfigurarPastaBin
     Install-Gradle
     Install-RustLang
+    Add-HomeDotBinDirectoryToPath
 }
 
 Main
