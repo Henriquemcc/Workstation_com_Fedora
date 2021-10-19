@@ -7,7 +7,5 @@ newgrp docker
 docker run hello-world
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chmod g+rwx "$HOME/.docker" -R
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
-sudo systemctl start docker.service
-sudo systemctl start containerd.service
+sudo systemctl enable docker.service docker.socket containerd.service
+sudo systemctl start docker.service docker.socket containerd.service
