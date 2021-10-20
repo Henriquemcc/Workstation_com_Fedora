@@ -11,4 +11,5 @@ function Install-DockerEngine
 
     Install-DnfPackage -Package @("curl", "sudo", "bash", "shadow-utils", "coreutils", "systemd")
     Invoke-Expression -Command "bash Install-DockerEngine.sh"
+    Install-DnfPackage -Package "docker-compose"
 }
