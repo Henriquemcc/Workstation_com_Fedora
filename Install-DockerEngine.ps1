@@ -5,6 +5,5 @@
     Installs Docker Engine containerization technology.
 #>
 
-./Install-DnfPackage.ps1 -Package @("curl", "sudo", "bash", "shadow-utils", "coreutils", "systemd")
+./Install-DnfPackage.ps1 -Package @("curl", "sudo", "bash", "shadow-utils", "coreutils", "systemd", "fuse-overlayfs", "iptables", "docker-compose")
 Invoke-Expression -Command "bash Install-DockerEngine.sh"
-./Install-DnfPackage.ps1 -Package "docker-compose"
