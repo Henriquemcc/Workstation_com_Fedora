@@ -1,17 +1,10 @@
-using module "./Add-DnfRepository.ps1"
-using module "./Install-DnfPackage.ps1"
+<#
+.SYNOPSIS
+    Installs GitHub Cli.
+.DESCRIPTION
+    Installs GitHub command line interface.
+#>
 
-function Install-GitHubCli
-{
+./Add-DnfRepository.ps1 -Repository "https://cli.github.com/packages/rpm/gh-cli.repo"
 
-    <#
-    .SYNOPSIS
-        Installs GitHub Cli.
-    .DESCRIPTION
-        Installs GitHub command line interface.
-    #>
-
-    Add-DnfRepository -Repository "https://cli.github.com/packages/rpm/gh-cli.repo"
-
-    Install-DnfPackage -Package @("gh", "git", "git-lfs")
-}
+./Install-DnfPackage.ps1 -Package @("gh", "git", "git-lfs")

@@ -1,14 +1,8 @@
-using module "./Add-FlatpakRepository.ps1"
+<#
+.SYNOPSIS
+    Installs FlatHub repository.
+.DESCRIPTION
+    This installs FlatHub repository in FlatPak.
+#>
 
-function Install-FlatHub
-{
-
-    <#
-    .SYNOPSIS
-        Installs FlatHub repository.
-    .DESCRIPTION
-        This function installs FlatHub repository in FlatPak.
-    #>
-
-    Add-FlatpakRepository -Name "flathub" -Location "https://flathub.org/repo/flathub.flatpakrepo"
-}
+./Add-FlatpakRepository.ps1 -Name "flathub" -Location "https://flathub.org/repo/flathub.flatpakrepo"

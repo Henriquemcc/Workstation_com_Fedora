@@ -1,11 +1,4 @@
-using module "./Python3Pip.psm1"
-using module "./VisualStudioCode.psm1"
-using module "./Install-Gradle.ps1"
-using module "./Install-RustLang.ps1"
-using module "./Add-HomeDotBinDirectoryToPath.ps1"
-
-function InstalarPacotesPython3Pip
-{
+function InstalarPacotesPython3Pip {
     <#
     .SYNOPSIS
         Instala os pacotes Python 3 Pip.
@@ -14,15 +7,14 @@ function InstalarPacotesPython3Pip
     #>
 
     # Instalando o Pip do Python 3
-    Install-Python3Pip
+    ./Install-Python3Pip.ps1
 
     # Instalando os pacotes Pip
     $pacotes = $( )
-    Install-Python3PipPackage -Package $pacotes
+    ./Install-Python3PipPackage.ps1 -Package $pacotes
 }
 
-function ConfigurarGnomeShell
-{
+function ConfigurarGnomeShell {
 
     <#
     .SYNOPSIS
@@ -62,8 +54,7 @@ function ConfigurarGnomeShell
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 }
 
-function ConfigurarPastaBin
-{
+function ConfigurarPastaBin {
     <#
     .SYNOPSIS
         Configura a pasta ~/bin.
@@ -76,22 +67,9 @@ function ConfigurarPastaBin
     $bashDotRc.WriteLine("export PATH=""$HOME/bin:$`PATH""")
 }
 
-function Main
-{
-
-    <#
-    .SYNOPSIS
-        Função principal.
-    .DESCRIPTION
-        Esta é a função principal deste script.
-    #>
-
-    InstalarPacotesPython3Pip
-    ConfigurarGnomeShell
-    ConfigurarPastaBin
-    Install-Gradle
-    Install-RustLang
-    Add-HomeDotBinDirectoryToPath
-}
-
-Main
+InstalarPacotesPython3Pip
+ConfigurarGnomeShell
+ConfigurarPastaBin
+./Install-Gradle.ps1
+./Install-RustLang.ps1
+./Add-HomeDotBinDirectoryToPath.ps1

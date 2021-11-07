@@ -1,15 +1,15 @@
 using module "./MenuOption.psm1"
-using module "./Install-NvidiaSignedKernelModules.ps1"
-using module "./Install-VirtualBoxSignedKernelModules.ps1"
-using module "./Read-Int32.ps1"
 
 $opcoes = @(
 
 [MenuOption]::new("Adicionar módulos do driver da NVIDIA ao Kernel Linux", {
-    Install-NvidiaSignedKernelModules
+    ./Install-NvidiaSignedKernelModules.ps1
 }),
 [MenuOption]::new("Adicionar módulos do VirtualBox ao Kernel Linux", {
-    Install-VirtualBoxSignedKernelModules
+    ./Install-VirtualBoxSignedKernelModules.ps1
+}),
+[MenuOption]::new("Criar novo par de chaves asimétricas e adicionar a UEFI", {
+    ./New-AsymmetricPairOfKeysToSignKernelModules.ps1
 })
 )
 
@@ -28,7 +28,7 @@ function ObterOpcao
     $opcaoSelecionada = $null
     while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt $opcoes.Length))
     {
-        $opcaoSelecionada = Read-Int32 -Prompt $mensagemOpcoes
+        $opcaoSelecionada = ./Read-Int32.ps1 -Prompt $mensagemOpcoes
     }
 
     return $opcaoSelecionada

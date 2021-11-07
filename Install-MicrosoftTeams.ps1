@@ -1,17 +1,10 @@
-using module "./Install-DnfPackage.ps1"
+<#
+.SYNOPSIS
+    Installs Microsoft Teams.
+.DESCRIPTION
+    Installs Microsoft Teams.
+#>
 
-function Install-MicrosoftTeams
-{
+$urlMicrosoftTeams = (Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US").BaseResponse.RequestMessage.RequestUri.AbsoluteUri
 
-    <#
-    .SYNOPSIS
-        Installs Microsoft Teams.
-    .DESCRIPTION
-        Installs Microsoft Teams.
-    #>
-
-    $urlMicrosoftTeams = (Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkID=2112907&clcid=0x409&culture=en-us&country=US").BaseResponse.RequestMessage.RequestUri.AbsoluteUri
-
-    Install-DnfPackage -Package $urlMicrosoftTeams
-
-}
+./Install-DnfPackage -Package $urlMicrosoftTeams

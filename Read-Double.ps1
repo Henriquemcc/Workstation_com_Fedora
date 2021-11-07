@@ -1,40 +1,32 @@
-function Read-Double
-{
-    param(
-        [Parameter(Mandatory = $false)] [String] $Prompt
-    )
+param(
+    [Parameter(Mandatory = $false)] [String] $Prompt
+)
 
-    <#
-    .SYNOPSIS
-        Reads a double value from input.
-    .DESCRIPTION
-        This function reads a double value from standard input, ensuring that the typed value is double.
-    .PARAMETER Prompt
-        Message to be prompted before reading input.
-    #>
+<#
+.SYNOPSIS
+    Reads a double value from input.
+.DESCRIPTION
+    This reads a double value from standard input, ensuring that the typed value is double.
+.PARAMETER Prompt
+    Message to be prompted before reading input.
+#>
 
-    $doubleRead = $null
-    while (($null -eq $doubleRead) -or ($doubleRead -isnot [System.Double]))
-    {
-        try
-        {
+$doubleRead = $null
+while (($null -eq $doubleRead) -or ($doubleRead -isnot [System.Double])) {
+    try {
 
-            $inputString = Read-Host -Prompt:$Prompt
+        $inputString = Read-Host -Prompt:$Prompt
 
-            if (($null -eq $inputString) -or ($inputString.Length -le 0))
-            {
-                throw "Input is null or with length less equal to zero"
-            }
-
-            $doubleRead = [System.Double]::Parse($inputString)
+        if (($null -eq $inputString) -or ($inputString.Length -le 0)) {
+            throw "Input is null or with length less equal to zero"
         }
 
-        catch
-        {
-            Write-Error $_
-        }
+        $doubleRead = [System.Double]::Parse($inputString)
     }
 
-    return $doubleRead
-
+    catch {
+        Write-Error $_
+    }
 }
+
+return $doubleRead

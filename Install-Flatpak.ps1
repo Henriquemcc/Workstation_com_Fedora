@@ -1,14 +1,8 @@
-using module "./Install-DnfPackage.ps1"
+<#
+.SYNOPSIS
+    Installs Flatpak package manager.
+.DESCRIPTION
+    This installs Flatpak package manager.
+#>
 
-function Install-Flatpak
-{
-
-    <#
-    .SYNOPSIS
-        Installs Flatpak package manager.
-    .DESCRIPTION
-        This function installs Flatpak package manager.
-    #>
-
-    Install-DnfPackage -Package "flatpak"
-}
+./Install-DnfPackage.ps1 -Package "flatpak"
