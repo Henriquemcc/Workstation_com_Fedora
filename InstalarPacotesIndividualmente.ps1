@@ -22,6 +22,12 @@ $opcoes = @(
     [MenuOption]::new("Google Chrome Stable", {
             ./Install-GoogleChromeStable.ps1
         }),
+    [MenuOption]::new("Google Chrome Beta", {
+            ./Install-GoogleChromeBeta.ps1
+        }),
+    [MenuOption]::new("Google Earth", {
+            ./Install-GoogleEarth.ps1
+        }),
     [MenuOption]::new("Gradle", {
             ./Install-Gradle.ps1
         }),
