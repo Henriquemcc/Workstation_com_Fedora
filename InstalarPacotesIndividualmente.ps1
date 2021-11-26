@@ -63,7 +63,7 @@ $opcoes = @(
             sudo pwsh InstalarVirtualBox.ps1
         }),
     [MenuOption]::new("Visual Studio Code", {
-            ./Install-VisualStudioCode.ps1
+            Invoke-Expression -Command "bash ./Install-VisualStudioCode.sh"
         })
 )
 
