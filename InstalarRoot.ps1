@@ -72,7 +72,6 @@ function InstalarPacotesSnap {
 
     # Instalando pacotes snap
     ./Install-SnapPackage.ps1 -Package "spotify"
-    ./Install-SnapPackage.ps1 -Package "code" -classic
     ./Install-SnapPackage.ps1 -Package "intellij-idea-community" -classic
     ./Install-SnapPackage.ps1 -Package "pycharm-community" -classic
     ./Install-SnapPackage.ps1 -Package "flutter" -classic
@@ -126,15 +125,41 @@ function ConfigurarJava {
 
 }
 
+# Instalando Visual Studio Code
+Invoke-Expression -Command "bash ./Install-VisualStudioCode.sh"
+
+# Instalando o driver Nvidia
 ./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
+
+# Instalando outros pacotes DNF
 InstalarPacotesDnf
+
+# Instalando GitHub Cli
 ./Install-GitHubCli.ps1
+
+# Instalando Google Chrome
 ./Install-GoogleChromeStable.ps1
+
+# Instalando VirtualBox
 ./Install-VirtualBox.ps1 -InstallExtensionPack -SignLinuxKernelModules
+
+# Instalando MySQL WorkBench
 ./Install-MySQLWorkBench.ps1
+
+# Instalando Peazip
 ./Install-Peazip.ps1
+
+# Instalando Proton VPN
 ./Install-ProtonVPN.ps1
+
+# Instalando pacotes Snap
 InstalarPacotesSnap
+
+# Instalando pacotes Flatpak
 InstalarPacotesFlatpak
+
+# Instalando Docker
 ./Install-DockerEngine.ps1
+
+# Configurando o Java
 ConfigurarJava
