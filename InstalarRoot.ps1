@@ -135,7 +135,7 @@ Invoke-Expression -Command "bash ./Install-VisualStudioCode.sh"
 InstalarPacotesDnf
 
 # Instalando GitHub Cli
-./Install-GitHubCli.ps1
+Invoke-Expression "bash ./Install-GithubCli.sh"
 
 # Instalando Google Chrome
 ./Install-GoogleChromeStable.ps1
