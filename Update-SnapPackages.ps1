@@ -8,7 +8,7 @@
 # Checking if snapd is installed
 $snapdIsInstalled = ./Test-Expression.ps1 -Command "snap"
 if (-not$snapdIsInstalled) {
-    ./Install-Snapd.ps1
+    Invoke-Expression -Command "bash ./Install-Snapd.sh"
 }
 
 Invoke-Expression -Command "sudo snap refresh"

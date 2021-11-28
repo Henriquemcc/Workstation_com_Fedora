@@ -57,7 +57,7 @@ $opcoes = @(
             ./Install-SdkMan.ps1
         }),
     [MenuOption]::new("Snapd", {
-            ./Install-Snapd.ps1
+            Invoke-Expression -Command "bash ./Install-Snapd.sh"
         }),
     [MenuOption]::new("VirtualBox", {
             sudo pwsh InstalarVirtualBox.ps1

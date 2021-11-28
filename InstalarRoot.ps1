@@ -68,7 +68,7 @@ function InstalarPacotesSnap {
     #>
 
     # Instalando o Snapd
-    ./Install-Snapd.ps1
+    Invoke-Expression -Command "bash ./Install-Snapd.sh"
 
     # Instalando pacotes snap
     ./Install-SnapPackage.ps1 -Package "spotify"
