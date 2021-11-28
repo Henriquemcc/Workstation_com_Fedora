@@ -11,7 +11,7 @@ $opcoes = @(
             ./Install-FlatHub.ps1
         }),
     [MenuOption]::new("Flatpak", {
-            ./Install-Flatpak.ps1
+            Invoke-Expression -Command "bash ./Install-Flatpak.sh"
         }),
     [MenuOption]::new("GitHub Cli", {
             Invoke-Expression -Command "bash ./Install-GithubCli.sh"

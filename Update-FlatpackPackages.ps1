@@ -12,7 +12,7 @@ param(
 # Checking if flatpak is installed
 $flatpakIsInstalled = ./Test-Expression.ps1 -Command "flatpak"
 if (-not$flatpakIsInstalled) {
-    ./Install-Flatpak.ps1
+    Invoke-Expression -Command "bash ./Install-Flatpak.sh"
 }
 
 $command = "flatpak update --assumeyes"
