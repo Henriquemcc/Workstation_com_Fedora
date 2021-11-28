@@ -8,7 +8,7 @@ function InstalarPacotesDnf {
     #>
 
     # Habilitando o RPM Fusion
-    ./Enable-RpmFusion.ps1
+    Invoke-Expression -Command "bash ./Enable-RpmFusion.sh"
 
     # Instalando os pacotes DNF
     $packages = @(
