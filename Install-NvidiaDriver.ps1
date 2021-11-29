@@ -3,7 +3,7 @@ param(
 )
 
 # Installing Nvidia driver
-./Install-DnfPackage -Package "akmod-nvidia"
+./Install-DnfPackage -Package @("akmod-nvidia", "xorg-x11-drv-nvidia-cuda")
 
 if ($SignLinuxKernelModules) {
     ./Install-NvidiaSignedKernelModules.ps1
