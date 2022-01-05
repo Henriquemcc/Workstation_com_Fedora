@@ -15,7 +15,8 @@ function Download_File
 
   # Creating temporary directory if it does not exist
   if ! [ -d $temp_dir ]; then
-      mkdir -p $temp_dir > /dev/null 2>&1
+      sudo mkdir -p $temp_dir
+      sudo chmod 776 $temp_dir
   fi
 
   # Defining file name
@@ -25,7 +26,7 @@ function Download_File
   file_path="${temp_dir}/${file_name}"
 
   # Downloading file
-  curl -L "$1" --output "$file_path" > /dev/null 2>&1
+  curl -L "$1" --output "$file_path"
 
   # Returning file path
   echo "$file_path"
