@@ -55,7 +55,7 @@ function InstallPowerShell_On_Fedora_arm
   sudo tar -xvf "$downloaded_file" --directory $installation_directory
 
   # Creating symbolic link
-  sudo ln --symbolic /usr/share/powershell/pwsh /bin/pwsh
+  sudo ln --symbolic "${installation_directory}/pwsh" /bin/pwsh
 
   # Changing file permission
   sudo chmod 777 /bin/pwsh
