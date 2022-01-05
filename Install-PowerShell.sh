@@ -13,10 +13,11 @@ function Download_File
   # Defining temporary directory
   temp_dir="/tmp"
 
-  # Creating temporary directory if it does not exist
+  # Creating temporary directory if it does not exist and setting its permission
   if ! [ -d $temp_dir ]; then
       sudo mkdir -p $temp_dir
       sudo chmod 776 $temp_dir
+      sudo chmod +t $temp_dir
   fi
 
   # Defining file name
