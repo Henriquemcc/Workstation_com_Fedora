@@ -1,21 +1,15 @@
-using module "./SdkMan.ps1"
-using module "./Test-Expression.ps1"
+<#
+.SYNOPSIS
+    Installs Gradle build tool.
+.DESCRIPTION
+    This installs Gradle build tool.
+#>
 
-function Install-Gradle
+# Checking if sdkMan is installed
+$sdkManIsInstalled = ./Test-Expression.ps1 -Command "sdk"
+if (-not$sdkManIsInstalled)
 {
-    <#
-    .SYNOPSIS
-        Installs Gradle build tool.
-    .DESCRIPTION
-        This function installs Gradle build tool.
-    #>
-
-    # Checking if sdkMan is installed
-    $sdkManIsInstalled = Test-Expression -Command "sdk"
-    if (-not$sdkManIsInstalled)
-    {
-        Install-SdkMan
-    }
-
-    Install-SdkManPackage -Package "gradle" -Version "7.2"
+    ./Install-SdkMan.ps1
 }
+
+./Install-SdkManPackage.ps1 -Package "gradle" -Version "7.2"

@@ -1,19 +1,4 @@
-using module "./Dnf.psm1"
-using module "./Snap.psm1"
-using module "./Flatpak.psm1"
-using module "./Install-SignedKernelModules.ps1"
-using module "./New-Shortcut.ps1"
-using module "./Install-DockerEngine.ps1"
-using module "./Install-GoogleChromeStable.ps1"
-using module "./Install-GitHubCli.ps1"
-using module "./Install-MicrosoftTeams.ps1"
-using module "./Install-MySQLWorkBench.ps1"
-using module "./Install-Peazip.ps1"
-using module "./Install-ProtonVPN.ps1"
-using module "./Install-RStudio.ps1"
-
-function InstalarPacotesDnf
-{
+function InstalarPacotesDnf {
 
     <#
     .SYNOPSIS
@@ -23,61 +8,57 @@ function InstalarPacotesDnf
     #>
 
     # Habilitando o RPM Fusion
-    Enable-RpmFusion
+    Invoke-Expression -Command "bash ./Enable-RpmFusion.sh"
 
     # Instalando os pacotes DNF
     $packages = @(
 
-    # Nvidia
-    "akmod-nvidia",
+        # KeepassXC
+        "keepassxc",
 
-    # KeepassXC
-    "keepassxc",
+        # Libreoffice
+        "libreoffice-writer", "libreoffice-calc", "libreoffice-impress", "libreoffice-math", "libreoffice-draw",
+        "libreoffice-langpack-pt-BR", "libreoffice-langpack-en", "unoconv",
 
-    # Libreoffice
-    "libreoffice-writer", "libreoffice-calc", "libreoffice-impress", "libreoffice-math", "libreoffice-draw",
-    "libreoffice-langpack-pt-BR", "libreoffice-langpack-en", "unoconv",
+        # File Roller
+        "file-roller", "file-roller-nautilus",
 
-    # File Roller
-    "file-roller", "file-roller-nautilus",
+        # Impressora HP
+        "hplip",
 
-    # Impressora HP
-    "hplip",
+        # Driver da placa de som
+        "alsa-firmware", "pipewire", "pipewire-pulseaudio",
 
-    # Driver da placa de som
-    "alsa-firmware", "pipewire", "pipewire-pulseaudio",
+        # Suporte a arquivos 7zip
+        "p7zip-plugins", "p7zip",
 
-    # Suporte a arquivos 7zip
-    "p7zip-plugins", "p7zip",
+        # KVM
+        "qemu-kvm", "libvirt",
 
-    # KVM
-    "qemu-kvm", "libvirt",
+        # Sistemas de arquivos não nativos do linux
+        "ntfs-3g", "exfat-utils", "fuse", "fuse-exfat",
 
-    # Sistemas de arquivos não nativos do linux
-    "ntfs-3g", "exfat-utils", "fuse", "fuse-exfat",
+        # Extensões do Gnome shell
+        "gnome-shell-extension-updates-dialog", "gnome-shell-extension-dash-to-dock",
 
-    # Extensões do Gnome shell
-    "gnome-shell-extension-updates-dialog", "gnome-shell-extension-dash-to-dock",
+        # Ferramentas de desenvolvimento
+        "java-latest-openjdk-devel", "java-1.8.0-openjdk-devel", "golang", "gcc", "dotnet-sdk-5.0",
+        "aspnetcore-runtime-5.0", "dotnet-runtime-5.0", "git", "git-lfs", "android-tools",
 
-    # Ferramentas de desenvolvimento
-    "java-latest-openjdk-devel", "java-1.8.0-openjdk-devel", "golang", "gcc", "dotnet-sdk-5.0",
-    "aspnetcore-runtime-5.0", "dotnet-runtime-5.0", "git", "git-lfs", "android-tools",
+        # Outros programas
+        "stacer", "qt5-qtcharts", "vlc", "qt5-qtsvg", "youtube-dl", "snapd", "flatpak", "transmission",
+        "ffmpeg", "steam", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor", "audacity",
 
-    # Outros programas
-    "stacer", "qt5-qtcharts", "vlc", "qt5-qtsvg", "youtube-dl", "snapd", "flatpak", "transmission",
-    "ffmpeg", "steam", "VirtualBox", "mokutil", "fdupes", "dnf-automatic", "gnome-tweaks", "dconf-editor", "audacity",
-
-    # Reportar erro automaticamente
-    "abrt-desktop", "abrt-java-connector"
+        # Reportar erro automaticamente
+        "abrt-desktop", "abrt-java-connector"
     )
-    Install-DnfPackage -Package $packages
+    ./Install-DnfPackage.ps1 -Package $packages
 
     # Atualizando pacotes DNF
-    Update-DnfPackages
+    ./Update-DnfPackages.ps1
 }
 
-function InstalarPacotesSnap
-{
+function InstalarPacotesSnap {
 
     <#
     .SYNOPSIS
@@ -87,23 +68,21 @@ function InstalarPacotesSnap
     #>
 
     # Instalando o Snapd
-    Install-Snapd
+    Invoke-Expression -Command "bash ./Install-Snapd.sh"
 
     # Instalando pacotes snap
-    Install-SnapPackage -Package "spotify"
-    Install-SnapPackage -Package "code" -classic
-    Install-SnapPackage -Package "intellij-idea-community" -classic
-    Install-SnapPackage -Package "pycharm-community" -classic
-    Install-SnapPackage -Package "flutter" -classic
-    Install-SnapPackage -Package "kotlin" -classic
-    Install-SnapPackage -Package "skype" -classic
+    ./Install-SnapPackage.ps1 -Package "spotify"
+    ./Install-SnapPackage.ps1 -Package "intellij-idea-community" -classic
+    ./Install-SnapPackage.ps1 -Package "pycharm-community" -classic
+    ./Install-SnapPackage.ps1 -Package "flutter" -classic
+    ./Install-SnapPackage.ps1 -Package "kotlin" -classic
+    ./Install-SnapPackage.ps1 -Package "skype" -classic
 
     # Atualizando pacotes Snap
-    Update-SnapPackages
+    ./Update-SnapPackages.ps1
 }
 
-function InstalarPacotesFlatpak
-{
+function InstalarPacotesFlatpak {
 
     <#
     .SYNOPSIS
@@ -113,18 +92,17 @@ function InstalarPacotesFlatpak
     #>
 
     # Instalando o FlatHub
-    Install-FlatHub
+    ./Install-FlatHub.ps1
 
     # Instalando os pacotes FlatPak
     $pacotes = @()
-    Install-FlatpakPackage -Package $pacotes
+    ./Install-FlatpakPackage.ps1 -Package $pacotes
 
     # Atualizando os pacotes FlatPak
-    Update-FlatpackPackages
+    ./Update-FlatpackPackages.ps1
 }
 
-function ConfigurarJava
-{
+function ConfigurarJava {
 
     <#
     .SYNOPSIS
@@ -140,37 +118,48 @@ function ConfigurarJava
     Invoke-Expression -Command "sudo ln --symbolic /usr/lib/jvm/java-1.8.0/bin/javac /bin/javac8"
 
     #Criando o atalho para o Java 8
-    New-Shortcut -Name "Java Runtime Environment 8" -GenericName "Java 8" -Keywords @("java", "runtime", "environment", "8", "jre") -Exec "java8 -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java8.desktop"
+    ./New-Shortcut.ps1 -Name "Java Runtime Environment 8" -GenericName "Java 8" -Keywords @("java", "runtime", "environment", "8", "jre") -Exec "java8 -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java8.desktop"
 
     #Criando o atalho para o Java
-    New-Shortcut -Name "Java Runtime Environment" -GenericName "Java" -Keywords @("java", "runtime", "environment", "jre") -Exec "java -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java.desktop"
+    ./New-Shortcut.ps1 -Name "Java Runtime Environment" -GenericName "Java" -Keywords @("java", "runtime", "environment", "jre") -Exec "java -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java.desktop"
 
 }
 
-function Main
-{
+# Instalando Visual Studio Code
+Invoke-Expression -Command "bash ./Install-VisualStudioCode.sh"
 
-    <#
-    .SYNOPSIS
-        Função principal.
-    .DESCRIPTION
-        Esta é a função principal deste script.
-    #>
+# Instalando o driver Nvidia
+./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
 
-    InstalarPacotesDnf
-    Install-GitHubCli
-    Install-GoogleChromeStable
-    # Install-MicrosoftTeams
-    Install-MySQLWorkBench
-    Install-Peazip
-    Install-ProtonVPN
-    # Install-RStudio
-    InstalarPacotesSnap
-    InstalarPacotesFlatpak
-    Install-SignedKernelModules
-    Install-DockerEngine
-    ConfigurarJava
+# Instalando outros pacotes DNF
+InstalarPacotesDnf
 
-}
+# Instalando GitHub Cli
+Invoke-Expression "bash ./Install-GithubCli.sh"
 
-Main
+# Instalando Google Chrome
+./Install-GoogleChromeStable.ps1
+
+# Instalando VirtualBox
+./Install-VirtualBox.ps1 -InstallExtensionPack -SignLinuxKernelModules
+
+# Instalando MySQL WorkBench
+./Install-MySQLWorkBench.ps1
+
+# Instalando Peazip
+./Install-Peazip.ps1
+
+# Instalando Proton VPN
+./Install-ProtonVPN.ps1
+
+# Instalando pacotes Snap
+InstalarPacotesSnap
+
+# Instalando pacotes Flatpak
+InstalarPacotesFlatpak
+
+# Instalando Docker
+./Install-DockerEngine.ps1
+
+# Configurando o Java
+ConfigurarJava

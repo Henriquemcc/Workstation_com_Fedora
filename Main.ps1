@@ -1,25 +1,21 @@
-using module "./Write-Title.ps1"
-using module "./Update-Packages.ps1"
 using module "./MenuOption.psm1"
-using module "./Read-Byte.ps1"
 
 $opcoes = @(
-[MenuOption]::new("Executar instalação padrão", {
-    ./Instalar.ps1
-}),
-[MenuOption]::new("Atualizar todos os pacotes", {
-    Update-Packages
-}),
-[MenuOption]::new("Configurar módulos do kernel", {
-    ./ConfigurarModulosKernelLinux.ps1
-}),
-[MenuOption]::new("Instalar pacotes individualmente", {
-    ./InstalarPacotesIndividualmente.ps1
-})
+    [MenuOption]::new("Executar instalação padrão", {
+            ./Instalar.ps1
+        }),
+    [MenuOption]::new("Atualizar todos os pacotes", {
+            ./Update-Packages.ps1
+        }),
+    [MenuOption]::new("Configurar módulos do kernel", {
+            sudo pwsh ./ConfigurarModulosKernelLinux.ps1
+        }),
+    [MenuOption]::new("Instalar pacotes individualmente", {
+            ./InstalarPacotesIndividualmente.ps1
+        })
 )
 
-function ObterOpcao
-{
+function ObterOpcao {
 
     <#
     .SYNOPSIS
@@ -33,49 +29,32 @@ function ObterOpcao
     $mensagemOpcoes += "0 - Sair`n"
 
     $index = 0
-    foreach ($opcao in $opcoes)
-    {
+    foreach ($opcao in $opcoes) {
         $index++
         $mensagemOpcoes += "$index - $( $opcao.Name )`n"
     }
 
     $opcaoSelecionada = $null
-    while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt 6))
-    {
-        $opcaoSelecionada = Read-Byte -Prompt $mensagemOpcoes
+    while (($null -eq $opcaoSelecionada) -or ($opcaoSelecionada -lt 0) -or ($opcaoSelecionada -gt 6)) {
+        $opcaoSelecionada = ./Read-Byte.ps1 -Prompt $mensagemOpcoes
     }
 
     return $opcaoSelecionada
 }
 
-function Menu
-{
+function Menu {
 
     $opcaoSelecionada = $null
 
-    while ($opcaoSelecionada -ne 0)
-    {
+    while ($opcaoSelecionada -ne 0) {
         $opcaoSelecionada = ObterOpcao
-        if ($opcaoSelecionada -ne 0)
-        {
+        if ($opcaoSelecionada -ne 0) {
             Invoke-Command -ScriptBlock $opcoes.Get(($opcaoSelecionada - 1)).Script
         }
     }
 
 }
 
-function Main
-{
-    <#
-    .SYNOPSIS
-        Função principal.
-    .DESCRIPTION
-        Esta é a função principal deste script.
-    #>
-
-    Write-Title "Workstation com Fedora"
-    Write-Host
-    Menu
-}
-
-Main
+./Write-Title.ps1 "Workstation com Fedora"
+Write-Host
+Menu

@@ -1,5 +1,0 @@
-using module "./Add-FlatpakRepository.ps1"
-using module "./Install-FlatHub.ps1"
-using module "./Install-Flatpak.ps1"
-using module "./Install-FlatpakPackage.ps1"
-using module "./Update-FlatpackPackages.ps1"
