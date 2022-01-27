@@ -128,6 +128,7 @@ function instalar_pacotes_dnf() {
   sudo dnf install --assumeyes gnome-tweaks
   sudo dnf install --assumeyes dconf-editor
   sudo dnf install --assumeyes audacity
+  sudo dnf install --assumeyes chrome-gnome-shell
 
   # Instalando pacotes para reportar erro automaticamente
   sudo dnf install --assumeyes abrt-desktop
