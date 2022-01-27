@@ -1,3 +1,2 @@
 #!/bin/bash
-
-sudo dnf install flatpak --assumeyes
+sudo dnf install --assumeyes flatpak
