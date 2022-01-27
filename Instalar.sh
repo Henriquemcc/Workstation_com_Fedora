@@ -199,7 +199,7 @@ bash ./Install-Peazip.sh
 bash ./Install-ProtonVPN.sh
 
 ## Atualizando todos os pacotes instalados
-bash Update-All.sh
+bash ./Update-All.sh
 
 # Configurando o java
 configurar_java
