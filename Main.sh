@@ -9,7 +9,7 @@ function obter_opcao() {
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Executar instalação padrão"
-    echo "2 - Atualizar todos os pacotes"
+    echo "2 - Atualizar o sistema"
     echo "3 - Configurar o sistema"
     echo "4 - Instalar pacote"
     read -r _opcao_selecionada
@@ -28,7 +28,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   if [ "$opcao_selecionada" -eq 1 ]; then
     bash ./Instalar.sh
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Update-All.sh
+    bash ./Atualizar.sh
   elif [ "$opcao_selecionada" -eq 3 ]; then
     bash ./Configurar.sh
   elif [ "$opcao_selecionada" -eq 4 ]; then
