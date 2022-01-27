@@ -186,6 +186,9 @@ sudo pwsh ./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
 # Instalando o VirtualBox
 bash ./Install-VirtualBox.sh
 
+# Instalando o Minecraft
+bash ./Install-Minecraft.sh
+
 # Instalando o MySQL Workbentch
 bash ./Install-MySqlWorkBench.sh
 
