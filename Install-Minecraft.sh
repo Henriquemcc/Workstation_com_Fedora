@@ -50,6 +50,12 @@ function create_shortcut
 
 }
 
+# Installing requirements
+sudo dnf install --assumeyes coreutils
+sudo dnf install --assumeyes curl
+sudo dnf install --assumeyes tar
+bash ./Install-Java.sh
+
 # Downloading file
 downloaded_tar_gz_file="$(download_file $minecraft_file_url)"
 
