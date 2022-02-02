@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ "$(command -v pwsh)" ] && { [ -z "$1" ] || [ "$1" != "--upgrade" ]; }; then
+  exit 0
+fi
+
 # Defining Urls
 url_x86_64_rpm="https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-lts-7.2.1-1.rh.x86_64.rpm"
 url_arm64_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-7.2.1-linux-arm64.tar.gz"
