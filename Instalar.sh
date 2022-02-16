@@ -32,21 +32,6 @@ function configurar_gnome_shell() {
   gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 }
 
-function configurar_java() {
-
-  # Criando o comando Java8
-  sudo ln --symbolic /usr/lib/jvm/java-1.8.0/bin/java /bin/java8
-
-  # Criando o comando Javac8
-  sudo ln --symbolic /usr/lib/jvm/java-1.8.0/bin/javac /bin/javac8
-
-  # Criando o atalho para o Java 8
-  sudo pwsh ./New-Shortcut.ps1 -Name "Java Runtime Environment 8" -GenericName "Java 8" -Keywords @("java", "runtime", "environment", "8", "jre") -Exec "java8 -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java8.desktop"
-
-  # Criando o atalho para o Java
-  sudo pwsh ./New-Shortcut.ps1 -Name "Java Runtime Environment" -GenericName "Java" -Keywords @("java", "runtime", "environment", "jre") -Exec "java -jar %f" -Terminal $false -Type Application -MimeType @("application/x-java-archive") -StartupNotify $true -Icon "java-1.8.0-openjdk" -AllUsers -FileName "java.desktop"
-}
-
 function instalar_script_update_all() {
   sudo cp ./Update-All.sh /bin/Update-All.sh
   sudo chmod +x /bin/Update-All.sh
@@ -101,7 +86,6 @@ function instalar_pacotes_dnf() {
   sudo dnf install --assumeyes gnome-shell-extension-dash-to-dock
 
   # Instalando as Ferramentas de desenvolvimento
-  sudo dnf install --assumeyes java-1.8.0-openjdk-devel
   sudo dnf install --assumeyes golang
   sudo dnf install --assumeyes gcc
   sudo dnf install --assumeyes dotnet-sdk-5.0
@@ -172,6 +156,9 @@ bash ./Install-PowerShell.sh
 # Instalando pacotes dnf
 instalar_pacotes_dnf
 
+# Instalando Java 8
+bash ./Install-Java8.sh
+
 # Instalando pacotes snap
 instalar_pacotes_snap
 
@@ -182,7 +169,7 @@ instalar_pacotes_flatpak
 bash ./Install-Docker.sh
 
 # Instalando o driver Nvidia
-sudo pwsh ./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
+sudo pwsh -Command ./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
 
 # Instalando o VirtualBox
 bash ./Install-VirtualBox.sh
@@ -201,9 +188,6 @@ bash ./Install-ProtonVPN.sh
 
 ## Atualizando todos os pacotes instalados
 bash ./Update-All.sh
-
-# Configurando o java
-configurar_java
 
 # Instalando script Update-All.sh
 instalar_script_update_all
