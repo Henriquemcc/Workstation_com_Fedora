@@ -23,7 +23,6 @@ while [ $opcao_selecionada -ne 0 ]; do
   opcao_selecionada="$function_return_variable"
 
   if [ "$opcao_selecionada" -eq 1 ]; then
-    bash ./Install-PowerShell.sh
-    sudo pwsh ConfigurarModulosKernelLinux.ps1
+    bash ./ConfigurarModulosKernelLinux.sh
   fi
 done
