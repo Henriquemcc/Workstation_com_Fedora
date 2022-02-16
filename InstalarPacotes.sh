@@ -50,7 +50,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   if [ "$opcao_selecionada" -eq 1 ]; then
     bash ./Install-Docker.sh
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    sudo pwsh ./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
+    bash ./Install-NvidiaDriver.sh
   elif [ "$opcao_selecionada" -eq 3 ]; then
     bash ./Install-Flathub.sh
   elif [ "$opcao_selecionada" -eq 4 ]; then
