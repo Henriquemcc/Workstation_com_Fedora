@@ -169,7 +169,7 @@ instalar_pacotes_flatpak
 bash ./Install-Docker.sh
 
 # Instalando o driver Nvidia
-sudo pwsh -Command ./Install-NvidiaDriver.ps1 -SignLinuxKernelModules
+bash ./Install-NvidiaDriver.sh
 
 # Instalando o VirtualBox
 bash ./Install-VirtualBox.sh
