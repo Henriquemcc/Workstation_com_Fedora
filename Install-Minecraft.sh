@@ -54,6 +54,8 @@ function create_shortcut
 sudo dnf install --assumeyes coreutils
 sudo dnf install --assumeyes curl
 sudo dnf install --assumeyes tar
+sudo dnf install --assumeyes xrandr
+
 bash ./Install-Java.sh
 
 # Downloading file
