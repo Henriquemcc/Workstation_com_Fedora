@@ -39,6 +39,7 @@ bash ./Enable-RpmFusion.sh
 # Installing Nvidia
 sudo dnf install --assumeyes akmod-nvidia
 sudo dnf install --assumeyes xorg-x11-drv-nvidia-cuda
+sudo dnf install --assumeyes xrandr
 
 # Signing kernel modules
 sign_nvidia_kernel_modules
