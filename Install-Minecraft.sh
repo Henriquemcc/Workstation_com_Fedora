@@ -56,7 +56,7 @@ sudo dnf install --assumeyes curl
 sudo dnf install --assumeyes tar
 sudo dnf install --assumeyes xrandr
 
-bash ./Install-Java.sh
+bash ./Install-Java8.sh
 
 # Downloading file
 downloaded_tar_gz_file="$(download_file $minecraft_file_url)"
@@ -70,9 +70,8 @@ minecraft_binary_path="${installation_directory}/minecraft-launcher"
 mv "$extracted_minecraft_binary_path" "$minecraft_binary_path"
 
 # Creating icon directory if it does not exist
-if ! [ -d "$icons_directory" ]; then
-    mkdir -p "$icons_directory"
-fi
+mkdir -p "$icons_directory"
+
 
 # Defining Minecraft icon path
 minecraft_icon_path="${icons_directory}/minecraft.png"
