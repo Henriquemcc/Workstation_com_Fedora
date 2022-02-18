@@ -177,6 +177,9 @@ bash ./Install-VirtualBox.sh
 # Instalando o Minecraft
 bash ./Install-Minecraft.sh
 
+# Instalando o TechnicLauncher
+bash ./Install-TechnicLauncher.sh
+
 # Instalando o MySQL Workbentch
 bash ./Install-MySqlWorkBench.sh
 
