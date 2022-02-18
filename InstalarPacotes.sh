@@ -7,7 +7,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 23 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 24 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Docker Engine"
@@ -31,8 +31,9 @@ function obter_opcao() {
     echo "19 - SDK Man"
     echo "20 - Snapd"
     echo "21 - Speed Test Cli"
-    echo "22 - VirtualBox"
-    echo "23 - Visual Studio Code"
+    echo "22 - Technic Launcher"
+    echo "23 - VirtualBox"
+    echo "24 - Visual Studio Code"
 
     read -r _opcao_selecionada
   done
@@ -90,8 +91,10 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 21 ]; then
     bash ./Install-SpeedTestCli.sh
   elif [ "$opcao_selecionada" -eq 22 ]; then
-    bash ./Install-VirtualBox.sh
+    bash ./Install-TechnicLauncher.sh
   elif [ "$opcao_selecionada" -eq 23 ]; then
+    bash ./Install-VirtualBox.sh
+  elif [ "$opcao_selecionada" -eq 24 ]; then
     bash ./Install-VisualStudioCode.sh
   fi
 done
