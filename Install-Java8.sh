@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Installing Java 8 JRE
+# Installing Java 8 JRE and JDK
 sudo dnf install --assumeyes java-1.8.0-openjdk
+sudo dnf install --assumeyes java-1.8.0-openjdk-devel
 
-# Creating command java8
+# Creating command java8 and javac8
 sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/java" "/bin/java8"
+sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/javac" "/bin/javac8"
 
 # Creating shortcuts
 {
@@ -19,9 +21,3 @@ sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/java" "/bin/java8"
   echo "Keywords=java; runtime; environment; 8; jre"
   echo "StartupNotify=true"
 } | sudo tee "/usr/share/applications/java8.desktop"
-
-# Installing Java 8 JDK
-sudo dnf install --assumeyes java-1.8.0-openjdk-devel
-
-# Creating command Javac8
-sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/javac" "/bin/javac8"
