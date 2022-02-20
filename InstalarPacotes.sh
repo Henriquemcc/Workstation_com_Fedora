@@ -7,7 +7,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 24 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 26 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Docker Engine"
@@ -21,19 +21,21 @@ function obter_opcao() {
     echo "9 - Google Earth"
     echo "10 - Gradle"
     echo "11 - Java 8"
-    echo "12 - Microsoft Teams"
-    echo "13 - MySQL WorkBench"
-    echo "14 - Peazip"
-    echo "15 - Proton VPN"
-    echo "16 - Python 3 Pip"
-    echo "17 - R Studio"
-    echo "18 - Rust Programming Language"
-    echo "19 - SDK Man"
-    echo "20 - Snapd"
-    echo "21 - Speed Test Cli"
-    echo "22 - Technic Launcher"
-    echo "23 - VirtualBox"
-    echo "24 - Visual Studio Code"
+    echo "12 - Java 11"
+    echo "13 - Java 17"
+    echo "14 - Microsoft Teams"
+    echo "15 - MySQL WorkBench"
+    echo "16 - Peazip"
+    echo "17 - Proton VPN"
+    echo "18 - Python 3 Pip"
+    echo "19 - R Studio"
+    echo "20 - Rust Programming Language"
+    echo "21 - SDK Man"
+    echo "22 - Snapd"
+    echo "23 - Speed Test Cli"
+    echo "24 - Technic Launcher"
+    echo "25 - VirtualBox"
+    echo "26 - Visual Studio Code"
 
     read -r _opcao_selecionada
   done
@@ -71,30 +73,34 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 11 ]; then
     bash ./Install-Java8.sh
   elif [ "$opcao_selecionada" -eq 12 ]; then
-    bash ./Install-MicrosoftTeams.sh
+    bash ./Install-Java11.sh
   elif [ "$opcao_selecionada" -eq 13 ]; then
-    bash ./Install-MySqlWorkBench.sh
+    bash ./Install-Java17.sh
   elif [ "$opcao_selecionada" -eq 14 ]; then
-    bash ./Install-Peazip.sh
+    bash ./Install-MicrosoftTeams.sh
   elif [ "$opcao_selecionada" -eq 15 ]; then
-    bash ./Install-ProtonVPN.sh
+    bash ./Install-MySqlWorkBench.sh
   elif [ "$opcao_selecionada" -eq 16 ]; then
-    bash ./Install-Python3Pip.sh
+    bash ./Install-Peazip.sh
   elif [ "$opcao_selecionada" -eq 17 ]; then
-    bash ./Install-RStudio.sh
+    bash ./Install-ProtonVPN.sh
   elif [ "$opcao_selecionada" -eq 18 ]; then
-    bash ./Install-RustLang.sh
+    bash ./Install-Python3Pip.sh
   elif [ "$opcao_selecionada" -eq 19 ]; then
-    bash ./Install-SdkMan.sh
+    bash ./Install-RStudio.sh
   elif [ "$opcao_selecionada" -eq 20 ]; then
-    bash ./Install-Snapd.sh
+    bash ./Install-RustLang.sh
   elif [ "$opcao_selecionada" -eq 21 ]; then
-    bash ./Install-SpeedTestCli.sh
+    bash ./Install-SdkMan.sh
   elif [ "$opcao_selecionada" -eq 22 ]; then
-    bash ./Install-TechnicLauncher.sh
+    bash ./Install-Snapd.sh
   elif [ "$opcao_selecionada" -eq 23 ]; then
-    bash ./Install-VirtualBox.sh
+    bash ./Install-SpeedTestCli.sh
   elif [ "$opcao_selecionada" -eq 24 ]; then
+    bash ./Install-TechnicLauncher.sh
+  elif [ "$opcao_selecionada" -eq 25 ]; then
+    bash ./Install-VirtualBox.sh
+  elif [ "$opcao_selecionada" -eq 26 ]; then
     bash ./Install-VisualStudioCode.sh
   fi
 done
