@@ -10,5 +10,5 @@ Linux) [Fedora](https://getfedora.org)
 Com o Fedora estando instalado em seu computador, abra o programa 'Terminal' e nele copie e cole o seguinte comando:
 
 ```
-wget --no-cache "https://github.com/Henriquemcc/Workstation_com_Fedora/archive/refs/heads/main.zip" -O "main.zip";unzip "main.zip";cd "Fedora-main";bash ./Executar.sh;
+sudo dnf install --assumeyes curl unzip bash;url_file="https://github.com/Henriquemcc/Fedora/archive/refs/heads/main.zip";path_download_file="/tmp/Fedora_main.zip";curl -L "$url_file" > "$path_download_file";unzip -o "$path_download_file" -d "/tmp";cd "/tmp/Fedora-main" || exit 1;bash ./Executar.sh;
 ```
