@@ -128,6 +128,7 @@ function instalar_pacotes_snap() {
   sudo snap install spotify
   sudo snap install intellij-idea-community --classic
   sudo snap install pycharm-community --classic
+  sudo snap install clion --classic
   sudo snap install flutter --classic
   sudo snap install kotlin --classic
   sudo snap install skype --classic
