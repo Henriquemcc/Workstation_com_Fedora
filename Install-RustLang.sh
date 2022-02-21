@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Checking if RustLang is already installed
+if [ "$(command -v cargo)" ] && [ "$(command -v rustc)" ] && [ "$(command -v rustup )" ]; then
+    exit 0
+fi
+
 # Installing requirements
 sudo dnf install --assumeyes curl
 
