@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Checking if Java 11 is installed
+if [ "$(command -v java11)" ] && [ "$(command -v javac11)" ]; then
+    exit 0
+fi
+
 # Installing Java 11 JRE and JDK
 sudo dnf install --assumeyes java-11-openjdk
 sudo dnf install --assumeyes java-11-openjdk-devel
