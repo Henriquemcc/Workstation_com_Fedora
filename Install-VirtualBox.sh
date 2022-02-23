@@ -45,7 +45,9 @@ function sign_virtualbox_kernel_modules() {
 }
 
 # Installing VirtualBox
-sudo dnf install --assumeyes VirtualBox
+if ! [ "$(command -v virtualbox)" ]; then
+  sudo dnf install --assumeyes VirtualBox
+fi
 
 # Singing kernel modules
 sign_virtualbox_kernel_modules
