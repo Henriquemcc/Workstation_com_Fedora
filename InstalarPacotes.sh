@@ -7,7 +7,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 26 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 27 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Docker Engine"
@@ -36,6 +36,7 @@ function obter_opcao() {
     echo "24 - Technic Launcher"
     echo "25 - VirtualBox"
     echo "26 - Visual Studio Code"
+    echo "27 - Weka (Waikato Environment for Knowledge Analysis)"
 
     read -r _opcao_selecionada
   done
@@ -102,5 +103,7 @@ while [ $opcao_selecionada -ne 0 ]; do
     bash ./Install-VirtualBox.sh
   elif [ "$opcao_selecionada" -eq 26 ]; then
     bash ./Install-VisualStudioCode.sh
+  elif [ "$opcao_selecionada" -eq 27 ]; then
+    bash ./Install-Weka.sh
   fi
 done
