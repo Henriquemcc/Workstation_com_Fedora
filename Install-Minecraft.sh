@@ -51,11 +51,9 @@ function create_shortcut
 }
 
 # Installing requirements
-sudo dnf install --assumeyes coreutils
-sudo dnf install --assumeyes curl
-sudo dnf install --assumeyes tar
-sudo dnf install --assumeyes xrandr
-
+bash ./Install-Curl.sh
+bash ./Install-Tar.sh
+bash ./Install-Xrandr.sh
 bash ./Install-Java8.sh
 
 # Downloading file
