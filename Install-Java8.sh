@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Checking if Java 8 is installed
+if [ "$(command -v java8)" ] && [ "$(command -v javac8)" ]; then
+    exit 0
+fi
+
 # Installing Java 8 JRE and JDK
 sudo dnf install --assumeyes java-1.8.0-openjdk
 sudo dnf install --assumeyes java-1.8.0-openjdk-devel
