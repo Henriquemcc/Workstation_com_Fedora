@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Checking if Java 17 is installed
+if [ "$(command -v java17)" ] && [ "$(command -v javac17)" ]; then
+    exit 0
+fi
+
 # Installing Java 17 JRE and JDK
 sudo dnf install --assumeyes java-17-openjdk
 sudo dnf install --assumeyes java-17-openjdk-devel
