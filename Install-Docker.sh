@@ -30,4 +30,6 @@ if ! grep -q "$string_to_bashrc" "$bashrc_file"; then
 fi
 
 # Installing docker compose
-sudo dnf install --assumeyes docker-compose
+if ! [ "$(command -v docker-compose)" ]; then
+  sudo dnf install --assumeyes docker-compose
+fi
