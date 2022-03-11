@@ -23,6 +23,9 @@ fi
 # Running as root
 run_as_root
 
+# Installing requirements
+sudo dnf install --assumeyes openssl
+
 # Creating signed modules folder
 path_folder_signed_modules="/root/signed-modules"
 mkdir -p "$path_folder_signed_modules"
