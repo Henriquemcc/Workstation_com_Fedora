@@ -1,45 +1,22 @@
 #!/bin/bash
 
-function sign_nvidia_kernel_modules() {
+# Checking if the computer has a NVIDIA GPU
+if ! lspci | grep -i nvidia; then
+    exit 0
+fi
 
-  if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
+# Checking if architecture is x86_64
+if [ "$(uname -m)" != "x86_64" ] ; then
+    exit 0
+fi
 
-    # Installing requirements
-    sudo dnf install --assumeyes kmod
-    sudo dnf install --assumeyes coreutils
+# Removing conflicting packages
+sudo dnf autoremove --assumeyes xorg-x11-drv-nvidia-cuda-libs
+sudo dnf autoremove --assumeyes xorg-x11-drv-nvidia-power
+sudo dnf autoremove --assumeyes xorg-x11-drv-nvidia-cuda
 
-    # Setting private and public key path
-    path_folder_signed_modules="/root/signed-modules"
-    path_private_key="$path_folder_signed_modules/private_key.priv"
-    path_public_key="$path_folder_signed_modules/public_key.der"
+# Installing repository
+sudo dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora35/x86_64/cuda-fedora35.repo
 
-    # Checking if private and public keys file exist
-    bash ./New-KernelModulesPairOfKeys.sh
-
-    # Getting information about Nvidia module for Linux kernel
-    nvidia="$(sudo modinfo -n nvidia)"
-    nvidia_parent_folder="$(dirname "$nvidia")"
-
-    # Getting the location of sign-file executable
-    uname_str="$(uname -r)"
-    sign_file_path="/usr/src/kernels/$uname_str/scripts/sign-file"
-
-    # Signing kernel modules
-    for file in "$nvidia_parent_folder"/* ; do
-      if [[ "$file" == *.ko ]]; then
-        eval "sudo $sign_file_path" sha256 "$path_private_key" "$path_public_key" "$file"
-      fi
-    done
-  fi
-}
-
-# Enabling RPM Fusion
-bash ./Enable-RpmFusion.sh
-
-# Installing Nvidia
-sudo dnf install --assumeyes akmod-nvidia
-sudo dnf install --assumeyes xorg-x11-drv-nvidia-cuda
-sudo dnf install --assumeyes xrandr
-
-# Signing kernel modules
-sign_nvidia_kernel_modules
+# Installing Nvidia driver
+sudo dnf module install --assumeyes nvidia-driver
