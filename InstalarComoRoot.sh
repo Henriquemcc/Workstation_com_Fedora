@@ -62,6 +62,7 @@ function instalar_pacotes_dnf() {
   sudo dnf install --assumeyes git
   sudo dnf install --assumeyes git-lfs
   sudo dnf install --assumeyes android-tools
+  sudo dnf install --assumeyes libstdc++-devel
 
   # Instalando outros programas
   sudo dnf install --assumeyes stacer
