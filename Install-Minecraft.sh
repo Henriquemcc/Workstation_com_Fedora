@@ -7,6 +7,13 @@ minecraft_binary_file_name="minecraft-launcher"
 applications_folder="${HOME}/.local/share/applications"
 minecraft_picture_url="https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/GrassBlock_HighRes.png"
 icons_directory="${HOME}/.local/share/icons/hicolor/303x303/apps"
+user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
+
+# Creating directories
+mkdir -p "$temporary_directory"
+mkdir -p "$applications_folder"
+mkdir -p "$icons_directory"
+mkdir -p "$installation_directory"
 
 # Downloads a file from the internet.
 # @param $1 File url
@@ -69,7 +76,6 @@ mv "$extracted_minecraft_binary_path" "$minecraft_binary_path"
 
 # Creating icon directory if it does not exist
 mkdir -p "$icons_directory"
-
 
 # Defining Minecraft icon path
 minecraft_icon_path="${icons_directory}/minecraft.png"
