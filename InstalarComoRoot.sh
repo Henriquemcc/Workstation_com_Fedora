@@ -49,10 +49,6 @@ function instalar_pacotes_dnf() {
   sudo dnf install --assumeyes fuse
   sudo dnf install --assumeyes fuse-exfat
 
-  # Instalando as Extensões do Gnome shell
-  sudo dnf install --assumeyes gnome-shell-extension-updates-dialog
-  sudo dnf install --assumeyes gnome-shell-extension-dash-to-dock
-
   # Instalando as Ferramentas de desenvolvimento
   sudo dnf install --assumeyes golang
   sudo dnf install --assumeyes gcc
@@ -78,10 +74,8 @@ function instalar_pacotes_dnf() {
   sudo dnf install --assumeyes mokutil
   sudo dnf install --assumeyes fdupes
   sudo dnf install --assumeyes dnf-automatic
-  sudo dnf install --assumeyes gnome-tweaks
   sudo dnf install --assumeyes dconf-editor
   sudo dnf install --assumeyes audacity
-  sudo dnf install --assumeyes chrome-gnome-shell
 
   # Instalando pacotes para reportar erro automaticamente
   sudo dnf install --assumeyes abrt-desktop
