@@ -76,6 +76,7 @@ function instalar_pacotes_dnf() {
   sudo dnf install --assumeyes dnf-automatic
   sudo dnf install --assumeyes dconf-editor
   sudo dnf install --assumeyes audacity
+  sudo dnf install --assumeyes gimp
 
   # Instalando pacotes para reportar erro automaticamente
   sudo dnf install --assumeyes abrt-desktop
