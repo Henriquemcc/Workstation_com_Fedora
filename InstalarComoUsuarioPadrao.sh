@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configurando o Gnome Shell
-bash ./Configurar-GnomeShell.sh
+bash ./Configurar-GnomeShell.bash
 
 # Instalando o Minecraft
 bash ./Install-Minecraft.sh
