@@ -29,7 +29,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   if [ "$opcao_selecionada" -eq 1 ]; then
     bash ./Instalar.sh
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Atualizar.sh
+    bash ./Atualizar.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
     bash ./Configurar.sh
   elif [ "$opcao_selecionada" -eq 4 ]; then
