@@ -7,7 +7,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 28 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 29 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Docker Engine"
@@ -38,6 +38,7 @@ function obter_opcao() {
     echo "26 - VirtualBox"
     echo "27 - Visual Studio Code"
     echo "28 - Weka (Waikato Environment for Knowledge Analysis)"
+    echo "29 - Docker Desktop"
 
     read -r _opcao_selecionada
   done
@@ -53,7 +54,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   opcao_selecionada="$function_return_variable"
 
   if [ "$opcao_selecionada" -eq 1 ]; then
-    bash ./Install-Docker.sh
+    bash ./Install-DockerEngine.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
     bash ./Install-NvidiaDriver.sh
   elif [ "$opcao_selecionada" -eq 3 ]; then
@@ -108,5 +109,7 @@ while [ $opcao_selecionada -ne 0 ]; do
     bash ./Install-VisualStudioCode.sh
   elif [ "$opcao_selecionada" -eq 28 ]; then
     bash ./Install-Weka.sh
+  elif [ "$opcao_selecionada" -eq 29 ]; then
+    bash ./Install-DockerDesktop.bash
   fi
 done
