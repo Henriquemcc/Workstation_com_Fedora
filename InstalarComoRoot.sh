@@ -130,7 +130,7 @@ instalar_pacotes_snap
 instalar_pacotes_flatpak
 
 # Instalando o Docker
-bash ./Install-Docker.sh
+bash ./Install-DockerDesktop.bash
 
 # Instalando o driver Nvidia
 bash ./Install-NvidiaDriver.sh
