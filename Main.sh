@@ -27,7 +27,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   opcao_selecionada="$function_return_variable"
 
   if [ "$opcao_selecionada" -eq 1 ]; then
-    bash ./Instalar.sh
+    bash ./Instalar.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
     bash ./Atualizar.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
