@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Executa instalação como root
 function run_as_root() {
 
   #  Instala script Update-All.sh
@@ -149,7 +150,7 @@ function run_as_root() {
   # Instalando o Peazip
   bash ./Install-Peazip.sh
 
-  ## Atualizando todos os pacotes instalados
+  # Atualizando todos os pacotes instalados
   bash ./Update-All.sh
 
   # Instalando script Update-All.sh
