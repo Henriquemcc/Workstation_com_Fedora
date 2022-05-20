@@ -82,6 +82,10 @@ function run_as_root() {
     sudo dnf install --assumeyes dconf-editor
     sudo dnf install --assumeyes audacity
     sudo dnf install --assumeyes gimp
+    sudo dnf install --assumeyes gedit
+    sudo dnf install --assumeyes ImageMagick
+    sudo dnf install --assumeyes wine.i686
+    sudo dnf install --assumeyes pdftk-java
 
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
