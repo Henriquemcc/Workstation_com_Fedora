@@ -5,9 +5,9 @@ if [ "$(command -v pwsh)" ] && { [ -z "$1" ] || [ "$1" != "--upgrade" ]; }; then
 fi
 
 # Defining Urls
-url_x86_64_rpm="https://github.com/PowerShell/PowerShell/releases/download/v7.2.2/powershell-lts-7.2.2-1.rh.x86_64.rpm"
-url_arm64_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.2/powershell-7.2.2-linux-arm64.tar.gz"
-url_arm32_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.2/powershell-7.2.2-linux-arm32.tar.gz"
+url_x86_64_rpm="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/powershell-lts-7.2.4-1.rh.x86_64.rpm"
+url_arm64_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/powershell-7.2.4-linux-arm64.tar.gz"
+url_arm32_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/powershell-7.2.4-linux-arm32.tar.gz"
 
 # Downloads a file from a url
 # @param $1 File url
