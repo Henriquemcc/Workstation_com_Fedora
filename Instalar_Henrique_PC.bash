@@ -86,6 +86,7 @@ function run_as_root() {
     sudo dnf install --assumeyes ImageMagick
     sudo dnf install --assumeyes wine.i686
     sudo dnf install --assumeyes pdftk-java
+    sudo dnf install --assumeyes wol
 
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
