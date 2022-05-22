@@ -10,6 +10,7 @@ function sign_virtualbox_kernel_modules() {
     sudo dnf install --assumeyes akmod-VirtualBox
     sudo dnf install --assumeyes kernel-devel
     sudo dnf install --assumeyes akmods
+    sudo dnf install --assumeyes kmod-VirtualBox
 
     # Setting private and public key path
     path_folder_signed_modules="/root/signed-modules"
@@ -47,6 +48,7 @@ function sign_virtualbox_kernel_modules() {
 # Installing VirtualBox
 if ! [ "$(command -v virtualbox)" ]; then
   sudo dnf install --assumeyes VirtualBox
+  sudo dnf install --assumeyes virtualbox-guest-additions
 fi
 
 # Singing kernel modules
