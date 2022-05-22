@@ -3,17 +3,17 @@
 # Executa instalação como root
 function run_as_root() {
 
-    #  Instala script Update-All.sh
+    #  Instala script Update-All.bash
     function instalar_script_update_all() {
-      sudo cp ./Update-All.sh /bin/Update-All.sh
-      sudo chmod +x /bin/Update-All.sh
+      sudo cp ./Update-All.bash /bin/Update-All.bash
+      sudo chmod +x /bin/Update-All.bash
     }
 
     # Instala pacotes dnf
     function instalar_pacotes_dnf() {
 
       # Habilitando RPM Fusion
-      bash ./Enable-RpmFusion.sh
+      bash ./Enable-RpmFusion.bash
 
       # Instalando os Sistemas de arquivos não nativos do linux
       sudo dnf install --assumeyes ntfs-3g
@@ -27,21 +27,21 @@ function run_as_root() {
     instalar_pacotes_dnf
 
     # Instalando o Flatpak
-    bash ./Install-Flatpak.sh
+    bash ./Install-Flatpak.bash
 
     # Instalando o Snapd
-    bash ./Install-Snapd.sh
+    bash ./Install-Snapd.bash
 
     # Instalando Java 8, 11 e 17
-    bash ./Install-Java8.sh
-    bash ./Install-Java11.sh
-    bash ./Install-Java17.sh
+    bash ./Install-Java8.bash
+    bash ./Install-Java11.bash
+    bash ./Install-Java17.bash
 
     # Instalando o Docker
     bash ./Install-DockerEngine.bash
 
     # Atualizando todos os pacotes instalados
-    bash ./Update-All.sh
+    bash ./Update-All.bash
 }
 
 # Instalando programas como root

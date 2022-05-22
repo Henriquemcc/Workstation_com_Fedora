@@ -15,8 +15,8 @@ sudo mkdir -p "$(dirname "$path_download_file")"
 mkdir -p "$path_installation_dir"
 
 # Installing requirements
-bash ./Install-Curl.sh
-bash ./Install-Unzip.sh
+bash ./Install-Curl.bash
+bash ./Install-Unzip.bash
 
 # Downloading Weka
 curl -L "$url_weka_zip_file" --output "$path_download_file"

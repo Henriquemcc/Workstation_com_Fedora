@@ -18,7 +18,7 @@ function sign_virtualbox_kernel_modules() {
     path_public_key="$path_folder_signed_modules/public_key.der"
 
     # Checking if private and public keys file exist
-    bash ./New-KernelModulesPairOfKeys.sh
+    bash ./New-KernelModulesPairOfKeys.bash
 
     # Getting information about VirtualBox module for Linux kernel
     vboxdrv_str="$(modinfo -n vboxdrv)"

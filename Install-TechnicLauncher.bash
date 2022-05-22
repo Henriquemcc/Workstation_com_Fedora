@@ -7,7 +7,7 @@ path_applications_folder="${HOME}/.local/share/applications"
 path_icons_directory="${HOME}/.local/share/icons/hicolor/303x303/apps"
 
 # Installing requirements
-bash ./Install-Java8.sh
+bash ./Install-Java8.bash
 
 # Downloading jar file
 path_technic_launcher_jar="${path_installation_directory}/TechnicLauncher.jar"

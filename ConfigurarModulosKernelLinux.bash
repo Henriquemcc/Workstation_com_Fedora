@@ -24,9 +24,9 @@ while [ $opcao_selecionada -ne 0 ]; do
   opcao_selecionada="$function_return_variable"
 
   if [ "$opcao_selecionada" -eq 1 ]; then
-    bash ./Install-NvidiaDriver.sh
+    bash ./Install-NvidiaDriver.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Install-VirtualBox.sh
+    bash ./Install-VirtualBox.bash
   fi
 done
 

@@ -3,7 +3,7 @@
 # Installing requirements
 ## Gio command
 if ! [ "$(command -v gio)" ]; then
-    bash ./Install-Glib.sh
+    bash ./Install-Glib.bash
 fi
 
 # Downloading Maven

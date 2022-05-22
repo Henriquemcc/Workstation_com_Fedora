@@ -3,17 +3,17 @@
 # Executa instalação como root
 function run_as_root() {
 
-  #  Instala script Update-All.sh
+  #  Instala script Update-All.bash
   function instalar_script_update_all() {
-    sudo cp ./Update-All.sh /bin/Update-All.sh
-    sudo chmod +x /bin/Update-All.sh
+    sudo cp ./Update-All.bash /bin/Update-All.bash
+    sudo chmod +x /bin/Update-All.bash
   }
 
   # Instala pacotes dnf
   function instalar_pacotes_dnf() {
 
     # Habilitando RPM Fusion
-    bash ./Enable-RpmFusion.sh
+    bash ./Enable-RpmFusion.bash
 
     # Instalando o KeepassXC
     sudo dnf install --assumeyes keepassxc
@@ -99,7 +99,7 @@ function run_as_root() {
   function instalar_pacotes_snap() {
 
     # Instalando snapd
-    bash ./Install-Snapd.sh
+    bash ./Install-Snapd.bash
 
     # Instalando pacotes snap
     sudo snap install spotify
@@ -114,27 +114,27 @@ function run_as_root() {
   # Instala pacotes flatpak
   function instalar_pacotes_flatpak() {
     # Instalando o Flatpak
-    bash ./Install-Flatpak.sh
+    bash ./Install-Flatpak.bash
 
     # Instalando o FlatHub
-    bash ./Install-Flathub.sh
+    bash ./Install-Flathub.bash
   }
   # Instalando o Google Chrome
-  bash ./Install-GoogleChromeStable.sh
+  bash ./Install-GoogleChromeStable.bash
 
   # Instalando o Visual Studio Code
-  bash ./Install-VisualStudioCode.sh
+  bash ./Install-VisualStudioCode.bash
 
   # Instalando o PowerShell
-  bash ./Install-PowerShell.sh
+  bash ./Install-PowerShell.bash
 
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
   # Instalando Java 8, 11 e 17
-  bash ./Install-Java8.sh
-  bash ./Install-Java11.sh
-  bash ./Install-Java17.sh
+  bash ./Install-Java8.bash
+  bash ./Install-Java11.bash
+  bash ./Install-Java17.bash
 
   # Instalando pacotes snap
   instalar_pacotes_snap
@@ -146,21 +146,21 @@ function run_as_root() {
   bash ./Install-DockerDesktop.bash
 
   # Instalando o driver Nvidia
-  bash ./Install-NvidiaDriver.sh
+  bash ./Install-NvidiaDriver.bash
 
   # Instalando o VirtualBox
-  bash ./Install-VirtualBox.sh
+  bash ./Install-VirtualBox.bash
 
   # Instalando o MySQL Workbench
-  bash ./Install-MySqlWorkBench.sh
+  bash ./Install-MySqlWorkBench.bash
 
   # Instalando o Peazip
-  bash ./Install-Peazip.sh
+  bash ./Install-Peazip.bash
 
   # Atualizando todos os pacotes instalados
-  bash ./Update-All.sh
+  bash ./Update-All.bash
 
-  # Instalando script Update-All.sh
+  # Instalando script Update-All.bash
   instalar_script_update_all
 }
 
@@ -168,16 +168,16 @@ function run_as_root() {
 bash ./Configurar-GnomeShell.bash
 
 # Instalando o Minecraft
-bash ./Install-Minecraft.sh
+bash ./Install-Minecraft.bash
 
 # Instalando o TechnicLauncher
-bash ./Install-TechnicLauncher.sh
+bash ./Install-TechnicLauncher.bash
 
 # Instalando o Weka
-bash ./Install-Weka.sh
+bash ./Install-Weka.bash
 
 # Instalando o Orange
-bash ./Install-OrangeDataMining.sh
+bash ./Install-OrangeDataMining.bash
 
 # Instalando programas como root
 sudo bash -c "$(declare -f run_as_root); run_as_root"

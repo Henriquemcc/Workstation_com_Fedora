@@ -31,10 +31,10 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 2 ]; then
     bash ./Atualizar.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
-    bash ./Configurar.sh
+    bash ./Configurar.bash
   elif [ "$opcao_selecionada" -eq 4 ]; then
-    bash ./InstalarPacotes.sh
+    bash ./InstalarPacotes.bash
   elif [ "$opcao_selecionada" -eq 5 ]; then
-    bash ./Limpar.sh
+    bash ./Limpar.bash
   fi
 done

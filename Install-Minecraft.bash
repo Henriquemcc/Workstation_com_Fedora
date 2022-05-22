@@ -58,10 +58,10 @@ function create_shortcut
 }
 
 # Installing requirements
-bash ./Install-Curl.sh
-bash ./Install-Tar.sh
-bash ./Install-Xrandr.sh
-bash ./Install-Java8.sh
+bash ./Install-Curl.bash
+bash ./Install-Tar.bash
+bash ./Install-Xrandr.bash
+bash ./Install-Java8.bash
 
 # Downloading file
 downloaded_tar_gz_file="$(download_file $minecraft_file_url)"

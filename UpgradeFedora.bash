@@ -23,6 +23,6 @@ while [ $opcao_selecionada -ne 0 ]; do
   opcao_selecionada="$function_return_variable"
 
   if [ "$opcao_selecionada" -eq 1 ]; then
-    bash ./Upgrade-ToFedora35.sh
+    bash ./Upgrade-ToFedora35.bash
   fi
 done

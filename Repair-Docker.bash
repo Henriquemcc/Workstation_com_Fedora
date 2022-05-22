@@ -1,7 +1,7 @@
 #!/bin/bash
 
-bash ./Uninstall-Docker.sh
-bash ./Install-Docker.sh
+bash ./Uninstall-Docker.bash
+bash ./Install-Docker.bash
 
 # Stopping services
 sudo systemctl stop docker.socket

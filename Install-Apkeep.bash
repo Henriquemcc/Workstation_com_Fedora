@@ -6,7 +6,7 @@ if [ "$(command -v apkeep)" ]; then
 fi
 
 # Installing requirements
-bash ./Install-RustLang.sh
+bash ./Install-RustLang.bash
 
 # Installing Apkeep
 cargo install apkeep

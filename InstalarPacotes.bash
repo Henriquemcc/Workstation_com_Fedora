@@ -56,59 +56,59 @@ while [ $opcao_selecionada -ne 0 ]; do
   if [ "$opcao_selecionada" -eq 1 ]; then
     bash ./Install-DockerEngine.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Install-NvidiaDriver.sh
+    bash ./Install-NvidiaDriver.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
-    bash ./Install-Flathub.sh
+    bash ./Install-Flathub.bash
   elif [ "$opcao_selecionada" -eq 4 ]; then
-    bash ./Install-Flatpak.sh
+    bash ./Install-Flatpak.bash
   elif [ "$opcao_selecionada" -eq 5 ]; then
-    bash ./Install-GithubCli.sh
+    bash ./Install-GithubCli.bash
   elif [ "$opcao_selecionada" -eq 6 ]; then
-    bash ./Install-GitRepo.sh
+    bash ./Install-GitRepo.bash
   elif [ "$opcao_selecionada" -eq 7 ]; then
-    bash ./Install-GoogleChromeStable.sh
+    bash ./Install-GoogleChromeStable.bash
   elif [ "$opcao_selecionada" -eq 8 ]; then
-    bash ./Install-GoogleChromeBeta.sh
+    bash ./Install-GoogleChromeBeta.bash
   elif [ "$opcao_selecionada" -eq 9 ]; then
-    bash ./Install-GoogleEarth.sh
+    bash ./Install-GoogleEarth.bash
   elif [ "$opcao_selecionada" -eq 10 ]; then
-    bash ./Install-Gradle.sh
+    bash ./Install-Gradle.bash
   elif [ "$opcao_selecionada" -eq 11 ]; then
-    bash ./Install-Java8.sh
+    bash ./Install-Java8.bash
   elif [ "$opcao_selecionada" -eq 12 ]; then
-    bash ./Install-Java11.sh
+    bash ./Install-Java11.bash
   elif [ "$opcao_selecionada" -eq 13 ]; then
-    bash ./Install-Java17.sh
+    bash ./Install-Java17.bash
   elif [ "$opcao_selecionada" -eq 14 ]; then
-    bash ./Install-MicrosoftTeams.sh
+    bash ./Install-MicrosoftTeams.bash
   elif [ "$opcao_selecionada" -eq 15 ]; then
-    bash ./Install-MySqlWorkBench.sh
+    bash ./Install-MySqlWorkBench.bash
   elif [ "$opcao_selecionada" -eq 16 ]; then
-    bash ./Install-OrangeDataMining.sh
+    bash ./Install-OrangeDataMining.bash
   elif [ "$opcao_selecionada" -eq 17 ]; then
-    bash ./Install-Peazip.sh
+    bash ./Install-Peazip.bash
   elif [ "$opcao_selecionada" -eq 18 ]; then
-    bash ./Install-ProtonVPN.sh
+    bash ./Install-ProtonVPN.bash
   elif [ "$opcao_selecionada" -eq 19 ]; then
-    bash ./Install-Python3Pip.sh
+    bash ./Install-Python3Pip.bash
   elif [ "$opcao_selecionada" -eq 20 ]; then
-    bash ./Install-RStudio.sh
+    bash ./Install-RStudio.bash
   elif [ "$opcao_selecionada" -eq 21 ]; then
-    bash ./Install-RustLang.sh
+    bash ./Install-RustLang.bash
   elif [ "$opcao_selecionada" -eq 22 ]; then
-    bash ./Install-SdkMan.sh
+    bash ./Install-SdkMan.bash
   elif [ "$opcao_selecionada" -eq 23 ]; then
-    bash ./Install-Snapd.sh
+    bash ./Install-Snapd.bash
   elif [ "$opcao_selecionada" -eq 24 ]; then
-    bash ./Install-SpeedTestCli.sh
+    bash ./Install-SpeedTestCli.bash
   elif [ "$opcao_selecionada" -eq 25 ]; then
-    bash ./Install-TechnicLauncher.sh
+    bash ./Install-TechnicLauncher.bash
   elif [ "$opcao_selecionada" -eq 26 ]; then
-    bash ./Install-VirtualBox.sh
+    bash ./Install-VirtualBox.bash
   elif [ "$opcao_selecionada" -eq 27 ]; then
-    bash ./Install-VisualStudioCode.sh
+    bash ./Install-VisualStudioCode.bash
   elif [ "$opcao_selecionada" -eq 28 ]; then
-    bash ./Install-Weka.sh
+    bash ./Install-Weka.bash
   elif [ "$opcao_selecionada" -eq 29 ]; then
     bash ./Install-DockerDesktop.bash
   fi

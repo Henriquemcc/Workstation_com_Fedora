@@ -6,7 +6,7 @@ if [ "$(command -v cargo)" ] && [ "$(command -v rustc)" ] && [ "$(command -v rus
 fi
 
 # Installing requirements
-bash ./Install-Curl.sh
+bash ./Install-Curl.bash
 
 # Installing RustLang
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup-init.sh

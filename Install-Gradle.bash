@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Installing requirements
-bash ./Install-SdkMan.sh
-bash ./Install-Java8.sh
+bash ./Install-SdkMan.bash
+bash ./Install-Java8.bash
 source "$HOME/.bashrc"
 
 # Installing gradle
