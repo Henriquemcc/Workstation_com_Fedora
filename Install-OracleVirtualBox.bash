@@ -56,7 +56,7 @@ wget "https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo"
 sudo mv ./virtualbox.repo /etc/yum.repos.d/virtualbox.repo
 
 # Installing VirtualBox
-sudo dnf install --assumeyes --repoid virtualbox VirtualBox-6.1
+sudo dnf install --refresh --assumeyes VirtualBox-6.1
 
 # Signing VirtualBox Kernel modules
 sudo /sbin/vboxconfig
