@@ -65,7 +65,6 @@ function run_as_root() {
     sudo dnf install --assumeyes android-tools
     sudo dnf install --assumeyes libstdc++-devel
     sudo dnf install --assumeyes cargo
-    cargo install deno --locked
 
     # Instalando outros programas
     sudo dnf install --assumeyes stacer
@@ -149,7 +148,7 @@ function run_as_root() {
   bash ./Install-NvidiaDriver.bash
 
   # Instalando o VirtualBox
-  bash ./Install-VirtualBox.bash
+  bash ./Install-OracleVirtualBox.bash
 
   # Instalando o MySQL Workbench
   bash ./Install-MySqlWorkBench.bash
@@ -181,3 +180,6 @@ bash ./Install-OrangeDataMining.bash
 
 # Instalando programas como root
 sudo bash -c "$(declare -f run_as_root); run_as_root"
+
+# Instalando Deno
+cargo install deno --locked
