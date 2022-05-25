@@ -12,7 +12,7 @@ fi
 
 # Installing orange
 if ! [ "$(command -v orange-canvas)" ]; then
-  pip install orange3
+  sudo pip install orange3
 fi
 
 # Getting orange installation dir
