@@ -5,7 +5,7 @@ temporary_directory="/tmp"
 installation_directory="${HOME}/.bin"
 minecraft_binary_file_name="minecraft-launcher"
 applications_folder="${HOME}/.local/share/applications"
-minecraft_picture_url="https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/GrassBlock_HighRes.png"
+minecraft_picture_url="https://imagepng.org/wp-content/uploads/2017/08/minecraft-icone-icon.png"
 icons_directory="${HOME}/.local/share/icons/hicolor/303x303/apps"
 user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"
 
