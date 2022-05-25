@@ -14,3 +14,6 @@ sh ./rustup-init.sh --quiet --component cargo rustc rustup --profile complete -y
 
 # Running RustLang environment
 source $HOME/.cargo/env
+
+# Moving to trash downloaded Rust script
+gio trash ./rustup-init.sh
