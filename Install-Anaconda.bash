@@ -1,5 +1,17 @@
 #!/bin/bash
 
+if [ "$(command -v anaconda)" ]; then
+   exit 0;
+fi
+
+# Trying to install using dnf package manager
+{
+  sudo dnf install --assumeyes anaconda
+
+
+# Installing using anaconda script
+} || {
+
 # Installing requirements
 sudo dnf install --assumeyes wget
 sudo dnf install --assumeyes glib2
@@ -36,3 +48,5 @@ bash "$file_path" -b
 
 # Moving to trash downloaded script
 gio trash "$file_path"
+
+}
