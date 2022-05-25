@@ -64,7 +64,6 @@ function run_as_root() {
     sudo dnf install --assumeyes git-lfs
     sudo dnf install --assumeyes android-tools
     sudo dnf install --assumeyes libstdc++-devel
-    sudo dnf install --assumeyes cargo
 
     # Instalando outros programas
     sudo dnf install --assumeyes stacer
@@ -180,6 +179,9 @@ bash ./Install-OrangeDataMining.bash
 
 # Instalando programas como root
 sudo bash -c "$(declare -f run_as_root); run_as_root"
+
+# Instalando o Rust
+bash ./Install-RustLang.bash
 
 # Instalando Deno
 cargo install deno --locked
