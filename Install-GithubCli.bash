@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Installing requirements
+sudo dnf install  --assumeyes 'dnf-command(config-manager)'
 sudo dnf install --assumeyes git
 sudo dnf install --assumeyes git-lfs
 
