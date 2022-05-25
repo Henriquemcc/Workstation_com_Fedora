@@ -160,6 +160,9 @@ function run_as_root() {
 
   # Instalando script Update-All.bash
   instalar_script_update_all
+
+  # Instalando GitHub Cli
+  bash ./Install-GithubCli.bash
 }
 
 # Configurando o Gnome Shell
