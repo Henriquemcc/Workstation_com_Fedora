@@ -6,6 +6,7 @@ if [ "$(command -v cargo)" ] && [ "$(command -v rustc)" ] && [ "$(command -v rus
 fi
 
 # Installing requirements
+bash ./Install-GioTrash.bash
 bash ./Install-Curl.bash
 
 # Installing RustLang

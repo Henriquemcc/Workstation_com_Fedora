@@ -13,4 +13,5 @@ dockerd-rootless-setuptool.sh install
 sudo systemctl enable docker.service
 
 # Removing convenience script
+bash ./Install-GioTrash.bash
 gio trash ./get-docker.sh

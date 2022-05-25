@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Installing requirements
-## Gio command
-if ! [ "$(command -v gio)" ]; then
-    bash ./Install-Glib.bash
-fi
-
 # Downloading Maven
 url="https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz"
 apache_maven_file="/tmp/apache-maven-bin.tar.gz"
@@ -20,6 +14,7 @@ fi
 # Deleting old installation folders
 maven_install_dir="$local_share_dir/apache-maven-*"
 if [ -d "$maven_install_dir" ]; then
+    bash ./Install-GioTrash.bash
     gio trash "$maven_install_dir"
 fi
 
@@ -34,6 +29,7 @@ for symbolic_link in "${symbolic_links[@]}" ; do
 
     ## Deleting old symbolic links
     if [ -h "${symbolic_links_dir}/${symbolic_link}" ] || [ -f "${symbolic_links_dir}/${symbolic_link}" ] ; then
+        bash ./Install-GioTrash.bash
         gio trash "${symbolic_links_dir}/${symbolic_link}"
     fi
 

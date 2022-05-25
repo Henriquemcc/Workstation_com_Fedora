@@ -14,7 +14,6 @@ fi
 
 # Installing requirements
 sudo dnf install --assumeyes wget
-sudo dnf install --assumeyes glib2
 sudo dnf install --assumeyes libXcomposite
 sudo dnf install --assumeyes libXcursor
 sudo dnf install --assumeyes libXi
@@ -47,6 +46,7 @@ wget "$url"
 bash "$file_path" -b
 
 # Moving to trash downloaded script
+bash ./Install-GioTrash.bash
 gio trash "$file_path"
 
 }

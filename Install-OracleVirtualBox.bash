@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Installing requirements
+bash ./Install-GioTrash.bash
+
 function sign_virtualbox_kernel_modules() {
 
   if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
