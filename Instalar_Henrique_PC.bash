@@ -91,6 +91,14 @@ function run_as_root() {
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
     sudo dnf install --assumeyes abrt-java-connector
+
+    # Desinstalando pacotes inúteis
+    ## Extensões Gnome Shel
+    sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
+    sudo dnf autoremove --assumeyes gnome-shell-extension-window-list
+    sudo dnf autoremove --assumeyes gnome-shell-extension-dash-to-dock
+    sudo dnf autoremove --assumeyes gnome-shell-extension-gamemode
+    sudo dnf autoremove --assumeyes gnome-shell-extension-appindicator
   }
 
   # Instala pacotes snap
