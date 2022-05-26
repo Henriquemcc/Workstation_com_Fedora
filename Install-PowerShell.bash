@@ -5,7 +5,6 @@ if [ "$(command -v pwsh)" ] && { [ -z "$1" ] || [ "$1" != "--upgrade" ]; }; then
 fi
 
 # Defining Urls
-url_x86_64_rpm="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/powershell-lts-7.2.4-1.rh.x86_64.rpm"
 url_arm64_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/powershell-7.2.4-linux-arm64.tar.gz"
 url_arm32_tar_gz="https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/powershell-7.2.4-linux-arm32.tar.gz"
 
@@ -39,7 +38,20 @@ function Download_File
 
 function InstallPowerShell_On_Fedora_x86_64
 {
-  sudo dnf --assumeyes install $url_x86_64_rpm
+  # Register the Microsoft signature key
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+  # Register the Microsoft RedHat repository
+  curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+
+  # Update the list of products
+  sudo dnf check-update
+
+  # Install a system component
+  sudo dnf install --assumeyes compat-openssl10
+
+  # Install PowerShell
+  sudo dnf install --assumeyes powershell-lts
 }
 
 function InstallPowerShell_On_Fedora_arm
