@@ -100,6 +100,10 @@ function run_as_root() {
     sudo dnf autoremove --assumeyes gnome-shell-extension-dash-to-dock
     sudo dnf autoremove --assumeyes gnome-shell-extension-gamemode
     sudo dnf autoremove --assumeyes gnome-shell-extension-appindicator
+
+    ## Configuração do Fedora para o Chrome
+    sudo dnf autoremove --assumeyes fedora-chromium-config
+
   }
 
   # Instala pacotes snap
