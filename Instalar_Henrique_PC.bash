@@ -87,6 +87,7 @@ function run_as_root() {
     sudo dnf install --assumeyes wine.i686
     sudo dnf install --assumeyes pdftk-java
     sudo dnf install --assumeyes wol
+    sudo dnf install --assumeyes brasero
 
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
