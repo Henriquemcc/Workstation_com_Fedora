@@ -104,6 +104,11 @@ function run_as_root() {
     ## Configuração do Fedora para o Chrome
     sudo dnf autoremove --assumeyes fedora-chromium-config
 
+    # Criando pasta das máquinas virtuais no SSD e dando permissão para todos poderem ler e escrever na pasta
+    path_virtual_vms_dir="/VirtualBox_VMs"
+    sudo mkdir -p "$path_virtual_vms_dir"
+    sudo chmod --recursive 777 "$path_virtual_vms_dir"
+
   }
 
   # Instala pacotes snap
