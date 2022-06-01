@@ -88,6 +88,7 @@ function run_as_root() {
     sudo dnf install --assumeyes pdftk-java
     sudo dnf install --assumeyes wol
     sudo dnf install --assumeyes brasero
+    sudo dnf install --assumeyes nmap
 
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
