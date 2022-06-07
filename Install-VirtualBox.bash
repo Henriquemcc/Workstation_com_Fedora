@@ -45,6 +45,9 @@ function sign_virtualbox_kernel_modules() {
   fi
 }
 
+# Uninstalling Oracle VirtualBox
+bash ./Uninstall-OracleVirtualBox.bash
+
 # Installing VirtualBox
 if ! [ "$(command -v virtualbox)" ]; then
   sudo dnf install --assumeyes VirtualBox
