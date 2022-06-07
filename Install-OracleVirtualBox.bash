@@ -46,8 +46,8 @@ function sign_virtualbox_kernel_modules() {
   fi
 }
 
-# Removing VirtualBox packages from other repositories
-sudo dnf autoremove --assumeyes --repoid rpmfusion-free VirtualBox VirtualBox-kmodsrc VirtualBox-server akmod-VirtualBox kmod-VirtualBox
+# Removing RPM Fusion's VirtualBox
+bash ./Uninstall-VirtualBox.bash
 
 # Downloading and registering Oracle VirtualBox Key
 wget https://www.virtualbox.org/download/oracle_vbox.asc
