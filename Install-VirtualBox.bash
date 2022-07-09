@@ -35,7 +35,7 @@ function sign_virtualbox_kernel_modules() {
       module_file_parent_folder="$(dirname "$module_file_name")"
 
       # Getting the location of sign-file executable
-      uname_str="$(uname -r)"
+      sign_file_path="/usr/src/kernels/$(uname -r)/scripts/sign-file"
 
       # Signing kernel modules
       for file in "$module_file_parent_folder"/*; do
