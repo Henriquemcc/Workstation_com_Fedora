@@ -9,6 +9,7 @@ function sign_virtualbox_kernel_modules() {
     sudo dnf install --assumeyes coreutils
     sudo dnf install --assumeyes akmod-VirtualBox
     sudo dnf install --assumeyes kernel-devel
+    sudo dnf install --assumeyes kernel-devel-"$(uname -r)"
     sudo dnf install --assumeyes akmods
     sudo dnf install --assumeyes kmod-VirtualBox
 
@@ -20,20 +21,28 @@ function sign_virtualbox_kernel_modules() {
     # Checking if private and public keys file exist
     bash ./New-KernelModulesPairOfKeys.bash
 
-    # Getting information about VirtualBox module for Linux kernel
-    vboxdrv_str="$(modinfo -n vboxdrv)"
-    vboxdrv_parent_folder="$(dirname "$vboxdrv_str")"
+    # VirtualBox module names
+    declare -a module_names
+    module_names+=("vboxdrv")
+    module_names+=("vboxnetflt")
+    module_names+=("vboxnetadp")
+    module_names+=("vboxpci")
 
-    # Getting the location of sign-file executable
-    uname_str="$(uname -r)"
-    sign_file_path="/usr/src/kernels/$uname_str/scripts/sign-file"
+    for module_name in "${module_names[@]}" ; do
 
-    # Signing kernel modules
-    for file in "$vboxdrv_parent_folder"/*; do
-      echo "$file"
-      if [[ "$file" == *.ko ]]; then
-        eval "sudo $sign_file_path" sha256 "$path_private_key" "$path_public_key" "$file"
-      fi
+      # Getting information about VirtualBox module for Linux kernel
+      module_file_name="$(modinfo -n "$module_name")"
+      module_file_parent_folder="$(dirname "$module_file_name")"
+
+      # Getting the location of sign-file executable
+      uname_str="$(uname -r)"
+
+      # Signing kernel modules
+      for file in "$module_file_parent_folder"/*; do
+        if [[ "$file" == *.ko ]]; then
+          eval "sudo $sign_file_path" sha256 "$path_private_key" "$path_public_key" "$file"
+        fi
+      done
     done
 
     # Loading kernel modules
