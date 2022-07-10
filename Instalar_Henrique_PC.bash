@@ -182,6 +182,9 @@ function run_as_root() {
 
   # Instalando GitHub Cli
   bash ./Install-GithubCli.bash
+  
+  # Instalando Microsoft Teams
+  bash ./Install-MicrosoftTeams.bash
 }
 
 # Configurando o Gnome Shell
