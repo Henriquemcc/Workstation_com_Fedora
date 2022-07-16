@@ -18,31 +18,35 @@ function run_as_root() {
 # Running as root
 run_as_root
 
-# Setting private and public key path
-path_folder_signed_modules="/root/signed-modules"
-path_private_key="$path_folder_signed_modules/private_key.priv"
-path_public_key="$path_folder_signed_modules/public_key.der"
-echo "DEBUG: \$path_folder_signed_modules = $path_folder_signed_modules"
-echo "DEBUG: \$path_private_key = $path_private_key"
-echo "DEBUG: \$path_public_key = $path_public_key"
+if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
 
-sign_file_binary_path="/usr/src/kernels/$(uname -r)/scripts/sign-file"
+  # Checking if private and public keys file exist
+  bash ./New-KernelModulesPairOfKeys.bash
 
-declare -a module_names
-module_names+=("vboxdrv")
-module_names+=("vboxnetflt")
-module_names+=("vboxnetadp")
-module_names+=("vboxpci")
+  # Setting private and public key path
+  path_folder_signed_modules="/root/signed-modules"
+  path_private_key="$path_folder_signed_modules/private_key.priv"
+  path_public_key="$path_folder_signed_modules/public_key.der"
+  echo "DEBUG: \$path_folder_signed_modules = $path_folder_signed_modules"
+  echo "DEBUG: \$path_private_key = $path_private_key"
+  echo "DEBUG: \$path_public_key = $path_public_key"
 
-for module_name in "${module_names[@]}"; do
-  module_file_path="$(modinfo -n "$module_name")"
-  module_directory="$(dirname "$module_file_path")"
+  sign_file_binary_path="/usr/src/kernels/$(uname -r)/scripts/sign-file"
 
-  for file_name in "$module_directory"/* ; do
-    if [ -f "$file_name" ] && [ "$file_name" == "*.ko" ]; then
-      eval "$sign_file_binary_path" sha256 "$path_private_key" "$path_public_key" "$file_name"
-    fi
+  declare -a module_names
+  module_names+=("vboxdrv")
+  module_names+=("vboxnetflt")
+  module_names+=("vboxnetadp")
+  module_names+=("vboxpci")
+
+  for module_name in "${module_names[@]}"; do
+    module_file_path="$(modinfo -n "$module_name")"
+    module_directory="$(dirname "$module_file_path")"
+
+    for file_name in "$module_directory"/*; do
+      if [ -f "$file_name" ] && [ "$file_name" == "*.ko" ]; then
+        eval "$sign_file_binary_path" sha256 "$path_private_key" "$path_public_key" "$file_name"
+      fi
+    done
   done
-done
-
-
+fi
