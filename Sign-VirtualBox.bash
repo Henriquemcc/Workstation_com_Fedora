@@ -32,6 +32,7 @@ if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
   echo "DEBUG: \$path_public_key = $path_public_key"
 
   sign_file_binary_path="/usr/src/kernels/$(uname -r)/scripts/sign-file"
+  echo "DEBUG: \$sign_file_binary_path = $sign_file_binary_path"
 
   declare -a module_names
   module_names+=("vboxdrv")
@@ -41,12 +42,24 @@ if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
 
   for module_name in "${module_names[@]}"; do
     module_file_path="$(modinfo -n "$module_name")"
-    module_directory="$(dirname "$module_file_path")"
+    echo "DEBUG: \$module_file_path = $module_file_path"
 
-    for file_name in "$module_directory"/*; do
-      if [ -f "$file_name" ] && [ "$file_name" == "*.ko" ]; then
-        eval "$sign_file_binary_path" sha256 "$path_private_key" "$path_public_key" "$file_name"
+    if [ -f "$module_file_name" ]; then
+      module_directory="$(dirname "$module_file_path")"
+      echo "DEBUG: \$module_directory = $module_directory"
+
+      if [ -d "$module_directory" ]; then
+        for module_file_name in "$module_directory"/*; do
+          echo "DEBUG: \$module_file_name = $module_file_name"
+          if [ -f "$module_file_name" ] && [ "$module_file_name" == "*.ko" ]; then
+            command_to_sign_kernel_module="$sign_file_binary_path sha256 \"$path_private_key\" \"$path_public_key\" \"$module_file_name\""
+            echo "DEBUG: \$command_to_sign_kernel_module = $command_to_sign_kernel_module"
+            eval "$command_to_sign_kernel_module"
+          fi
+        done
       fi
-    done
+    fi
+
   done
+
 fi
