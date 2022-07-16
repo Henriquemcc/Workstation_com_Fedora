@@ -22,6 +22,8 @@ function sign_virtualbox_kernel_modules() {
 
     bash ./Sign-VirtualBox.bash
 
+    sudo /sbin/vboxconfig
+
   fi
 }
 
