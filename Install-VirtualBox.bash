@@ -38,3 +38,9 @@ sign_virtualbox_kernel_modules
 
 # Loading VirtualBox kernel modules
 sudo modprobe vboxdrv
+
+# Rebuilding kernel akmod packages
+sudo akmods
+
+# Restarting VirtualBox service
+sudo systemctl restart vboxdrv.service
