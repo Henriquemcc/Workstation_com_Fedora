@@ -35,3 +35,6 @@ fi
 
 # Singing kernel modules
 sign_virtualbox_kernel_modules
+
+# Loading VirtualBox kernel modules
+sudo modprobe vboxdrv
