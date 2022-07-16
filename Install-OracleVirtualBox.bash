@@ -22,8 +22,6 @@ function sign_virtualbox_kernel_modules() {
 
     bash ./Sign-VirtualBox.bash
 
-    sudo /sbin/vboxconfig
-
   fi
 }
 
@@ -44,3 +42,9 @@ sudo dnf install --refresh --assumeyes VirtualBox-6.1
 
 # Signing VirtualBox Kernel modules
 sign_virtualbox_kernel_modules
+
+# Configuring VirtualBox
+sudo /sbin/vboxconfig
+
+# Loading VirtualBox kernel modules
+sudo modprobe vboxdrv
