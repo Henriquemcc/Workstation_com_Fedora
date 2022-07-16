@@ -44,4 +44,3 @@ sudo dnf install --refresh --assumeyes VirtualBox-6.1
 
 # Signing VirtualBox Kernel modules
 sign_virtualbox_kernel_modules
-sudo /sbin/vboxconfig
