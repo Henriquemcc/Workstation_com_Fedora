@@ -19,9 +19,7 @@ function run_as_root() {
 run_as_root
 
 # Backing up configuration file
-if ! [ -f "/etc/dnf/dnf.conf.old" ]; then
-  cp "/etc/dnf/dnf.conf" "/etc/dnf/dnf.conf.old"
-fi
+cp "/etc/dnf/dnf.conf" "/etc/dnf/dnf.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
 
 {
   echo "[main]"
