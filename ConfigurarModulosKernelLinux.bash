@@ -26,7 +26,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   if [ "$opcao_selecionada" -eq 1 ]; then
     bash ./Install-NvidiaDriver.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Install-VirtualBox.bash
+    bash ./Sign-VirtualBox.bash
   fi
 done
 
