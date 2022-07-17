@@ -175,7 +175,7 @@ function run_as_root() {
   bash ./Install-NvidiaDriver.bash
 
   # Instalando o VirtualBox
-  bash ./Install-OracleVirtualBox.bash
+  bash ./Install-VirtualBox.bash
 
   # Instalando o MySQL Workbench
   bash ./Install-MySqlWorkBench.bash
