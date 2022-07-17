@@ -4,4 +4,4 @@
 bash ./Install-Flathub.bash
 
 # Installing PeaZip
-flatpak install flathub io.github.peazip.PeaZip
+flatpak install --assumeyes flathub io.github.peazip.PeaZip
