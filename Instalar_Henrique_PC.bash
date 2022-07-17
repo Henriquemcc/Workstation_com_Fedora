@@ -12,6 +12,12 @@ function run_as_root() {
   # Instala pacotes dnf
   function instalar_pacotes_dnf() {
 
+    # Configurando gerenciador de pacotes DNF
+    bash ./Configure-DnfPackageManager.bash
+
+    # Atualizando todos os pacotes instalados
+    bash ./Update-All.bash
+
     # Habilitando RPM Fusion
     bash ./Enable-RpmFusion.bash
 
@@ -159,6 +165,9 @@ function run_as_root() {
   # Instalando pacotes flatpak
   instalar_pacotes_flatpak
 
+  # Atualizando todos os pacotes instalados
+  bash ./Update-All.bash
+
   # Instalando o Docker
   bash ./Install-DockerDesktop.bash
 
@@ -173,9 +182,6 @@ function run_as_root() {
 
   # Instalando o Peazip
   bash ./Install-Peazip.bash
-
-  # Atualizando todos os pacotes instalados
-  bash ./Update-All.bash
 
   # Instalando script Update-All.bash
   instalar_script_update_all
