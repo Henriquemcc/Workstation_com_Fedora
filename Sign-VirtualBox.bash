@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Runs this script as root if it is not root.
-function run_as_root()
-{
+function run_as_root() {
   if [ "$(whoami)" != "root" ]; then
     echo "This script is not running as root"
     echo "Elevating privileges..."
@@ -16,9 +15,15 @@ function run_as_root()
   fi
 }
 
-function sign_virtualbox_modules()
-{
+function sign_virtualbox_modules() {
   if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
+
+    # Clean module files before signing; For debug only
+    #sudo dnf remove --assumeyes VirtualBox-kmodsrc VirtualBox-server akmod-VirtualBox kernel-devel-$(uname -r) kmod-VirtualBox virtualbox-guest-additions VirtualBox
+    #sudo dnf remove --assumeyes kmod-VirtualBox-6.1.34-3.fc36.x86_64
+    #sudo dnf install --assumeyes VirtualBox-kmodsrc VirtualBox-server akmod-VirtualBox kernel-devel-$(uname -r) kmod-VirtualBox virtualbox-guest-additions VirtualBox kmod-VirtualBox-6.1.34-3.fc36.x86_64
+    #sudo dnf install --assumeyes kmod-VirtualBox-6.1.34-3.fc36.x86_64
+    #sudo dnf reinstall --assumeyes kmod-VirtualBox-6.1.34-3.fc36.x86_64
 
     # Checking if private and public keys file exist
     bash ./New-KernelModulesPairOfKeys.bash
@@ -27,42 +32,40 @@ function sign_virtualbox_modules()
     path_folder_signed_modules="/root/signed-modules"
     path_private_key="$path_folder_signed_modules/private_key.priv"
     path_public_key="$path_folder_signed_modules/public_key.der"
-    echo "DEBUG: \$path_folder_signed_modules = $path_folder_signed_modules"
-    echo "DEBUG: \$path_private_key = $path_private_key"
-    echo "DEBUG: \$path_public_key = $path_public_key"
+    #echo "DEBUG1: \$path_folder_signed_modules = $path_folder_signed_modules"
+    #echo "DEBUG2: \$path_private_key = $path_private_key"
+    #echo "DEBUG3: \$path_public_key = $path_public_key"
 
     sign_file_binary_path="/usr/src/kernels/$(uname -r)/scripts/sign-file"
-    echo "DEBUG: \$sign_file_binary_path = $sign_file_binary_path"
+    #echo "DEBUG4: \$sign_file_binary_path = $sign_file_binary_path"
 
-    declare -a module_names
-    module_names+=("vboxdrv")
-    module_names+=("vboxnetflt")
-    module_names+=("vboxnetadp")
-    module_names+=("vboxpci")
+    path_virtualbox_modules_directory="$(dirname "$(modinfo -n vboxdrv)")"
+    #echo "DEBUG5: \$path_virtualbox_modules_directory = $path_virtualbox_modules_directory"
 
-    for module_name in "${module_names[@]}"; do
-      module_file_path="$(modinfo -n "$module_name")"
-      echo "DEBUG: \$module_file_path = $module_file_path"
+    # For each file in the VirtualBox kernel module directory
+    for file_path_in_virtualbox_modules_directory in "$path_virtualbox_modules_directory"/*; do
 
-      if [ -f "$module_file_name" ]; then
-        module_directory="$(dirname "$module_file_path")"
-        echo "DEBUG: \$module_directory = $module_directory"
-
-        if [ -d "$module_directory" ]; then
-    for module_file_name in "$module_directory"/*; do
-      echo "DEBUG: \$module_file_name = $module_file_name"
-      if [ -f "$module_file_name" ] && [ "$module_file_name" == "*.ko" ]; then
-        command_to_sign_kernel_module="$sign_file_binary_path sha256 \"$path_private_key\" \"$path_public_key\" \"$module_file_name\""
-        echo "DEBUG: \$command_to_sign_kernel_module = $command_to_sign_kernel_module"
+      # Decompressing XZ file
+      if [ "${file_path_in_virtualbox_modules_directory: -3}" == ".xz" ]; then
+        command_to_sign_kernel_module="$sign_file_binary_path sha256 \"$path_private_key\" \"$path_public_key\" \"$file_path_in_virtualbox_modules_directory\""
+        #echo "DEBUG7: \$command_to_sign_kernel_module = $command_to_sign_kernel_module"
         eval "$command_to_sign_kernel_module"
+        xz --decompress --keep "$file_path_in_virtualbox_modules_directory"
+        file_path_in_virtualbox_modules_directory="${file_path_in_virtualbox_modules_directory::-3}"
+        #echo "DEBUG6: \$file_path_in_virtualbox_modules_directory = $file_path_in_virtualbox_modules_directory"
       fi
-    done
-        fi
+
+      # Signing .ko file
+      if [ "${file_path_in_virtualbox_modules_directory: -3}" == ".ko" ]; then
+        command_to_sign_kernel_module="$sign_file_binary_path sha256 \"$path_private_key\" \"$path_public_key\" \"$file_path_in_virtualbox_modules_directory\""
+        #echo "DEBUG7: \$command_to_sign_kernel_module = $command_to_sign_kernel_module"
+        eval "$command_to_sign_kernel_module"
       fi
 
     done
 
   fi
+
 }
 
 # Running as root
