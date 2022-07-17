@@ -18,8 +18,7 @@ mkdir -p "$installation_directory"
 # Downloads a file from the internet.
 # @param $1 File url
 # @return Downloaded file path
-function download_file
-{
+function download_file {
   # Defining file name
   file_name="$(basename "$1")"
 
@@ -28,7 +27,7 @@ function download_file
 
   # Erasing file if it exists
   if [ -f "$file_path" ]; then
-      rm "$file_path"
+    rm "$file_path"
   fi
 
   # Downloading file
@@ -42,8 +41,7 @@ function download_file
 # @param $1 Executable path
 # @param $2 Icon path
 # @param $3 Shortcut path
-function create_shortcut
-{
+function create_shortcut {
   {
     echo "[Desktop Entry]"
     echo "Version=1.5"
@@ -53,38 +51,40 @@ function create_shortcut
     echo "Icon=$2"
     echo "StartupNotify=true"
     echo "Categories=Game;"
-  } > "$3"
+  } >"$3"
 
 }
 
-# Installing requirements
-bash ./Install-Curl.bash
-bash ./Install-Tar.bash
-bash ./Install-Xrandr.bash
-bash ./Install-Java8.bash
+if ! [ -f "${installation_directory}/${minecraft_binary_file_name}" ]; then
+  # Installing requirements
+  bash ./Install-Curl.bash
+  bash ./Install-Tar.bash
+  bash ./Install-Xrandr.bash
+  bash ./Install-Java8.bash
 
-# Downloading file
-downloaded_tar_gz_file="$(download_file $minecraft_file_url)"
+  # Downloading file
+  downloaded_tar_gz_file="$(download_file $minecraft_file_url)"
 
-# Extracting Minecraft binary
-tar -C "$temporary_directory" -xzvf "$downloaded_tar_gz_file"
+  # Extracting Minecraft binary
+  tar -C "$temporary_directory" -xzvf "$downloaded_tar_gz_file"
 
-# Moving binary file to ~/.bin
-extracted_minecraft_binary_path="${temporary_directory}/minecraft-launcher/${minecraft_binary_file_name}"
-minecraft_binary_path="${installation_directory}/minecraft-launcher"
-mv "$extracted_minecraft_binary_path" "$minecraft_binary_path"
+  # Moving binary file to ~/.bin
+  extracted_minecraft_binary_path="${temporary_directory}/minecraft-launcher/${minecraft_binary_file_name}"
+  minecraft_binary_path="${installation_directory}/minecraft-launcher"
+  mv "$extracted_minecraft_binary_path" "$minecraft_binary_path"
 
-# Creating icon directory if it does not exist
-mkdir -p "$icons_directory"
+  # Creating icon directory if it does not exist
+  mkdir -p "$icons_directory"
 
-# Defining Minecraft icon path
-minecraft_icon_path="${icons_directory}/minecraft.png"
+  # Defining Minecraft icon path
+  minecraft_icon_path="${icons_directory}/minecraft.png"
 
-# Downloading icon
-curl -L --user-agent "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0" "$minecraft_picture_url" > "$minecraft_icon_path"
+  # Downloading icon
+  curl -L --user-agent "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0" "$minecraft_picture_url" >"$minecraft_icon_path"
 
-# Defining Minecraft shortcut file path
-minecraft_shortcut_path="${applications_folder}/Minecraft.desktop"
+  # Defining Minecraft shortcut file path
+  minecraft_shortcut_path="${applications_folder}/Minecraft.desktop"
 
-# Creating shortcut
-create_shortcut "$minecraft_binary_path" "$minecraft_icon_path" "$minecraft_shortcut_path"
+  # Creating shortcut
+  create_shortcut "$minecraft_binary_path" "$minecraft_icon_path" "$minecraft_shortcut_path"
+fi
