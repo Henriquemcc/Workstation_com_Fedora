@@ -141,6 +141,9 @@ function run_as_root() {
 
     # Instalando o FlatHub
     bash ./Install-Flathub.bash
+
+    # Instalando o Android Studio
+    sudo flatpak install --assumeyes flathub com.google.AndroidStudio
   }
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
