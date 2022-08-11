@@ -100,6 +100,9 @@ function run_as_root() {
     sudo dnf install --assumeyes abrt-desktop
     sudo dnf install --assumeyes abrt-java-connector
 
+    # Instalando jogos
+    sudo dnf install --assumeyes retroarch
+
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shel
     sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
