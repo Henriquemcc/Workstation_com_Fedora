@@ -55,12 +55,13 @@ function create_shortcut {
 
 }
 
+# Installing requirements
+bash ./Install-Curl.bash
+bash ./Install-Tar.bash
+bash ./Install-Xrandr.bash
+bash ./Install-Java8.bash
+
 if ! [ -f "${installation_directory}/${minecraft_binary_file_name}" ]; then
-  # Installing requirements
-  bash ./Install-Curl.bash
-  bash ./Install-Tar.bash
-  bash ./Install-Xrandr.bash
-  bash ./Install-Java8.bash
 
   # Downloading file
   downloaded_tar_gz_file="$(download_file $minecraft_file_url)"
