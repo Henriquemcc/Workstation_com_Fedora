@@ -63,6 +63,7 @@ function run_as_root() {
     # Instalando as Ferramentas de desenvolvimento
     sudo dnf install --assumeyes golang
     sudo dnf install --assumeyes gcc
+    sudo dnf install --assumeyes gcc-c++
     sudo dnf install --assumeyes dotnet-sdk-5.0
     sudo dnf install --assumeyes aspnetcore-runtime-5.0
     sudo dnf install --assumeyes dotnet-runtime-5.0
