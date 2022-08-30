@@ -15,6 +15,9 @@ function run_as_root() {
     # Configurando gerenciador de pacotes DNF
     bash ./Configure-DnfPackageManager.bash
 
+    # Habilitando atualizações automáticas
+    bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
+
     # Atualizando todos os pacotes instalados
     bash ./Update-All.bash
 
@@ -85,7 +88,6 @@ function run_as_root() {
     sudo dnf install --assumeyes steam
     sudo dnf install --assumeyes mokutil
     sudo dnf install --assumeyes fdupes
-    sudo dnf install --assumeyes dnf-automatic
     sudo dnf install --assumeyes dconf-editor
     sudo dnf install --assumeyes audacity
     sudo dnf install --assumeyes gimp
@@ -149,6 +151,7 @@ function run_as_root() {
     # Instalando o Android Studio
     sudo flatpak install --assumeyes flathub com.google.AndroidStudio
   }
+
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
 
