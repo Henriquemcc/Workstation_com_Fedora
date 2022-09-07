@@ -98,6 +98,7 @@ function run_as_root() {
     sudo dnf install --assumeyes wol
     sudo dnf install --assumeyes brasero
     sudo dnf install --assumeyes nmap
+    sudo dnf install --assumeyes calibre
 
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
