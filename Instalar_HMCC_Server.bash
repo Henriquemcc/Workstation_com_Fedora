@@ -40,6 +40,9 @@ function run_as_root() {
     # Instalando o Docker
     bash ./Install-DockerEngine.bash
 
+    # Instalando o Dynamic DNS Update Client
+    bash ./Install-Dynamic_Dns_Update_Client.bash
+
     # Atualizando todos os pacotes instalados
     bash ./Update-All.bash
 }
