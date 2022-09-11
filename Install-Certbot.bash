@@ -18,17 +18,11 @@ function run_as_root() {
 # Running as root
 run_as_root
 
-# Installing Snap package manager
-dnf install --assumeyes snapd
-ln -s /var/lib/snapd/snap /snap
+# Installing requirements
+bash ./Install-Snapd.bash
 
-# Installing Kernel modules
-dnf install --assumeyes fuse
-dnf install --assumeyes squashfuse
-dnf install --assumeyes kernel-modules
+# Installing Certbot
+snap install --classic certbot
 
-# Installing snap core
-snap install core
-
-# Updating snap core
-snap refresh core
+# Preparing the Certbot command
+ln -s /snap/bin/certbot /usr/bin/certbot
