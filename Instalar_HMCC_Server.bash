@@ -23,6 +23,9 @@ function run_as_root() {
     dnf install --assumeyes dnf-automatic
   }
 
+  # Alterando o nome do computador
+  hostnamectl set-hostname --static HMCC-Server
+
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
