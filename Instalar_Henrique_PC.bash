@@ -152,6 +152,10 @@ function run_as_root() {
     # Instalando o Android Studio
     sudo flatpak install --assumeyes flathub com.google.AndroidStudio
   }
+  
+  # Alterando o nome do computador
+  hostnamectl set-hostname --static henrique-pc
+  hostnamectl set-hostname --pretty HENRIQUE-PC
 
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
