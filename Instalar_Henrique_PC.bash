@@ -132,13 +132,33 @@ function run_as_root() {
     bash ./Install-Snapd.bash
 
     # Instalando pacotes snap
-    sudo snap install spotify
-    sudo snap install intellij-idea-community --classic
-    sudo snap install pycharm-community --classic
-    sudo snap install clion --classic
-    sudo snap install flutter --classic
-    sudo snap install kotlin --classic
-    sudo snap install skype --classic
+    while true; do
+      snap install spotify && break
+    done
+
+    while true; do
+      snap install intellij-idea-community --classic && break
+    done
+
+    while true; do
+      snap install pycharm-community --classic && break
+    done
+
+    while true; do
+      snap install clion --classic && break
+    done
+
+    while true; do
+      snap install flutter --classic && break
+    done
+
+    while true; do
+      snap install kotlin --classic && break
+    done
+
+    while true; do
+      snap install skype --classic && break
+    done
   }
 
   # Instala pacotes flatpak
@@ -152,7 +172,7 @@ function run_as_root() {
     # Instalando o Android Studio
     sudo flatpak install --assumeyes flathub com.google.AndroidStudio
   }
-  
+
   # Alterando o nome do computador
   hostnamectl set-hostname --static henrique-pc
   hostnamectl set-hostname --pretty HENRIQUE-PC
@@ -203,7 +223,7 @@ function run_as_root() {
 
   # Instalando GitHub Cli
   bash ./Install-GithubCli.bash
-  
+
   # Instalando Microsoft Teams
   bash ./Install-MicrosoftTeams.bash
 }
@@ -216,12 +236,6 @@ bash ./Install-Minecraft.bash
 
 # Instalando o TechnicLauncher
 bash ./Install-TechnicLauncher.bash
-
-# Instalando o Weka
-bash ./Install-Weka.bash
-
-# Instalando o Orange
-bash ./Install-OrangeDataMining.bash
 
 # Instalando programas como root
 sudo bash -c "$(declare -f run_as_root); run_as_root"
