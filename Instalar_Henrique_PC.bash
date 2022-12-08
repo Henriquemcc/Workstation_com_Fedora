@@ -89,7 +89,6 @@ function run_as_root() {
     sudo dnf install --assumeyes mokutil
     sudo dnf install --assumeyes fdupes
     sudo dnf install --assumeyes dconf-editor
-    sudo dnf install --assumeyes audacity
     sudo dnf install --assumeyes gimp
     sudo dnf install --assumeyes gedit
     sudo dnf install --assumeyes ImageMagick
@@ -106,9 +105,6 @@ function run_as_root() {
     # Instalando pacotes para reportar erro automaticamente
     sudo dnf install --assumeyes abrt-desktop
     sudo dnf install --assumeyes abrt-java-connector
-
-    # Instalando jogos
-    sudo dnf install --assumeyes retroarch
 
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shel
@@ -173,7 +169,13 @@ function run_as_root() {
     bash ./Install-Flathub.bash
 
     # Instalando o Android Studio
-    sudo flatpak install --assumeyes flathub com.google.AndroidStudio
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref
+
+    # Instalando o Audacity
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref
+
+    # Instalando o RetroArch
+    flatpak install --assumeyes https://flathub.org/repo/appstream/org.libretro.RetroArch.flatpakref
   }
 
   # Alterando o nome do computador
