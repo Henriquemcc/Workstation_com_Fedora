@@ -194,10 +194,11 @@ function run_as_root() {
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
-  # Instalando Java 8, 11 e 17
-  bash ./Install-Java8.bash
-  bash ./Install-Java11.bash
-  bash ./Install-Java17.bash
+  # Instalando Java
+  bash ./Install-Java_8_Gui.bash
+  bash ./Install-Java_8_Devel.bash
+  bash ./Install-Java_20_Gui.bash
+  bash ./Install-Java_20_Devel.bash
 
   # Instalando pacotes snap
   instalar_pacotes_snap

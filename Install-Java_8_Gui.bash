@@ -1,17 +1,9 @@
 #!/bin/bash
 
-# Checking if Java 8 is installed
-if [ "$(command -v java8)" ] && [ "$(command -v javac8)" ]; then
-    exit 0
-fi
+bash ./Install-Java_8_Headless.bash
 
 # Installing Java 8 JRE and JDK
 sudo dnf install --assumeyes java-1.8.0-openjdk
-sudo dnf install --assumeyes java-1.8.0-openjdk-devel
-
-# Creating command java8 and javac8
-sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/java" "/bin/java8"
-sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/javac" "/bin/javac8"
 
 # Creating shortcuts
 {

@@ -1,17 +1,9 @@
 #!/bin/bash
 
-# Checking if Java 17 is installed
-if [ "$(command -v java17)" ] && [ "$(command -v javac17)" ]; then
-    exit 0
-fi
+bash ./Install-Java_17_Headless.bash
 
 # Installing Java 17 JRE and JDK
 sudo dnf install --assumeyes java-17-openjdk
-sudo dnf install --assumeyes java-17-openjdk-devel
-
-# Creating command java17 and javac17
-sudo ln --symbolic "/usr/lib/jvm/java-17/bin/java" "/bin/java17"
-sudo ln --symbolic "/usr/lib/jvm/java-17/bin/javac" "/bin/javac17"
 
 # Creating shortcuts
 {
@@ -26,6 +18,3 @@ sudo ln --symbolic "/usr/lib/jvm/java-17/bin/javac" "/bin/javac17"
   echo "Keywords=java; runtime; environment; 17; jre"
   echo "StartupNotify=true"
 } | sudo tee "/usr/share/applications/java17.desktop"
-
-
-

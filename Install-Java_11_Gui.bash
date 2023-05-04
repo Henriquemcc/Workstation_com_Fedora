@@ -1,17 +1,9 @@
 #!/bin/bash
 
-# Checking if Java 11 is installed
-if [ "$(command -v java11)" ] && [ "$(command -v javac11)" ]; then
-    exit 0
-fi
+bash ./Install-Java_11_Headless.bash
 
 # Installing Java 11 JRE and JDK
 sudo dnf install --assumeyes java-11-openjdk
-sudo dnf install --assumeyes java-11-openjdk-devel
-
-# Creating command java11 and javac11
-sudo ln --symbolic "/usr/lib/jvm/java-11/bin/java" "/bin/java11"
-sudo ln --symbolic "/usr/lib/jvm/java-11/bin/javac" "/bin/javac11"
 
 # Creating shortcuts
 {
@@ -26,6 +18,3 @@ sudo ln --symbolic "/usr/lib/jvm/java-11/bin/javac" "/bin/javac11"
   echo "Keywords=java; runtime; environment; 11; jre"
   echo "StartupNotify=true"
 } | sudo tee "/usr/share/applications/java11.desktop"
-
-
-
