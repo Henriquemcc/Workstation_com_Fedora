@@ -45,12 +45,6 @@ function run_as_root() {
   # Instalando o Dynamic DNS Update Client
   bash ./Install-Dynamic_Dns_Update_Client.bash
 
-  # Instalando o NextCloud
-  bash ./Install-NextCloudServer.bash
-
-  # Instalando o Certbot
-  bash ./Install-Certbot.bash
-
   # Atualizando todos os pacotes instalados
   bash ./Update-All.bash
 }
