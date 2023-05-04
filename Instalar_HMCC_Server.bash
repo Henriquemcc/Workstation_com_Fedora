@@ -37,7 +37,7 @@ function run_as_root() {
 
   # Instalando Java
   bash ./Install-Java_8_Headless.bash
-  bash ./Install-Java_17_Headless.bash
+  bash ./Install-Java_20_Headless.bash
 
   # Instalando o Docker
   bash ./Install-DockerEngine.bash
