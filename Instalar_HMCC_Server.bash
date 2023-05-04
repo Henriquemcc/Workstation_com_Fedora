@@ -35,10 +35,9 @@ function run_as_root() {
   # Instalando o Snap
   bash ./Install-Snapd.bash
 
-  # Instalando Java 8, 11 e 17
-  bash ./Install-Java8.bash
-  bash ./Install-Java11.bash
-  bash ./Install-Java17.bash
+  # Instalando Java
+  bash ./Install-Java_8_Headless.bash
+  bash ./Install-Java_17_Headless.bash
 
   # Instalando o Docker
   bash ./Install-DockerEngine.bash
