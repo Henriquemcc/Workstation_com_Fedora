@@ -44,11 +44,6 @@ function run_as_root() {
     # Instalando a Impressora HP
     sudo dnf install --assumeyes hplip
 
-    # Instalando o Driver da placa de som
-    sudo dnf install --assumeyes alsa-firmware
-    sudo dnf install --assumeyes pipewire
-    sudo dnf install --assumeyes pipewire-pulseaudio
-
     # Instalando o Suporte a arquivos 7zip
     sudo dnf install --assumeyes p7zip-plugins
     sudo dnf install --assumeyes p7zip
@@ -110,17 +105,11 @@ function run_as_root() {
     ## Extensões Gnome Shel
     sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
     sudo dnf autoremove --assumeyes gnome-shell-extension-window-list
-    sudo dnf autoremove --assumeyes gnome-shell-extension-dash-to-dock
     sudo dnf autoremove --assumeyes gnome-shell-extension-gamemode
     sudo dnf autoremove --assumeyes gnome-shell-extension-appindicator
 
     ## Configuração do Fedora para o Chrome
     sudo dnf autoremove --assumeyes fedora-chromium-config
-
-    # Criando pasta das máquinas virtuais no SSD e dando permissão para todos poderem ler e escrever na pasta
-    path_virtual_vms_dir="/VirtualBox_VMs"
-    sudo mkdir -p "$path_virtual_vms_dir"
-    sudo chmod --recursive 777 "$path_virtual_vms_dir"
 
   }
 
@@ -176,6 +165,9 @@ function run_as_root() {
 
     # Instalando o RetroArch
     flatpak install --assumeyes https://flathub.org/repo/appstream/org.libretro.RetroArch.flatpakref
+
+    # Instalando o Signal
+    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref
   }
 
   # Alterando o nome do computador
@@ -196,7 +188,6 @@ function run_as_root() {
 
   # Instalando Java
   bash ./Install-Java_8_Gui.bash
-  bash ./Install-Java_8_Devel.bash
   bash ./Install-Java_20_Gui.bash
   bash ./Install-Java_20_Devel.bash
 
@@ -212,14 +203,8 @@ function run_as_root() {
   # Instalando o Docker
   bash ./Install-DockerDesktop.bash
 
-  # Instalando o driver Nvidia
-  bash ./Install-NvidiaDriver.bash
-
   # Instalando o VirtualBox
   bash ./Install-VirtualBox.bash
-
-  # Instalando o MySQL Workbench
-  bash ./Install-MySqlWorkBench.bash
 
   # Instalando o Peazip
   bash ./Install-Peazip.bash
@@ -229,25 +214,13 @@ function run_as_root() {
 
   # Instalando GitHub Cli
   bash ./Install-GithubCli.bash
-
-  # Instalando Microsoft Teams
-  bash ./Install-MicrosoftTeams.bash
 }
 
 # Configurando o Gnome Shell
 bash ./Configurar-GnomeShell.bash
-
-# Instalando o Minecraft
-bash ./Install-Minecraft.bash
 
 # Instalando o TechnicLauncher
 bash ./Install-TechnicLauncher.bash
 
 # Instalando programas como root
 sudo bash -c "$(declare -f run_as_root); run_as_root"
-
-# Instalando o Rust
-bash ./Install-RustLang.bash
-
-# Instalando Deno
-cargo install deno --locked
