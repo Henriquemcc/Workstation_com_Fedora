@@ -9,4 +9,4 @@ fi
 sudo dnf install --assumeyes java-1.8.0-openjdk-headless
 
 # Creating command java8
-sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/java" "/bin/java8"
+sudo ln --symbolic "/usr/lib/jvm/jre-1.8.0/bin/java" "/bin/java8"
