@@ -59,7 +59,7 @@ function create_shortcut {
 bash ./Install-Curl.bash
 bash ./Install-Tar.bash
 bash ./Install-Xrandr.bash
-bash ./Install-Java8.bash
+bash ./Install-Java_8_Gui.bash
 
 if ! [ -f "${installation_directory}/${minecraft_binary_file_name}" ]; then
 
