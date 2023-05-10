@@ -8,6 +8,8 @@ path_icons_directory="${HOME}/.local/share/icons/hicolor/303x303/apps"
 
 # Installing requirements
 bash ./Install-Java_8_Gui.bash
+bash ./Install-Curl.bash
+bash ./Install-Xrandr.bash
 
 # Downloading jar file
 mkdir -p "$path_installation_directory"
