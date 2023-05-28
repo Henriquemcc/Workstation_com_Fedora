@@ -105,8 +105,6 @@ function run_as_root() {
     ## Extensões Gnome Shel
     sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
     sudo dnf autoremove --assumeyes gnome-shell-extension-window-list
-    sudo dnf autoremove --assumeyes gnome-shell-extension-gamemode
-    sudo dnf autoremove --assumeyes gnome-shell-extension-appindicator
 
     ## Configuração do Fedora para o Chrome
     sudo dnf autoremove --assumeyes fedora-chromium-config
