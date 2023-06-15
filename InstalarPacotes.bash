@@ -7,7 +7,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 39 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 40 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Compilador de Java 8"
@@ -35,20 +35,21 @@ function obter_opcao() {
     echo "23 - Java 20 (sem interface gráfica)"
     echo "24 - Microsoft Teams"
     echo "25 - MySQL WorkBench"
-    echo "26 - Orange Data Mining"
-    echo "27 - Peazip"
-    echo "28 - Proton VPN"
-    echo "29 - Python 3 Pip"
-    echo "30 - R Studio"
-    echo "31 - Rust Programming Language"
-    echo "32 - SDK Man"
-    echo "33 - Snapd"
-    echo "34 - Speed Test Cli"
-    echo "35 - Technic Launcher"
-    echo "36 - VirtualBox (Repositório RPM Fusion)"
-    echo "37 - VirtualBox (Repositório da Oracle)"
-    echo "38 - Visual Studio Code"
-    echo "39 - Weka (Waikato Environment for Knowledge Analysis)"
+    echo "26 - Nvidia Cuda Toolkit"
+    echo "27 - Orange Data Mining"
+    echo "28 - Peazip"
+    echo "29 - Proton VPN"
+    echo "30 - Python 3 Pip"
+    echo "31 - R Studio"
+    echo "32 - Rust Programming Language"
+    echo "33 - SDK Man"
+    echo "34 - Snapd"
+    echo "35 - Speed Test Cli"
+    echo "36 - Technic Launcher"
+    echo "37 - VirtualBox (Repositório RPM Fusion)"
+    echo "38 - VirtualBox (Repositório da Oracle)"
+    echo "39 - Visual Studio Code"
+    echo "40 - Weka (Waikato Environment for Knowledge Analysis)"
 
     read -r _opcao_selecionada
   done
@@ -114,32 +115,34 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 25 ]; then
     bash ./Install-MySqlWorkBench.bash
   elif [ "$opcao_selecionada" -eq 26 ]; then
-    bash ./Install-OrangeDataMining.bash
+    bash ./Install-NvidiaCudaToolkit.bash
   elif [ "$opcao_selecionada" -eq 27 ]; then
-    bash ./Install-Peazip.bash
+    bash ./Install-OrangeDataMining.bash
   elif [ "$opcao_selecionada" -eq 28 ]; then
-    bash ./Install-ProtonVPN.bash
+    bash ./Install-Peazip.bash
   elif [ "$opcao_selecionada" -eq 29 ]; then
-    bash ./Install-Python3Pip.bash
+    bash ./Install-ProtonVPN.bash
   elif [ "$opcao_selecionada" -eq 30 ]; then
-    bash ./Install-RStudio.bash
+    bash ./Install-Python3Pip.bash
   elif [ "$opcao_selecionada" -eq 31 ]; then
-    bash ./Install-RustLang.bash
+    bash ./Install-RStudio.bash
   elif [ "$opcao_selecionada" -eq 32 ]; then
-    bash ./Install-SdkMan.bash
+    bash ./Install-RustLang.bash
   elif [ "$opcao_selecionada" -eq 33 ]; then
-    bash ./Install-Snapd.bash
+    bash ./Install-SdkMan.bash
   elif [ "$opcao_selecionada" -eq 34 ]; then
-    bash ./Install-SpeedTestCli.bash
+    bash ./Install-Snapd.bash
   elif [ "$opcao_selecionada" -eq 35 ]; then
-    bash ./Install-TechnicLauncher.bash
+    bash ./Install-SpeedTestCli.bash
   elif [ "$opcao_selecionada" -eq 36 ]; then
-    bash ./Install-VirtualBox.bash
+    bash ./Install-TechnicLauncher.bash
   elif [ "$opcao_selecionada" -eq 37 ]; then
-    bash ./Install-OracleVirtualBox.bash
+    bash ./Install-VirtualBox.bash
   elif [ "$opcao_selecionada" -eq 38 ]; then
-    bash ./Install-VisualStudioCode.bash
+    bash ./Install-OracleVirtualBox.bash
   elif [ "$opcao_selecionada" -eq 39 ]; then
+    bash ./Install-VisualStudioCode.bash
+  elif [ "$opcao_selecionada" -eq 40 ]; then
     bash ./Install-Weka.bash
   fi
 done
