@@ -76,6 +76,7 @@ function run_as_root() {
     sudo dnf install --assumeyes vlc
     sudo dnf install --assumeyes qt5-qtsvg
     sudo dnf install --assumeyes youtube-dl
+    sudo dnf install --assumeyes yt-dlp
     sudo dnf install --assumeyes snapd
     sudo dnf install --assumeyes flatpak
     sudo dnf install --assumeyes transmission
