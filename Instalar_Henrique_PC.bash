@@ -3,6 +3,14 @@
 # Executa instalação como root
 function run_as_root() {
 
+  # Instala o script Wait-ForPidToShutdown.bash
+  function instalar_script_wait_for_pid_to_shutdown() {
+      file_name="Wait-ForPidToShutdown.bash"
+      destination="/bin/$file_name"
+      cp "./$file_name" "$destination"
+      chmod +x "$destination"
+  }
+
   #  Instala script Update-All.bash
   function instalar_script_update_all() {
     sudo cp ./Update-All.bash /bin/Update-All.bash
@@ -209,6 +217,9 @@ function run_as_root() {
 
   # Instalando script Update-All.bash
   instalar_script_update_all
+
+  # Instalando script Wait-ForPidToShutdown.bash
+  instalar_script_wait_for_pid_to_shutdown
 
   # Instalando GitHub Cli
   bash ./Install-GithubCli.bash
