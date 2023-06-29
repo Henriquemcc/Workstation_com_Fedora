@@ -31,6 +31,7 @@ cp "/etc/dnf/automatic.conf" "/etc/dnf/automatic.conf.backup.$(date "+%d-%m-%Y_%
   echo "random_sleep = 0"
   echo "network_online_timeout = 60"
   echo "download_updates = yes"
+  echo "reboot = never"
   echo "apply_updates = yes"
   echo "[emitters]"
   echo "emit_via = stdio"
