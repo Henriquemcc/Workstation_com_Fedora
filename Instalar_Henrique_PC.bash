@@ -13,8 +13,10 @@ function run_as_root() {
 
   #  Instala o script Update-All.bash
   function instalar_script_update_all() {
-    sudo cp ./Update-All.bash /bin/Update-All.bash
-    sudo chmod +x /bin/Update-All.bash
+    file_name="Update-All.bash"
+    destination="/bin/$file_name"
+    sudo cp "./$file_name" "$destination"
+    sudo chmod +x "$destination"
   }
 
   # Instala pacotes dnf
