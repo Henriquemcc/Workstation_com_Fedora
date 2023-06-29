@@ -11,7 +11,7 @@ function run_as_root() {
       chmod +x "$destination"
   }
 
-  #  Instala script Update-All.bash
+  #  Instala o script Update-All.bash
   function instalar_script_update_all() {
     sudo cp ./Update-All.bash /bin/Update-All.bash
     sudo chmod +x /bin/Update-All.bash
@@ -215,10 +215,10 @@ function run_as_root() {
   # Instalando o Peazip
   bash ./Install-Peazip.bash
 
-  # Instalando script Update-All.bash
+  # Instalando o script Update-All.bash
   instalar_script_update_all
 
-  # Instalando script Wait-ForPidToShutdown.bash
+  # Instalando o script Wait-ForPidToShutdown.bash
   instalar_script_wait_for_pid_to_shutdown
 
   # Instalando GitHub Cli
