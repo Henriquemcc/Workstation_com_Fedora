@@ -3,15 +3,15 @@
 # Commands to run as root
 function run_with_root_privileges()
 {
-  dnf upgrade --refresh --assumeyes &
-  snap refresh &
-  flatpak update --assumeyes &
+  dnf upgrade --refresh --assumeyes
+  snap refresh
+  flatpak update --assumeyes
 }
 
 # Command to run as user
 function run_without_root_privileges()
 {
-  flatpak update --assumeyes &
+  flatpak update --assumeyes
 }
 
 # Detecting whether it is running as root or user
