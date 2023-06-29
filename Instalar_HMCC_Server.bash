@@ -26,6 +26,12 @@ function run_as_root() {
   # Alterando o nome do computador
   hostnamectl set-hostname --static HMCC-Server
 
+  # Configurando DNF
+  bash ./Configure-DnfPackageManager.bash
+
+  # Configurando DNF Automatic
+  bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
+
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
