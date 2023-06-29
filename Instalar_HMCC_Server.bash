@@ -56,7 +56,7 @@ function run_as_root() {
   # Atualizando todos os pacotes instalados
   bash ./Update-All.bash
 
-  # Instalando script Wait-ForPidToShutdown.bash
+  # Instalando o script Wait-ForPidToShutdown.bash
   instalar_script_wait_for_pid_to_shutdown
 }
 
