@@ -25,6 +25,9 @@ cd /etc/wireguard || exit
 # Setting permission
 umask 077
 
+# Generating server keys
+bash ./Generate-ServerKeys.bash
+
 # Generating server configuration
 bash ./Generate-ServerConfiguration.bash
 
