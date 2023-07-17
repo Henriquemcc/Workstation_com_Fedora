@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Generates pair of asymmetric keys and server config file
-
-# Generating private and public keys
-wg genkey | tee server.key | wg pubkey > server.pub
-
 # Creating configuration file
 {
   echo "[Interface]"
