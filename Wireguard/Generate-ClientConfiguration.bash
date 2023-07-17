@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Generates client pair of asymmetric keys, IP addresses and its configuration file
+
 # Getting device name
 echo -n "Type the device name: "
 read -r name

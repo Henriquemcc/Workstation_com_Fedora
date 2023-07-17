@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Adds a client public key, pre-shared key and IP Addresses to the server
+
 # Runs this script as root if it is not root.
 function run_as_root() {
   if [ "$(whoami)" != "root" ]; then
