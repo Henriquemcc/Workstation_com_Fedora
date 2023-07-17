@@ -18,11 +18,8 @@ read -r ipv6_last_hextet
 echo -n "Type the endpoint IP address or hostname:"
 read -r endpoint_ip_hostname
 
-# Generating private and public keys
-wg genkey | tee "${name}.key" | wg pubkey > "${name}.pub"
-
-# Generating pre-shared key
-wg genpsk > "${name}.psk"
+# Generating client keys
+bash ./Generate-ClientKeys.bash "$name"
 
 # Creating client configuration
 {
