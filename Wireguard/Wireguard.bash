@@ -30,7 +30,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 2 ]; then
     bash ./Configure-Server.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
-    bash ./Generate-ClientConfiguration.bash
+    bash ./Generate-ClientKeysAndConfiguration.bash
   elif [ "$opcao_selecionada" -eq 4 ]; then
     bash ./Add-Client.bash
   fi
