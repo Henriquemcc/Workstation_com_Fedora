@@ -34,6 +34,10 @@ bash ./Generate-ServerConfiguration.bash
 # Copying server configuration file
 cp ./wg0.conf /etc/wireguard/wg0.conf
 
+# Opening Firewall port
+firewall-cmd --permanent --add-service=wireguard
+firewall-cmd --reload
+
 # Enabling IP Forwarding
 if ! grep -q "net.ipv4.ip_forward=1" "/etc/sysctl.conf"; then
   echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
