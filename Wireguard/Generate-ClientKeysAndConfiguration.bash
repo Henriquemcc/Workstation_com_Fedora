@@ -33,7 +33,6 @@ bash ./Generate-ClientKeys.bash "$name"
   echo "[Peer]"
   echo "AllowedIPs = 0.0.0.0/0, ::/0"
   echo "Endpoint = ${endpoint_ip_hostname}:51820"
-  echo "PersistentKeepalive = 25"
   echo "PublicKey = $(cat server.pub)"
   echo "PresharedKey = $(cat "${name}.psk")"
 
