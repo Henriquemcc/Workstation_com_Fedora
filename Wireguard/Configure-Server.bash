@@ -20,7 +20,6 @@ run_as_root
 
 # Creating wireguard configuration directory and changing the current directory to it
 mkdir -p /etc/wireguard
-cd /etc/wireguard || exit
 
 # Setting permission
 umask 077
