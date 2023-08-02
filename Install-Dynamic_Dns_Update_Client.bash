@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="v0.0.1"
+version="v0.0.2"
 jar_url="https://github.com/Henriquemcc/Dynamic_DNS_Update_Client/releases/download/${version}/app.jar"
 jar_download_destination="/usr/bin/Dynamic_Dns_Update_Client.jar"
 service_name="dynamic-dns-update-client.service"
