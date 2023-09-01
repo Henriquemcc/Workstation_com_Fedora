@@ -23,7 +23,7 @@ function run_as_root() {
   function instalar_pacotes_dnf() {
 
     # Configurando gerenciador de pacotes DNF
-    bash ./Configure-DnfPackageManager.bash
+    bash ./ConfigurarDnfPackageManager.bash
 
     # Habilitando atualizações automáticas
     bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash

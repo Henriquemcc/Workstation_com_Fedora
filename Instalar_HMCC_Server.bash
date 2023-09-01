@@ -40,7 +40,7 @@ function run_as_root() {
   bash ./ConfigurarSystemdResolved.bash
 
   # Configurando DNF
-  bash ./Configure-DnfPackageManager.bash
+  bash ./ConfigurarDnfPackageManager.bash
 
   # Configurando DNF Automatic
   bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
