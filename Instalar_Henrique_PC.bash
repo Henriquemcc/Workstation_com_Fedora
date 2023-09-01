@@ -183,6 +183,9 @@ function run_as_root() {
   hostnamectl set-hostname --static henrique-pc
   hostnamectl set-hostname --pretty HENRIQUE-PC
 
+  # Configurando o systemd resolver
+  bash ./ConfigurarSystemdResolved.bash
+
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
 
