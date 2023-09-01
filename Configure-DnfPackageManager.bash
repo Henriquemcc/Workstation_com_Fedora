@@ -30,7 +30,7 @@ cp "/etc/dnf/dnf.conf" "/etc/dnf/dnf.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
   echo "skip_if_unavailable=True"
 
   # Keeping cached packages
-  echo "keepcache=True"
+  #echo "keepcache=True"
 
   # Using the fastest mirror
   echo "fastestmirror=True"
