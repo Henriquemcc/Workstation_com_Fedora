@@ -29,7 +29,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   if [ "$opcao_selecionada" -eq 1 ]; then
     bash ./ConfigurarModulosKernelLinux.bash
   elif [ "$opcao_selecionada" -eq 2 ]; then
-    bash ./Configure-DnfPackageManager.bash
+    bash ./ConfigurarDnfPackageManager.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
     bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
   elif [ "$opcao_selecionada" -eq 4 ]; then
