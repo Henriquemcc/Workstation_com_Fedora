@@ -197,8 +197,8 @@ function run_as_root() {
 
   # Instalando Java
   bash ./Install-Java_8_Gui.bash
-  bash ./Install-Java_20_Gui.bash
-  bash ./Install-Java_20_Devel.bash
+  bash ./Install-Java_21_Gui.bash
+  bash ./Install-Java_21_Devel.bash
 
   # Instalando pacotes snap
   instalar_pacotes_snap

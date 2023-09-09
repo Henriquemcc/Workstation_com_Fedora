@@ -72,7 +72,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 3 ]; then
     bash ./Install-Java_17_Devel.bash
   elif [ "$opcao_selecionada" -eq 4 ]; then
-    bash ./Install-Java_20_Devel.bash
+    bash ./Install-Java_21_Devel.bash
   elif [ "$opcao_selecionada" -eq 5 ]; then
     bash ./Install-DockerEngine.bash
   elif [ "$opcao_selecionada" -eq 6 ]; then
@@ -104,7 +104,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 19 ]; then
     bash ./Install-Java_17_Gui.bash
   elif [ "$opcao_selecionada" -eq 20 ]; then
-    bash ./Install-Java_20_Gui.bash
+    bash ./Install-Java_21_Gui.bash
   elif [ "$opcao_selecionada" -eq 21 ]; then
     bash ./Install-Java_8_Headless.bash
   elif [ "$opcao_selecionada" -eq 22 ]; then
@@ -112,7 +112,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 23 ]; then
     bash ./Install-Java_17_Headless.bash
   elif [ "$opcao_selecionada" -eq 24 ]; then
-    bash ./Install-Java_20_Headless.bash
+    bash ./Install-Java_21_Headless.bash
   elif [ "$opcao_selecionada" -eq 25 ]; then
     bash ./Install-MicrosoftTeams.bash
   elif [ "$opcao_selecionada" -eq 26 ]; then
