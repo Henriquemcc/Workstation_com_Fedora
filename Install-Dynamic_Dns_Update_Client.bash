@@ -26,7 +26,7 @@ run_as_root
 
 # Installing requirements
 if ! [ "$(command -v java)" ]; then
-    bash ./Install-Java_20_Headless.bash
+    bash ./Install-Java_21_Headless.bash
 fi
 
 # Downloading JAR File
