@@ -24,7 +24,7 @@ cp "/etc/systemd/resolved.conf" "/etc/systemd/resolved.conf.backup.$(date "+%d-%
 # Generating new configuration file
 {
   echo "[Resolve]"
-  echo "DNSSEC=allow-downgrade"
+#  echo "DNSSEC=allow-downgrade"
   echo "DNSOverTLS=opportunistic"
   echo "Cache=yes"
 } > "/etc/systemd/resolved.conf"
