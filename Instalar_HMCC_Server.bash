@@ -36,6 +36,9 @@ function run_as_root() {
   # Alterando o nome do computador
   hostnamectl set-hostname --static HMCC-Server
 
+  # Configurando o Systemd Resolved
+  bash ./ConfigurarSystemdResolved.bash
+
   # Configurando DNF
   bash ./ConfigurarDnfPackageManager.bash
 
