@@ -79,6 +79,7 @@ function run_as_root() {
     sudo dnf install --assumeyes git-lfs
     sudo dnf install --assumeyes android-tools
     sudo dnf install --assumeyes libstdc++-devel
+    sudo dnf install --assumeyes perf
 
     # Instalando outros programas
     sudo dnf install --assumeyes stacer
