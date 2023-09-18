@@ -58,6 +58,9 @@ function run_as_root() {
   bash ./Install-Java_8_Headless.bash
   bash ./Install-Java_21_Headless.bash
 
+  # Instalando o Wireguard
+  bash ./Wireguard/Install-Wireguard.bash
+
   # Instalando o Docker
   bash ./Install-DockerEngine.bash
 
