@@ -207,6 +207,9 @@ function run_as_root() {
   # Instalando o Mega Sync
   bash ./Install-MegaSync.bash
 
+  # Instalando o Wireguard
+  bash ./Wireguard/Install-Wireguard.bash
+
   # Instalando pacotes snap
   instalar_pacotes_snap
 
