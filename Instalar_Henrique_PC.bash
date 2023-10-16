@@ -187,6 +187,9 @@ function run_as_root() {
   # Configurando o Systemd Resolved
   bash ./ConfigurarSystemdResolved.bash
 
+  # Instalando Nvidia Cuda
+  bash ./Install-NvidiaCudaToolkit.bash
+
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
 
