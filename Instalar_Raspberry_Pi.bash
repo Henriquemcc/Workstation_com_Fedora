@@ -5,6 +5,9 @@ function run_as_root() {
 
   # Alterando o nome do computador
   hostnamectl set-hostname --static rpi
+  
+  # Configurando o sshd_config
+  bash ./ConfigurarSshdConfig.bash
 
   # Configurando o Systemd Resolved
   bash ./ConfigurarSystemdResolved.bash
