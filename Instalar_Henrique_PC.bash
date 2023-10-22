@@ -184,6 +184,9 @@ function run_as_root() {
   hostnamectl set-hostname --static henrique-pc
   hostnamectl set-hostname --pretty HENRIQUE-PC
 
+  # Configurando o Grub
+  bash ./ConfigurarGrub.bash
+
   # Configurando o Systemd Resolved
   bash ./ConfigurarSystemdResolved.bash
 
