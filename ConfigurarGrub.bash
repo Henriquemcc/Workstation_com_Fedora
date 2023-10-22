@@ -22,17 +22,9 @@ run_as_root
 cp "/etc/default/grub" "/etc/default/grub.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
 
 # Generating new configuration file
-{
-  echo "GRUB_TIMEOUT=5"
-  echo "GRUB_DISTRIBUTOR=\"$(sed 's, release .*$,,g' /etc/system-release)"\"
-  echo "GRUB_DEFAULT=saved"
-  echo "GRUB_DISABLE_SUBMENU=true"
-  echo "GRUB_TERMINAL_OUTPUT=\"console\""
-  echo "GRUB_CMDLINE_LINUX=\"rhgb quiet modprobe.blacklist=nouveau rd.driver.blacklist=nouveau\""
-  echo "GRUB_DISABLE_RECOVERY=\"true\""
-  echo "GRUB_ENABLE_BLSCFG=true"
-  echo "GRUB_SAVEDEFAULT=true"
-} > "/etc/default/grub"
+if ! grep -q "GRUB_SAVEDEFAULT=true" "/etc/default/grub"; then
+  echo "GRUB_SAVEDEFAULT=true" >> "/etc/default/grub"
+fi
 
 # Generating grub
 grub2-mkconfig -o /etc/grub2.cfg
