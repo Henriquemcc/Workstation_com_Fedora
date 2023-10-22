@@ -5,7 +5,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 6 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 7 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Configurar módulos do kernel"
@@ -14,6 +14,7 @@ function obter_opcao() {
     echo "4 - Configurar Wireguard"
     echo "5 - Configurar Systemd Resolved"
     echo "6 - Configurar sshd_config"
+    echo "7 - Configurar Grub"
     read -r _opcao_selecionada
   done
 
@@ -41,6 +42,8 @@ while [ $opcao_selecionada -ne 0 ]; do
     bash ./ConfigurarSystemdResolved.bash
   elif [ "$opcao_selecionada" -eq 6 ]; then
     bash ./ConfigurarSshdConfig.bash
+  elif [ "$opcao_selecionada" -eq 7 ]; then
+    bash ./ConfigurarGrub.bash
   fi
 
 
