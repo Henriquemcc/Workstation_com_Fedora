@@ -8,7 +8,7 @@ sudo dnf --assumeyes remove egl-gbm
 sudo dnf --assumeyes remove xorg-x11-drv-nvidia-cuda-libs
 
 # Installing Nvidia Cuda
-sudo dnf module install --allowerasing --refresh --assumeyes nvidia-driver:latest-dkms
+sudo dnf module install --allowerasing --refresh --assumeyes nvidia-driver:open-dkms
 sudo dnf --assumeyes --disablerepo="rpmfusion-nonfree*" install cuda
 
 # Updating grub
