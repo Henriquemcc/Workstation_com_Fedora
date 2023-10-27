@@ -43,7 +43,7 @@ function run_as_root() {
   bash ./ConfigurarDnfPackageManager.bash
 
   # Configurando DNF Automatic
-  bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
+  bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
 
   # Instalando pacotes dnf
   instalar_pacotes_dnf

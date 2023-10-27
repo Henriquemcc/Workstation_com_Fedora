@@ -19,7 +19,7 @@ function run_as_root() {
   bash ./Update-All.bash
 
   # Configurando DNF Automatic
-  bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
+  bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
 
   # Instalando o Wireguard
   bash ./Wireguard/Install-Wireguard.bash
