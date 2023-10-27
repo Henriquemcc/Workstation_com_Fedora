@@ -26,7 +26,7 @@ function run_as_root() {
     bash ./ConfigurarDnfPackageManager.bash
 
     # Habilitando atualizações automáticas
-    bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
+    bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
 
     # Atualizando todos os pacotes instalados
     bash ./Update-All.bash

@@ -33,7 +33,7 @@ while [ $opcao_selecionada -ne 0 ]; do
   elif [ "$opcao_selecionada" -eq 2 ]; then
     bash ./ConfigurarDnfPackageManager.bash
   elif [ "$opcao_selecionada" -eq 3 ]; then
-    bash ./Enable-AutomaticUpdatesWithDnfAutomatic.bash
+    bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
   elif [ "$opcao_selecionada" -eq 4 ]; then
     cd ./Wireguard || exit
     bash ./Wireguard.bash
