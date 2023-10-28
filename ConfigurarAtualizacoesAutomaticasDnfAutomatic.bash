@@ -27,7 +27,7 @@ cp "/etc/dnf/automatic.conf" "/etc/dnf/automatic.conf.backup.$(date "+%d-%m-%Y_%
 # Generating Dnf Automatic Configuration File
 {
   echo "[commands]"
-  echo "upgrade_type = security"
+  echo "upgrade_type = default"
   echo "random_sleep = 0"
   echo "network_online_timeout = 60"
   echo "download_updates = yes"
