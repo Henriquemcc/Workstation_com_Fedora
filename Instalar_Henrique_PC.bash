@@ -114,13 +114,9 @@ function run_as_root() {
     sudo dnf install --assumeyes abrt-java-connector
 
     # Desinstalando pacotes inúteis
-    ## Extensões Gnome Shel
+    ## Extensões Gnome Shell
     sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
     sudo dnf autoremove --assumeyes gnome-shell-extension-window-list
-
-    ## Configuração do Fedora para o Chrome
-    sudo dnf autoremove --assumeyes fedora-chromium-config
-
   }
 
   # Instala pacotes snap
