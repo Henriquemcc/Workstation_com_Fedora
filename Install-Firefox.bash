@@ -28,3 +28,11 @@ flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.mozilla.fi
 
 # Removing firefox from RPM
 dnf autoremove --assumeyes firefox
+
+# Creating a script to link the old executable to the new executable
+link_path="/bin/firefox"
+{
+  echo "#!/bin/bash"
+  echo "flatpak run org.mozilla.firefox \$@"
+} > "$link_path"
+chmod +x "$link_path"
