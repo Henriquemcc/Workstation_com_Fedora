@@ -5,7 +5,7 @@ function_return_variable=
 function obter_opcao() {
   _opcao_selecionada=-1
   re='^[0-9]+$'
-  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 8 ]; do
+  while ! [[ $_opcao_selecionada =~ $re ]] || [ $_opcao_selecionada -lt 0 ] || [ $_opcao_selecionada -gt 9 ]; do
     echo "O que deseja fazer?"
     echo "0 - Sair"
     echo "1 - Configurar módulos do kernel"
@@ -16,6 +16,7 @@ function obter_opcao() {
     echo "6 - Configurar sshd_config"
     echo "7 - Configurar Grub"
     echo "8 - Configurar NTP"
+    echo "9 - Configurar Gnome Shell"
     read -r _opcao_selecionada
   done
 
@@ -47,6 +48,8 @@ while [ $opcao_selecionada -ne 0 ]; do
     bash ./ConfigurarGrub.bash
   elif [ "$opcao_selecionada" -eq 8 ]; then
     bash ./ConfigurarNtp.bash
+  elif [ "$opcao_selecionada" -eq 9 ]; then
+    bash ./ConfigurarGnomeShell.bash
   fi
 
 
