@@ -189,6 +189,9 @@ function run_as_root() {
   # Configurando o Systemd Resolved
   bash ./ConfigurarSystemdResolved.bash
 
+  # Configurando o NTP
+  bash ./ConfigurarNtp.bash
+
   # Instalando Nvidia Cuda
   bash ./Install-NvidiaCudaToolkit.bash
 
