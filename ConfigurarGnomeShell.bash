@@ -40,3 +40,7 @@ gsettings set org.gnome.shell.weather automatic-location true
 
 # Habilitando o Fractional scaling
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+# Instalando e Habilitando Dash to Dock
+gnome-extensions install dash-to-dock@micxgx.gmail.com
+gnome-extensions enable dash-to-dock@micxgx.gmail.com
