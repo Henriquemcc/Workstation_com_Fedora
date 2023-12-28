@@ -44,3 +44,7 @@ gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffe
 # Instalando e Habilitando Dash to Dock
 gnome-extensions install dash-to-dock@micxgx.gmail.com
 gnome-extensions enable dash-to-dock@micxgx.gmail.com
+
+# Instalando e Habilitando o Bing Wallpaper
+gnome-extensions install BingWallpaper@ineffable-gmail.com
+gnome-extensions enable BingWallpaper@ineffable-gmail.com
