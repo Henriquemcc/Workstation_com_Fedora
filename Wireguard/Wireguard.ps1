@@ -17,7 +17,8 @@
     }
 
     [IpAddressInfo] Clone() {
-        return [IpAddressInfo]::new([System.Net.IPAddress]::new($this.IpAddress), $this.Prefix)
+        $clonedIpAddress = [System.Net.IPAddress]::Parse($this.IpAddress.ToString())
+        return [IpAddressInfo]::new($clonedIpAddress, $this.Prefix)
     }
 }
 
@@ -105,18 +106,21 @@ class Client {
     }
 
     [Client]Clone() {
-        $clonedAddress = [System.Collections.ArrayList]::new()
+        $clonedAddress = [System.Collections.Generic.List[IpAddressInfo]]::new()
         foreach ($address in $this.Address) {
             [void]$clonedAddress.Add($address.Clone())
         }
-        $clonedDnsServers = [System.Collections.ArrayList]::new()
+
+        $clonedDnsServers = [System.Collections.Generic.List[System.Net.IPAddress]]::new()
         foreach ($dnsServer in $this.DnsServers) {
-            [void]$clonedDnsServers.Add($dnsServer.Clone())
+            [void]$clonedDnsServers.Add([System.Net.IPAddress]::Parse($dnsServer.ToString()))
         }
-        $clonedAllowedIps = [System.Collections.ArrayList]::new()
+
+        $clonedAllowedIps = [System.Collections.Generic.List[IpAddressInfo]]::new()
         foreach ($allowedIp in $this.AllowedIps) {
             [void]$clonedAllowedIps.Add($allowedIp.Clone())
         }
+
         return [Client]::new($this.Name.Clone(), $clonedAddress, $this.PrivateKey.Clone(), $this.PresharedKey.Clone(), $clonedDnsServers, $clonedAllowedIps)
     }
 
