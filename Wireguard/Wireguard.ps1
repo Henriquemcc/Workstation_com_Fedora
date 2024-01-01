@@ -1,4 +1,4 @@
-class IpAddressInfo {
+﻿class IpAddressInfo {
     [System.Net.IPAddress]$IpAddress
     [System.UInt16]$Prefix
 
