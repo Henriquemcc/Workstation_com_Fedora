@@ -137,7 +137,7 @@ function GenerateClientConfiguration([Server]$Server, [Client]$Client) {
 
     [void]$stringBuilder.AppendLine("[Interface]")
     [void]$stringBuilder.AppendLine("# Name = $($Client.Name)")
-    [void]$stringBuilder.AppendLine("Address = $($Client.Address.IPv4Address)/$($Client.Address.IPv4Prefix), $($Client.Address.IPv6Address)/$($Client.Address.IPv6Prefix)")
+    [void]$stringBuilder.AppendLine("Address = $($Client.Address -join ", ")")
     [void]$stringBuilder.AppendLine("DNS = $($Client.DnsServers -join ", ")")
     [void]$stringBuilder.AppendLine("PrivateKey = $($Client.PrivateKey)")
     [void]$stringBuilder.AppendLine()
