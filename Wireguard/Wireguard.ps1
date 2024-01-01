@@ -62,7 +62,7 @@ class Server {
     }
 
     [System.String] GetPublicKey() {
-        return GeneratePublicKey -PrivateKey $this.PrivateKey
+        return GeneratePublicKey -PrivateKey ($this.PrivateKey)
     }
 
 }
@@ -225,8 +225,9 @@ function GenerateClientConfiguration([Server]$Server, [Client]$Client) {
         [void]$stringBuilder.AppendLine("Endpoint = $($Server.Endpoint):$($Server.Port)")
     }
 
-    if ($null -ne $Server.PublicKey -and $Server.PublicKey.Length -gt 0) {
-        [void]$stringBuilder.AppendLine("PublicKey = $($Server.GetPublicKey())")
+    $publicKey = $Server.GetPublicKey()
+    if ($null -ne $publicKey -and $publicKey.Length -gt 0) {
+        [void]$stringBuilder.AppendLine("PublicKey = $($publicKey)")
     }
 
     if ($null -ne $Client.PresharedKey -and $Client.PresharedKey.Length -gt 0) {
