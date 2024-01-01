@@ -173,7 +173,6 @@ function GenerateServerConfiguration([Server]$Server, [System.Collections.Generi
         }
 
         $publicKey = $client.GetPublicKey()
-        Write-Host "publicKey = $publicKey"
         if ($null -ne $publicKey -and $publicKey.Length -gt 0) {
             [void]$stringBuilder.AppendLine("PublicKey = $($publicKey)")
         }
