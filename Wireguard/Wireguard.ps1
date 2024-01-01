@@ -150,7 +150,7 @@ function GenerateServerConfiguration([Server]$Server, [System.Collections.Generi
         [void]$stringBuilder.AppendLine("Address = $($Server.Address -join ", ")")
     }
     
-    if ($null -ne $Server.ListenPort) {
+    if ($null -ne $Server.Port) {
         [void]$stringBuilder.AppendLine("ListenPort = $($Server.Port)")
     }
     
@@ -173,6 +173,7 @@ function GenerateServerConfiguration([Server]$Server, [System.Collections.Generi
         }
 
         $publicKey = $client.GetPublicKey()
+        Write-Host "publicKey = $publicKey"
         if ($null -ne $publicKey -and $publicKey.Length -gt 0) {
             [void]$stringBuilder.AppendLine("PublicKey = $($publicKey)")
         }
