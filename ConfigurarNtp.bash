@@ -18,6 +18,9 @@ function run_as_root() {
 # Running as root
 run_as_root
 
+# Installing systemd-timesyncd
+dnf install --assumeyes systemd-timesyncd
+
 # Enabling NTP service
 systemctl enable systemd-timesyncd
 timedatectl set-ntp yes
