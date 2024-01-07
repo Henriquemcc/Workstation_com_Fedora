@@ -18,6 +18,9 @@ function run_as_root() {
 # Running as root
 run_as_root
 
+# Installing systemd-resolved
+dnf install --assumeyes systemd-resolved
+
 # Backing up configuration file
 cp "/etc/systemd/resolved.conf" "/etc/systemd/resolved.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
 
