@@ -1,10 +1,25 @@
 #!/bin/bash
 
-# Installing requirements
-sudo dnf install dnf-plugins-core --assumeyes
+# Runs this script as root if it is not root.
+function run_as_root() {
+  if [ "$(whoami)" != "root" ]; then
+    echo "This script is not running as root"
+    echo "Elevating privileges..."
+    if [ "$(command -v sudo)" ]; then
+      sudo bash "$0"
+      exit $?
+    else
+      echo "Sudo is not installed"
+      exit 1
+    fi
+  fi
+}
 
-# Adding Docker repository
-sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo --assumeyes
+# Running as root
+run_as_root
+
+# Installing Docker Engine
+bash ./Install-DockerEngine.bash
 
 # Installing Docker desktop
-sudo dnf install https://desktop.docker.com/linux/main/amd64/docker-desktop-4.8.1-x86_64.rpm docker-ce docker-ce-cli containerd.io docker-compose-plugin --assumeyes
+dnf install --assumeyes https://desktop.docker.com/linux/main/amd64/docker-desktop-4.26.1-x86_64.rpm
