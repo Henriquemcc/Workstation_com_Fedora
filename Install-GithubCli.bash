@@ -1,12 +1,30 @@
 #!/bin/bash
 
+# Runs this script as root if it is not root.
+function run_as_root() {
+  if [ "$(whoami)" != "root" ]; then
+    echo "This script is not running as root"
+    echo "Elevating privileges..."
+    if [ "$(command -v sudo)" ]; then
+      sudo bash "$0"
+      exit $?
+    else
+      echo "Sudo is not installed"
+      exit 1
+    fi
+  fi
+}
+
+# Running as root
+run_as_root
+
 # Installing requirements
-sudo dnf install  --assumeyes 'dnf-command(config-manager)'
-sudo dnf install --assumeyes git
-sudo dnf install --assumeyes git-lfs
+dnf install  --assumeyes 'dnf-command(config-manager)'
+dnf install --assumeyes git
+dnf install --assumeyes git-lfs
 
 # Adding GitHub Cli repository
-sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo --assumeyes
+dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo --assumeyes
 
 # Installing GitHub Cli.
-sudo dnf install --assumeyes gh
+dnf install --assumeyes gh
