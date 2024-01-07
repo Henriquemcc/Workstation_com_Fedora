@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Runs this script as root if it is not root.
+function run_as_root() {
+  if [ "$(whoami)" != "root" ]; then
+    echo "This script is not running as root"
+    echo "Elevating privileges..."
+    if [ "$(command -v sudo)" ]; then
+      sudo bash "$0"
+      exit $?
+    else
+      echo "Sudo is not installed"
+      exit 1
+    fi
+  fi
+}
+
+# Running as root
+run_as_root
+
 VERSION_ID="$(awk -F= '$1=="VERSION_ID" { print $2 ;}' /etc/os-release)"
 URL_RPM_MySQL_WorkBench=""
 URL_RPM_MySQL_Repository=""
@@ -18,10 +36,10 @@ elif [ "$VERSION_ID" == "34" ]; then
 fi
 
 # Installing MySQL Repository
-sudo dnf install --assumeyes "$URL_RPM_MySQL_Repository"
+dnf install --assumeyes "$URL_RPM_MySQL_Repository"
 
 # Installing MySQL WorkBench
-sudo dnf install --assumeyes "$URL_RPM_MySQL_WorkBench"
+dnf install --assumeyes "$URL_RPM_MySQL_WorkBench"
 
 
 
