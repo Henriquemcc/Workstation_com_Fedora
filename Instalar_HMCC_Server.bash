@@ -33,6 +33,9 @@ function run_as_root() {
     dnf install --assumeyes dnf-automatic
   }
 
+  # Desabilitando o Fedora Cockpit
+  bash ./Disable-Cockpit.bash
+
   # Alterando o nome do computador
   hostnamectl set-hostname --static HMCC-Server
 
