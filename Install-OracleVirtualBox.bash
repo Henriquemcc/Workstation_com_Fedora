@@ -1,19 +1,20 @@
--#!/bin/bash
+#!/bin/bash
 
-# Installing requirements
-bash ./Install-GioTrash.bash
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
 
 # Removing RPM Fusion's VirtualBox
 bash ./Uninstall-VirtualBox.bash
 
 # Downloading and registering Oracle VirtualBox Key
-wget https://www.virtualbox.org/download/oracle_vbox.asc
-sudo rpm --import ./oracle_vbox.asc
-gio trash ./oracle_vbox.asc
+rpm --import https://www.virtualbox.org/download/oracle_vbox.asc
 
 # Adding Oracle VirtualBox Repository
-wget "https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo"
-sudo mv ./virtualbox.repo /etc/yum.repos.d/virtualbox.repo
+curl -L https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo --output virtualbox.repo
+mv ./virtualbox.repo /etc/yum.repos.d/virtualbox.repo
 
 # Installing VirtualBox
-sudo dnf install --refresh --assumeyes VirtualBox-7.0
+dnf install --assumeyes VirtualBox-7.0

@@ -1,17 +1,19 @@
 #!/bin/bash
 
-# Downloading convenience script
-curl -fsSL https://get.docker.com -o get-docker.sh
+# Importing function run_as_root
+source RunAsRoot.bash
 
-# Running convenience script
-sudo sh get-docker.sh
+# Running as root
+run_as_root
 
-# Installing docker rootless
-dockerd-rootless-setuptool.sh install
+# Installing requirements
+dnf install --assumeyes dnf-plugins-core
 
-# Enabling docker service
-sudo systemctl enable docker.service
+# Adding Docker repository
+dnf config-manager --assumeyes --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
-# Removing convenience script
-bash ./Install-GioTrash.bash
-gio trash ./get-docker.sh
+# Installing Docker Engine
+dnf install --assumeyes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Enabling Docker
+systemctl enable --now docker

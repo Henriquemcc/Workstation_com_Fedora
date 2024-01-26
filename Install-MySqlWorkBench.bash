@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
+
 VERSION_ID="$(awk -F= '$1=="VERSION_ID" { print $2 ;}' /etc/os-release)"
 URL_RPM_MySQL_WorkBench=""
 URL_RPM_MySQL_Repository=""
@@ -18,10 +24,10 @@ elif [ "$VERSION_ID" == "34" ]; then
 fi
 
 # Installing MySQL Repository
-sudo dnf install --assumeyes "$URL_RPM_MySQL_Repository"
+dnf install --assumeyes "$URL_RPM_MySQL_Repository"
 
 # Installing MySQL WorkBench
-sudo dnf install --assumeyes "$URL_RPM_MySQL_WorkBench"
+dnf install --assumeyes "$URL_RPM_MySQL_WorkBench"
 
 
 
