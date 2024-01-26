@@ -3,6 +3,9 @@
 # Executa instalação como root
 function run_as_root() {
 
+  # Desabilitando o Fedora Cockpit
+  bash ./Disable-Cockpit.bash
+
   # Alterando o nome do computador
   hostnamectl set-hostname --static rpi
   

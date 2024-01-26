@@ -179,6 +179,9 @@ function run_as_root() {
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref
   }
 
+  # Desabilitando o Fedora Cockpit
+  bash ./Disable-Cockpit.bash
+
   # Alterando o nome do computador
   hostnamectl set-hostname --static henrique-pc
   hostnamectl set-hostname --pretty HENRIQUE-PC
