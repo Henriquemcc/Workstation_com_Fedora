@@ -104,6 +104,7 @@ function run_as_root() {
     sudo dnf install --assumeyes wol
     sudo dnf install --assumeyes brasero
     sudo dnf install --assumeyes nmap
+    sudo dnf install --assumeyes nautilus-dropbox
 
     # Instalando leitores de epub
     sudo dnf install --assumeyes calibre
