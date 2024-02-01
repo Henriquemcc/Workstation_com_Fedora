@@ -215,9 +215,6 @@ function run_as_root() {
   bash ./Install-Java_21_Gui.bash
   bash ./Install-Java_21_Devel.bash
 
-  # Instalando o Mega Sync
-  bash ./Install-MegaSync.bash
-
   # Instalando o Wireguard
   bash ./Wireguard/Install-Wireguard.bash
 
