@@ -164,9 +164,6 @@ function run_as_root() {
     # Instalando o FlatHub
     bash ./Install-Flathub.bash
 
-    # Instalando Firefox
-    bash ./Install-Firefox.bash
-
     # Instalando o Android Studio
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref
 
