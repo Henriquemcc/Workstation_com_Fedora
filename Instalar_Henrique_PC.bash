@@ -196,9 +196,6 @@ function run_as_root() {
   # Configurando o NTP
   bash ./ConfigurarNtp.bash
 
-  # Instalando Nvidia Cuda
-  bash ./Install-NvidiaCudaToolkit.bash
-
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
 
