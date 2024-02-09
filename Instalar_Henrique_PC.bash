@@ -202,6 +202,9 @@ function run_as_root() {
   # Instalando o PowerShell
   bash ./Install-PowerShell.bash
 
+  # Instalando o Brave Browser
+  bash ./Install-Brave.bash
+
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
