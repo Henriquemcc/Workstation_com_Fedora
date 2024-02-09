@@ -104,6 +104,7 @@ function run_as_root() {
     sudo dnf install --assumeyes wol
     sudo dnf install --assumeyes brasero
     sudo dnf install --assumeyes nmap
+    sudo dnf install --assumeyes nautilus-dropbox
 
     # Instalando leitores de epub
     sudo dnf install --assumeyes calibre
@@ -163,9 +164,6 @@ function run_as_root() {
     # Instalando o FlatHub
     bash ./Install-Flathub.bash
 
-    # Instalando Firefox
-    bash ./Install-Firefox.bash
-
     # Instalando o Android Studio
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref
 
@@ -195,9 +193,6 @@ function run_as_root() {
   # Configurando o NTP
   bash ./ConfigurarNtp.bash
 
-  # Instalando Nvidia Cuda
-  bash ./Install-NvidiaCudaToolkit.bash
-
   # Instalando o Google Chrome
   bash ./Install-GoogleChromeStable.bash
 
@@ -214,9 +209,6 @@ function run_as_root() {
   bash ./Install-Java_8_Gui.bash
   bash ./Install-Java_21_Gui.bash
   bash ./Install-Java_21_Devel.bash
-
-  # Instalando o Mega Sync
-  bash ./Install-MegaSync.bash
 
   # Instalando o Wireguard
   bash ./Wireguard/Install-Wireguard.bash
