@@ -104,7 +104,7 @@ function run_as_root() {
     sudo dnf install --assumeyes wol
     sudo dnf install --assumeyes brasero
     sudo dnf install --assumeyes nmap
-    sudo dnf install --assumeyes nautilus-dropbox
+    sudo dnf install --assumeyes rclone
 
     # Instalando leitores de epub
     sudo dnf install --assumeyes calibre
@@ -201,6 +201,9 @@ function run_as_root() {
 
   # Instalando o PowerShell
   bash ./Install-PowerShell.bash
+
+  # Instalando o Brave Browser
+  bash ./Install-Brave.bash
 
   # Instalando pacotes dnf
   instalar_pacotes_dnf
