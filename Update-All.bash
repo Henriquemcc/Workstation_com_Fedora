@@ -1,28 +1,24 @@
 #!/bin/bash
 
-# Commands to run as root
-function run_with_root_privileges()
-{
-  dnf upgrade --refresh --assumeyes
-  snap refresh
-  flatpak update --assumeyes
+# Runs this script as root if it is not root.
+function run_as_root() {
+  if [ "$(whoami)" != "root" ]; then
+    echo "This script is not running as root"
+    echo "Elevating privileges..."
+    if [ "$(command -v sudo)" ]; then
+      sudo bash "$0" "$@"
+      exit $?
+    else
+      echo "Sudo is not installed"
+      exit 1
+    fi
+  fi
 }
 
-# Command to run as user
-function run_without_root_privileges()
-{
-  flatpak update --assumeyes
-}
+# Updating packages
+dnf upgrade --refresh --assumeyes
+snap refresh
+flatpak update --assumeyes
 
-# Detecting whether it is running as root or user
-if [ "$(whoami)" == "root" ]; then
-    run_without_root_privileges
-
-    # Running as non-root user
-    sudo -u "$SUDO_USER" bash -c "$(declare -f run_without_root_privileges); run_without_root_privileges"
-else
-  # Running as root
-  sudo bash -c "$(declare -f run_with_root_privileges); run_with_root_privileges"
-
-  run_without_root_privileges
-fi
+# Running again as root
+run_as_root
