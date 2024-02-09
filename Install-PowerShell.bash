@@ -40,9 +40,12 @@ function InstallPowerShell_On_Fedora_x86_64
 {
   # Register the Microsoft signature key
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+  
+  # Getting version ID
+  VERSION_ID="$(awk -F= '$1=="VERSION_ID" { print $2 ;}' /etc/os-release)"
 
   # Register the Microsoft RedHat repository
-  curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+  curl "https://packages.microsoft.com/config/fedora/${VERSION_ID}/prod.repo" | sudo tee /etc/yum.repos.d/microsoft.repo
 
   # Update the list of products
   sudo dnf check-update
