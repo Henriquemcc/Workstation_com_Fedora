@@ -23,7 +23,7 @@ function run_as_root() {
   function instalar_pacotes_dnf() {
 
     # Configurando gerenciador de pacotes DNF
-    bash ./ConfigurarDnfPackageManager.bash
+    bash ./ConfigurarDnfPackageManagerHenrique-PC.bash
 
     # Habilitando atualizações automáticas
     bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
@@ -229,7 +229,8 @@ function run_as_root() {
   bash ./Install-DockerDesktop.bash
 
   # Instalando o VirtualBox
-  bash ./Install-VirtualBox.bash
+  bash ./Install-OracleVirtualBox.bash
+  bash ./Sign-VirtualBox.bash
 
   # Instalando o Peazip
   bash ./Install-Peazip.bash
