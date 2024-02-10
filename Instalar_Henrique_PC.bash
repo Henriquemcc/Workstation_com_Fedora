@@ -229,7 +229,8 @@ function run_as_root() {
   bash ./Install-DockerDesktop.bash
 
   # Instalando o VirtualBox
-  bash ./Install-VirtualBox.bash
+  bash ./Install-OracleVirtualBox.bash
+  bash ./Sign-VirtualBox.bash
 
   # Instalando o Peazip
   bash ./Install-Peazip.bash
