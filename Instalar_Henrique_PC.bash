@@ -88,6 +88,7 @@ function run_as_root() {
     sudo dnf install --assumeyes stacer
     sudo dnf install --assumeyes qt5-qtcharts
     sudo dnf install --assumeyes vlc
+    sudo dnf install --assumeyes libdvdcss
     sudo dnf install --assumeyes qt5-qtsvg
     sudo dnf install --assumeyes youtube-dl
     sudo dnf install --assumeyes yt-dlp
