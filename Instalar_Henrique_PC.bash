@@ -34,6 +34,9 @@ function run_as_root() {
     # Habilitando RPM Fusion
     bash ./Enable-RpmFusion.bash
 
+    # Trocando o pacote ffmpeg-free por ffmpeg
+    dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
+
     # Instalando o KeepassXC
     sudo dnf install --assumeyes keepassxc
 
@@ -85,6 +88,7 @@ function run_as_root() {
     sudo dnf install --assumeyes stacer
     sudo dnf install --assumeyes qt5-qtcharts
     sudo dnf install --assumeyes vlc
+    sudo dnf install --assumeyes libdvdcss
     sudo dnf install --assumeyes qt5-qtsvg
     sudo dnf install --assumeyes youtube-dl
     sudo dnf install --assumeyes yt-dlp
