@@ -34,6 +34,9 @@ function run_as_root() {
     # Habilitando RPM Fusion
     bash ./Enable-RpmFusion.bash
 
+    # Trocando o pacote ffmpeg-free por ffmpeg
+    dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
+
     # Instalando o KeepassXC
     sudo dnf install --assumeyes keepassxc
 
