@@ -181,6 +181,9 @@ function run_as_root() {
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.signal.Signal.flatpakref
   }
 
+  # Configurando Firewalld
+  bash ./ConfigurarFirewalld.bash
+
   # Desabilitando o Fedora Cockpit
   bash ./Disable-Cockpit.bash
 
