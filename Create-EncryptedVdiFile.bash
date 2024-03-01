@@ -27,6 +27,12 @@ if [ -z "$vdi_file_max_size" ]; then
     read -r vdi_file_max_size
 fi
 
+# Checking if the vdi file already exists
+if [ -f "$vdi_file_path" ]; then
+    echo "VDI file already exists"
+    exit 1
+fi
+
 # Creating VDI file
 qemu-img create -f vdi "$vdi_file_path" "$vdi_file_max_size"
 
