@@ -1,9 +1,16 @@
 #!/bin/bash
 
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
+
+# Installing Java
 bash ./Install-Java_21_Headless.bash
 
 # Installing Java 21 JRE and JDK
-sudo dnf install --assumeyes java-latest-openjdk
+dnf install --assumeyes java-latest-openjdk
 
 # Creating shortcuts
 {
@@ -17,4 +24,4 @@ sudo dnf install --assumeyes java-latest-openjdk
   echo "MimeType=application/x-java-archive"
   echo "Keywords=java; runtime; environment; 21; jre"
   echo "StartupNotify=true"
-} | sudo tee "/usr/share/applications/java21.desktop"
+} | tee "/usr/share/applications/java21.desktop"
