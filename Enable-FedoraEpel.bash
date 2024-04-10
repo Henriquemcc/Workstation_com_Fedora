@@ -2,7 +2,7 @@
 
 # Importing function run_as_root and get_os_type
 source RunAsRoot.bash
-source Get-OsInfo.bash
+source OsInfo.bash
 
 # Exiting if the operating system is not Red Hat or CentoOS
 if [ "$(get_os_type)" != "rhel" ] && [ "$(get_os_type)" != "centos" ]; then
