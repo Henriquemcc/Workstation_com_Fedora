@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# Importing function run_as_root
-source RunAsRoot.bash
-
 # Importing function run_as_root, get_os_type and get_os_version
 source RunAsRoot.bash
 source OsInfo.bash
 
+# Running as root
+run_as_root
+
 # Checking if the computer has a NVIDIA GPU
 if ! lspci | grep -i nvidia; then
-    exit 0
+    exit 1
 fi
 
 # Checking if architecture is x86_64
 if [ "$(uname -m)" != "x86_64" ] ; then
-    exit 0
+    exit 1
 fi
 
 # Installing repository
