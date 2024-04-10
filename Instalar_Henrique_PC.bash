@@ -168,9 +168,6 @@ function run_as_root() {
     # Instalando o FlatHub
     bash ./Install-Flathub.bash
 
-    # Instalando o Android Studio
-    flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref
-
     # Instalando o Audacity
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref
 
