@@ -15,8 +15,8 @@ function run_as_root() {
     function instalar_script_update_all() {
       file_name="Update-All.bash"
       destination="/bin/$file_name"
-      sudo cp "./$file_name" "$destination"
-      sudo chmod +x "$destination"
+      cp "./$file_name" "$destination"
+      chmod +x "$destination"
     }
 
   # Instala pacotes dnf
@@ -81,4 +81,8 @@ function run_as_root() {
 }
 
 # Instalando programas como root
-sudo bash -c "$(declare -f run_as_root); run_as_root"
+if [ "$(whoami)" == "root" ]; then
+  bash -c "$(declare -f run_as_root); run_as_root"
+else
+  sudo bash -c "$(declare -f run_as_root); run_as_root"
+fi
