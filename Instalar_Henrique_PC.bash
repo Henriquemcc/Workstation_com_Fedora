@@ -184,7 +184,7 @@ function run_as_root() {
   # Configurando Firewalld
   bash ./ConfigurarFirewalld.bash
 
-  # Desabilitando o Fedora Cockpit
+  # Desabilitando o Cockpit
   bash ./Disable-Cockpit.bash
 
   # Alterando o nome do computador
