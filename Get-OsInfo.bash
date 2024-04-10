@@ -13,6 +13,7 @@ function get_os_version() {
 }
 
 # Get the type of the operating system
+# Common return values are "rhel", "centos", "fedora"
 function get_os_type() {
   if [ -f $os_release_file ]; then
       grep "^ID=" /etc/os-release | sed 's/ID=//; s/"//g'
