@@ -88,7 +88,7 @@ function run_as_root() {
     sudo dnf install --assumeyes stacer
     sudo dnf install --assumeyes qt5-qtcharts
     sudo dnf install --assumeyes vlc
-    sudo dnf install --assumeyes libdvdcss
+    sudo dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
     sudo dnf install --assumeyes qt5-qtsvg
     sudo dnf install --assumeyes youtube-dl
     sudo dnf install --assumeyes yt-dlp
@@ -103,7 +103,7 @@ function run_as_root() {
     sudo dnf install --assumeyes gimp
     sudo dnf install --assumeyes gedit
     sudo dnf install --assumeyes ImageMagick
-    sudo dnf install --assumeyes wine.i686
+    sudo dnf install --assumeyes wine.i686 # Não disponível no CentOS ou RHEL
     sudo dnf install --assumeyes pdftk-java
     sudo dnf install --assumeyes wol
     sudo dnf install --assumeyes brasero
