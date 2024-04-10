@@ -50,6 +50,9 @@ function run_as_root() {
     sudo dnf install --assumeyes libreoffice-langpack-en
     sudo dnf install --assumeyes unoconv
 
+    # Instalando o Gnome Epiphany
+    sudo dnf install --assumeyes epiphany
+
     # Instalando o File Roller
     sudo dnf install --assumeyes file-roller
     sudo dnf install --assumeyes file-roller-nautilus
