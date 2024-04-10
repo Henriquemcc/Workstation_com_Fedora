@@ -35,4 +35,8 @@ function run_as_root() {
 }
 
 # Instalando programas como root
-sudo bash -c "$(declare -f run_as_root); run_as_root"
+if [ "$(whoami)" == "root" ]; then
+   bash -c "$(declare -f run_as_root); run_as_root"
+else
+  sudo bash -c "$(declare -f run_as_root); run_as_root"
+fi
