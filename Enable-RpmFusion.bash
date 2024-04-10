@@ -7,6 +7,9 @@ source OsInfo.bash
 # Running as root
 run_as_root
 
+# Enabling Fedora Epel
+bash Enable-FedoraEpel.bash
+
 # Installing RPM Fusion
 if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ]; then
   dnf install --assumeyes --nogpgcheck "https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm"
