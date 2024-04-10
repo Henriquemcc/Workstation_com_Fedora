@@ -121,6 +121,9 @@ function run_as_root() {
     sudo dnf install --assumeyes abrt-desktop
     sudo dnf install --assumeyes abrt-java-connector
 
+    # Instalando o Draw.io
+    sudo dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
+
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shell
     sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
