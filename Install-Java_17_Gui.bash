@@ -1,9 +1,16 @@
 #!/bin/bash
 
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
+
+# Installing Java
 bash ./Install-Java_17_Headless.bash
 
 # Installing Java 17 JRE and JDK
-sudo dnf install --assumeyes java-17-openjdk
+dnf install --assumeyes java-17-openjdk
 
 # Creating shortcuts
 {
@@ -17,4 +24,4 @@ sudo dnf install --assumeyes java-17-openjdk
   echo "MimeType=application/x-java-archive"
   echo "Keywords=java; runtime; environment; 17; jre"
   echo "StartupNotify=true"
-} | sudo tee "/usr/share/applications/java17.desktop"
+} | tee "/usr/share/applications/java17.desktop"

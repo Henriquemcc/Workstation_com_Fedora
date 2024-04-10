@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
+
+# Installing Java
 bash ./Install-Java_8_Headless.bash
 
 # Checking if Java compiler 8 is installed
@@ -8,7 +15,7 @@ if [ "$(command -v javac8)" ]; then
 fi
 
 # Installing Java 8 JDK
-sudo dnf install --assumeyes java-1.8.0-openjdk-devel
+dnf install --assumeyes java-1.8.0-openjdk-devel
 
 # Creating command javac8
-sudo ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/javac" "/bin/javac8"
+ln --symbolic "/usr/lib/jvm/java-1.8.0/bin/javac" "/bin/javac8"
