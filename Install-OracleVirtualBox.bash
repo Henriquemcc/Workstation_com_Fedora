@@ -13,7 +13,12 @@ bash ./Uninstall-VirtualBox.bash
 rpm --import https://www.virtualbox.org/download/oracle_vbox.asc
 
 # Adding Oracle VirtualBox Repository
-curl -L https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo --output virtualbox.repo
+if [ "$(get_os_type)" == "fedora" ]; then
+  curl -L https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo --output virtualbox.repo
+elif [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ]; then
+  curl -L https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo --output virtualbox.repo
+fi
+
 mv ./virtualbox.repo /etc/yum.repos.d/virtualbox.repo
 
 # Installing VirtualBox
