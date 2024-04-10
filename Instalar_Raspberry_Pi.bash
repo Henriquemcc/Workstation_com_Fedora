@@ -3,7 +3,7 @@
 # Executa instalação como root
 function run_as_root() {
 
-  # Desabilitando o Fedora Cockpit
+  # Desabilitando o Cockpit
   bash ./Disable-Cockpit.bash
 
   # Alterando o nome do computador
@@ -30,7 +30,7 @@ function run_as_root() {
   # Instalando o Dynamic DNS Update Client
   bash ./Install-Dynamic_Dns_Update_Client.bash
   
-  # Desabilitando Fedora Cockpit
+  # Desabilitando o Cockpit
   systemctl disable cockpit.socket
 }
 
