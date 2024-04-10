@@ -15,8 +15,8 @@ function run_as_root() {
   function instalar_script_update_all() {
     file_name="Update-All.bash"
     destination="/bin/$file_name"
-    sudo cp "./$file_name" "$destination"
-    sudo chmod +x "$destination"
+    cp "./$file_name" "$destination"
+    chmod +x "$destination"
   }
 
   # Instala pacotes dnf
@@ -38,100 +38,100 @@ function run_as_root() {
     dnf swap --assumeyes --allowerasing ffmpeg-free ffmpeg
 
     # Instalando o KeepassXC
-    sudo dnf install --assumeyes keepassxc
+    dnf install --assumeyes keepassxc
 
     # Instalando o Libreoffice
-    sudo dnf install --assumeyes libreoffice-writer
-    sudo dnf install --assumeyes libreoffice-calc
-    sudo dnf install --assumeyes libreoffice-impress
-    sudo dnf install --assumeyes libreoffice-math
-    sudo dnf install --assumeyes libreoffice-draw
-    sudo dnf install --assumeyes libreoffice-langpack-pt-BR
-    sudo dnf install --assumeyes libreoffice-langpack-en
-    sudo dnf install --assumeyes unoconv
+    dnf install --assumeyes libreoffice-writer
+    dnf install --assumeyes libreoffice-calc
+    dnf install --assumeyes libreoffice-impress
+    dnf install --assumeyes libreoffice-math
+    dnf install --assumeyes libreoffice-draw
+    dnf install --assumeyes libreoffice-langpack-pt-BR
+    dnf install --assumeyes libreoffice-langpack-en
+    dnf install --assumeyes unoconv
 
     # Instalando o Gnome Epiphany
-    sudo dnf install --assumeyes epiphany
+    dnf install --assumeyes epiphany
 
     # Instalando o File Roller
-    sudo dnf install --assumeyes file-roller
-    sudo dnf install --assumeyes file-roller-nautilus
+    dnf install --assumeyes file-roller
+    dnf install --assumeyes file-roller-nautilus
 
     # Instalando a Impressora HP
-    sudo dnf install --assumeyes hplip
+    dnf install --assumeyes hplip
 
     # Instalando o Suporte a arquivos 7zip
-    sudo dnf install --assumeyes p7zip-plugins
-    sudo dnf install --assumeyes p7zip
+    dnf install --assumeyes p7zip-plugins
+    dnf install --assumeyes p7zip
 
     # Instalando o KVM
-    sudo dnf install --assumeyes qemu-kvm
-    sudo dnf install --assumeyes libvirt
+    dnf install --assumeyes qemu-kvm
+    dnf install --assumeyes libvirt
 
     # Instalando os Sistemas de arquivos não nativos do linux
-    sudo dnf install --assumeyes ntfs-3g
-    sudo dnf install --assumeyes exfat-utils
-    sudo dnf install --assumeyes fuse
-    sudo dnf install --assumeyes fuse-exfat
+    dnf install --assumeyes ntfs-3g
+    dnf install --assumeyes exfat-utils
+    dnf install --assumeyes fuse
+    dnf install --assumeyes fuse-exfat
 
     # Instalando as Ferramentas de desenvolvimento
-    sudo dnf install --assumeyes golang
-    sudo dnf install --assumeyes gcc
-    sudo dnf install --assumeyes gcc-c++
-    sudo dnf install --assumeyes dotnet-sdk-5.0
-    sudo dnf install --assumeyes aspnetcore-runtime-5.0
-    sudo dnf install --assumeyes dotnet-runtime-5.0
-    sudo dnf install --assumeyes git
-    sudo dnf install --assumeyes git-lfs
-    sudo dnf install --assumeyes android-tools
-    sudo dnf install --assumeyes libstdc++-devel
-    sudo dnf install --assumeyes perf
+    dnf install --assumeyes golang
+    dnf install --assumeyes gcc
+    dnf install --assumeyes gcc-c++
+    dnf install --assumeyes dotnet-sdk-5.0
+    dnf install --assumeyes aspnetcore-runtime-5.0
+    dnf install --assumeyes dotnet-runtime-5.0
+    dnf install --assumeyes git
+    dnf install --assumeyes git-lfs
+    dnf install --assumeyes android-tools
+    dnf install --assumeyes libstdc++-devel
+    dnf install --assumeyes perf
 
     # Instalando outros programas
-    sudo dnf install --assumeyes stacer
-    sudo dnf install --assumeyes qt5-qtcharts
-    sudo dnf install --assumeyes vlc
-    sudo dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
-    sudo dnf install --assumeyes qt5-qtsvg
-    sudo dnf install --assumeyes youtube-dl
-    sudo dnf install --assumeyes yt-dlp
-    sudo dnf install --assumeyes snapd
-    sudo dnf install --assumeyes flatpak
-    sudo dnf install --assumeyes transmission
-    sudo dnf install --assumeyes ffmpeg
-    sudo dnf install --assumeyes steam
-    sudo dnf install --assumeyes mokutil
-    sudo dnf install --assumeyes fdupes
-    sudo dnf install --assumeyes dconf-editor
-    sudo dnf install --assumeyes gimp
-    sudo dnf install --assumeyes gedit
-    sudo dnf install --assumeyes ImageMagick
-    sudo dnf install --assumeyes wine.i686 # Não disponível no CentOS ou RHEL
-    sudo dnf install --assumeyes pdftk-java
-    sudo dnf install --assumeyes wol
-    sudo dnf install --assumeyes brasero
-    sudo dnf install --assumeyes nmap
-    sudo dnf install --assumeyes rclone
+    dnf install --assumeyes stacer
+    dnf install --assumeyes qt5-qtcharts
+    dnf install --assumeyes vlc
+    dnf install --assumeyes libdvdcss # Não disponível no CentOS ou RHEL
+    dnf install --assumeyes qt5-qtsvg
+    dnf install --assumeyes youtube-dl
+    dnf install --assumeyes yt-dlp
+    dnf install --assumeyes snapd
+    dnf install --assumeyes flatpak
+    dnf install --assumeyes transmission
+    dnf install --assumeyes ffmpeg
+    dnf install --assumeyes steam
+    dnf install --assumeyes mokutil
+    dnf install --assumeyes fdupes
+    dnf install --assumeyes dconf-editor
+    dnf install --assumeyes gimp
+    dnf install --assumeyes gedit
+    dnf install --assumeyes ImageMagick
+    dnf install --assumeyes wine.i686 # Não disponível no CentOS ou RHEL
+    dnf install --assumeyes pdftk-java
+    dnf install --assumeyes wol
+    dnf install --assumeyes brasero
+    dnf install --assumeyes nmap
+    dnf install --assumeyes rclone
 
     # Instalando leitores de epub
-    sudo dnf install --assumeyes calibre
-    sudo dnf install --assumeyes okular
+    dnf install --assumeyes calibre
+    dnf install --assumeyes okular
 
     # Instalando pacotes para reportar erro automaticamente
-    sudo dnf install --assumeyes abrt-desktop
-    sudo dnf install --assumeyes abrt-java-connector
+    dnf install --assumeyes abrt-desktop
+    dnf install --assumeyes abrt-java-connector
 
     # Instalando ferramentas de segurança
-    sudo dnf install --assumeyes chkrootkit
-    sudo dnf install --assumeyes lynis
+    dnf install --assumeyes chkrootkit
+    dnf install --assumeyes lynis
 
     # Instalando o Draw.io
-    sudo dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
+    dnf install --assumeyes https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/drawio-x86_64-24.1.0.rpm
 
     # Desinstalando pacotes inúteis
     ## Extensões Gnome Shell
-    sudo dnf autoremove --assumeyes gnome-shell-extension-background-logo
-    sudo dnf autoremove --assumeyes gnome-shell-extension-window-list
+    dnf autoremove --assumeyes gnome-shell-extension-background-logo
+    dnf autoremove --assumeyes gnome-shell-extension-window-list
   }
 
   # Instala pacotes snap
@@ -272,4 +272,8 @@ bash ./ConfigurarGnomeShell.bash
 bash ./Install-TechnicLauncher.bash
 
 # Instalando programas como root
-sudo bash -c "$(declare -f run_as_root); run_as_root"
+if [ "$(whoami)" == "root" ]; then
+   bash -c "$(declare -f run_as_root); run_as_root"
+else
+  sudo bash -c "$(declare -f run_as_root); run_as_root"
+fi
