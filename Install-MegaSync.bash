@@ -14,6 +14,6 @@ ARCHITECTURE="$(uname -m)"
 # Installing Mega Sync
 if [ "$(get_os_type)" == "fedora" ]; then
   dnf install --assumeyes "https://mega.nz/linux/repo/Fedora_${VERSION_ID}/${ARCHITECTURE}/megasync-Fedora_${VERSION_ID}.${ARCHITECTURE}.rpm"
-elif [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "rhel" ]; then
+elif [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "almalinux" ]; then
   dnf install --assumeyes https://mega.nz/linux/repo/Fedora_39/x86_64/megasync-Fedora_39.x86_64.rpm
 fi

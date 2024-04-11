@@ -11,7 +11,7 @@ run_as_root
 bash Enable-FedoraEpel.bash
 
 # Installing RPM Fusion
-if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ]; then
+if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "almalinux" ]; then
   dnf install --assumeyes --nogpgcheck "https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm"
   dnf install --assumeyes --nogpgcheck "https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm"
 elif [ "$(get_os_type)" == "fedora" ]; then
