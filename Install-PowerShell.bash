@@ -21,7 +21,7 @@ rpm -i packages-microsoft-prod.rpm
 rm packages-microsoft-prod.rpm
 
 # Installing PowerShell
-if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ]; then
+if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "almalinux" ]; then
   dnf install --assumeyes powershell
 elif [ "$(get_os_type)" == "fedora" ]; then
   dnf install --assumeyes https://github.com/PowerShell/PowerShell/releases/download/v${version}/powershell-${version}-${subversion}.rh.x86_64.rpm
