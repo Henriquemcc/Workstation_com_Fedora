@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and get_os_type
 source RunAsRoot.bash
+source OsInfo.bash
 
 # Running as root
 run_as_root
