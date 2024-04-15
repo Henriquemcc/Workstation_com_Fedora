@@ -11,8 +11,16 @@ source OsInfo.bash
 # Running as root
 run_as_root
 
+# Installation variables
+os_type="$(get_os_type)"
+os_version="$(get_os_version)"
+
+if [ "$os_type" == "almalinux" ]; then
+  os_type="alma"
+fi
+
 # Register the Microsoft RedHat repository
-curl -sSL -O "https://packages.microsoft.com/config/$(get_os_type)/$(get_os_version)/packages-microsoft-prod.rpm"
+curl -sSL -O "https://packages.microsoft.com/config/$os_type/$os_version/packages-microsoft-prod.rpm"
 
 # Register the Microsoft repository keys
 rpm -i packages-microsoft-prod.rpm
@@ -21,8 +29,8 @@ rpm -i packages-microsoft-prod.rpm
 rm packages-microsoft-prod.rpm
 
 # Installing PowerShell
-if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(get_os_type)" == "almalinux" ]; then
+if [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ]; then
   dnf install --assumeyes powershell
-elif [ "$(get_os_type)" == "fedora" ]; then
+elif [ "$(get_os_type)" == "fedora" ] || [ "$(get_os_type)" == "almalinux" ]; then
   dnf install --assumeyes https://github.com/PowerShell/PowerShell/releases/download/v${version}/powershell-${version}-${subversion}.rh.x86_64.rpm
 fi
