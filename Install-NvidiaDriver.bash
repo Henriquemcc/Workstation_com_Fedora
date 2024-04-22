@@ -24,11 +24,5 @@ elif [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(
   dnf config-manager --add-repo "https://developer.download.nvidia.com/compute/cuda/repos/rhel$(get_os_version)/x86_64/cuda-rhel$(get_os_version).repo" || exit 1
 fi
 
-
-# Removing conflicting packages
-dnf autoremove --assumeyes xorg-x11-drv-nvidia-cuda-libs
-dnf autoremove --assumeyes xorg-x11-drv-nvidia-power
-dnf autoremove --assumeyes xorg-x11-drv-nvidia-cuda
-
 # Installing Nvidia driver
 dnf module install --assumeyes nvidia-driver
