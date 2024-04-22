@@ -24,10 +24,6 @@ elif [ "$(get_os_type)" == "rhel" ] || [ "$(get_os_type)" == "centos" ] || [ "$(
   dnf config-manager --add-repo "https://developer.download.nvidia.com/compute/cuda/repos/rhel$(get_os_version)/x86_64/cuda-rhel$(get_os_version).repo" || exit 1
 fi
 
-# Removing conflicting packages
-dnf --assumeyes remove egl-gbm
-dnf --assumeyes remove xorg-x11-drv-nvidia-cuda-libs
-
 # Installing Nvidia Cuda
 dnf module install --allowerasing --refresh --assumeyes nvidia-driver:open-dkms
 dnf --assumeyes --disablerepo="rpmfusion-nonfree*" install cuda
