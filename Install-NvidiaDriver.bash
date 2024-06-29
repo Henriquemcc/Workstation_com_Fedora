@@ -26,3 +26,9 @@ fi
 
 # Installing Nvidia driver
 dnf module install --assumeyes nvidia-driver
+
+# Installing Nvidia Cuda ToolKit
+dnf install --assumeyes cuda-toolkit
+
+# Installing GPUDirect Filesystem
+dnf install --assumeyes nvidia-gds
