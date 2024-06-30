@@ -207,9 +207,6 @@ function run_as_root() {
   # Configurando o Grub
   bash ./ConfigurarGrub.bash
 
-  # Configurando o Systemd Resolved
-  bash ./ConfigurarSystemdResolved.bash
-
   # Configurando o NTP
   bash ./ConfigurarNtp.bash
 
