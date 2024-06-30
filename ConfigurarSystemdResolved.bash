@@ -28,3 +28,6 @@ mv "/etc/resolv.conf" "/etc/resolv.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
 
 # Restarting systemd-resolved and Network Manager
 systemctl restart systemd-resolved.service NetworkManager.service
+
+# Waiting to reconnect to the network
+sleep 30s
