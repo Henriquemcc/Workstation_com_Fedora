@@ -23,9 +23,8 @@ cp "/etc/systemd/resolved.conf" "/etc/systemd/resolved.conf.backup.$(date "+%d-%
   echo "Cache=yes"
 } > "/etc/systemd/resolved.conf"
 
-# Restarting systemd-resolve
-systemctl restart systemd-resolved.service
-
 # Setting systemd-resolved the default DNS resolver
 mv "/etc/resolv.conf" "/etc/resolv.conf.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
-ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+# Restarting systemd-resolved and Network Manager
+systemctl restart systemd-resolved.service NetworkManager.service
