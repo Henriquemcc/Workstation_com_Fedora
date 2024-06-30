@@ -12,9 +12,6 @@ function run_as_root() {
   # Configurando o sshd_config
   bash ./ConfigurarSshdConfig.bash
 
-  # Configurando o Systemd Resolved
-  bash ./ConfigurarSystemdResolved.bash
-
   # Configurando DNF
   bash ./ConfigurarDnfPackageManager.bash
   
