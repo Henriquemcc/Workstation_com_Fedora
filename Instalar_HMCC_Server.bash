@@ -30,17 +30,28 @@ function run_as_root() {
     dnf install --assumeyes exfat-utils
     dnf install --assumeyes fuse
     dnf install --assumeyes fuse-exfat
-    dnf install --assumeyes dnf-automatic
   }
+
+  # Carregando dados do arquivo .env
+  source .env
+
+  # Configurando o sshd_config
+  bash ./ConfigurarSshdConfig.bash
+
+  # Configurando DNF
+  bash ./ConfigurarDnfPackageManager.bash
 
   # Desabilitando o Cockpit
   bash ./Disable-Cockpit.bash
 
   # Alterando o nome do computador
-  hostnamectl set-hostname --static HMCC-Server
+  hostnamectl set-hostname --static "$hostname_hmcc_server"
 
-  # Configurando DNF
-  bash ./ConfigurarDnfPackageManager.bash
+  # Habilitando o RPM Fusion
+  bash ./Enable-RpmFusion.bash
+
+  # Configurando o NTP
+  bash ./ConfigurarNtp.bash
 
   # Configurando DNF Automatic
   bash ./ConfigurarAtualizacoesAutomaticasDnfAutomatic.bash
@@ -57,9 +68,6 @@ function run_as_root() {
   # Instalando Java
   bash ./Install-Java_8_Headless.bash
   bash ./Install-Java_21_Headless.bash
-
-  # Instalando o Wireguard
-  bash ./Wireguard/Install-Wireguard.bash
 
   # Instalando o Docker
   bash ./Install-DockerEngine.bash
