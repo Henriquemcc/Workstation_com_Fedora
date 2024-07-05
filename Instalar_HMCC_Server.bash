@@ -30,6 +30,11 @@ function run_as_root() {
     dnf install --assumeyes exfat-utils
     dnf install --assumeyes fuse
     dnf install --assumeyes fuse-exfat
+
+    # Instalando os programas para sincronização
+    dnf install --assumeyes rsync
+    dnf install --assumeyes git
+    dnf install --assumeyes git-lfs
   }
 
   # Carregando dados do arquivo .env
