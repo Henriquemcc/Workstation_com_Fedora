@@ -222,6 +222,9 @@ function run_as_root() {
   # Instalando o Brave Browser
   bash ./Install-Brave.bash
 
+  # Instalando o Secure Delete
+  bash ./Install-Srm.bash
+
   # Instalando pacotes dnf
   instalar_pacotes_dnf
 
