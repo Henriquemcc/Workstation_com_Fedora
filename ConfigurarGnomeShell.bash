@@ -42,8 +42,10 @@ gsettings set org.gnome.shell.weather automatic-location true
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
 # Instalando e Habilitando Dash to Dock
+cp --recursive /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com ${HOME}/.local/share/gnome-shell/extensions/
 gnome-extensions install dash-to-dock@micxgx.gmail.com
 gnome-extensions enable dash-to-dock@micxgx.gmail.com
+
 
 # Instalando e Habilitando o Bing Wallpaper
 gnome-extensions install BingWallpaper@ineffable-gmail.com
