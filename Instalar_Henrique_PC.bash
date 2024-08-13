@@ -97,7 +97,7 @@ function run_as_root() {
     dnf install --assumeyes yt-dlp
     dnf install --assumeyes snapd
     dnf install --assumeyes flatpak
-    dnf install --assumeyes transmission
+    dnf install --assumeyes qbittorrent
     dnf install --assumeyes ffmpeg
     dnf install --assumeyes steam
     dnf install --assumeyes mokutil
