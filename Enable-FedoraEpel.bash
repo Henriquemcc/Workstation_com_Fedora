@@ -5,8 +5,8 @@ source RunAsRoot.bash
 source OsInfo.bash
 
 # Exiting if the operating system is not Red Hat or CentoOS
-if [ "$(get_os_type)" != "rhel" ] && [ "$(get_os_type)" != "centos" ] && [ "$(get_os_type)" != "almalinux" ]; then
-  echo "This script is only for Red Hat, CentOS or Almalinux."
+if [ "$(get_os_type)" != "rhel" ] && [ "$(get_os_type)" != "centos" ] && [ "$(get_os_type)" != "almalinux" ]&& [ "$(get_os_type)" != "ol" ]; then
+  echo "This script is only for Red Hat, CentOS, Almalinux or Oracle Linux."
   exit 1
 fi
 
