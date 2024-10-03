@@ -112,6 +112,7 @@ function run_as_root() {
     dnf install --assumeyes brasero
     dnf install --assumeyes nmap
     dnf install --assumeyes rclone
+    dnf install --assumeyes wireshark
 
     # Instalando leitores de epub
     dnf install --assumeyes calibre
@@ -167,6 +168,10 @@ function run_as_root() {
 
     while true; do
       snap install skype --classic && break
+    done
+    
+    while true; do
+      snap install postman && break
     done
   }
 
