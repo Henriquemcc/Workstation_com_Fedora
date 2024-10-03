@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Importing function run_as_root
+# Importing function run_as_root and get_os_type
 source RunAsRoot.bash
+source OsInfo.bash
 
 function sign_virtualbox_modules() {
   if [ "$(mokutil --sb-state)" == "SecureBoot enabled" ]; then
@@ -56,6 +57,12 @@ sudo dnf install --assumeyes qt5-qtx11extras
 sudo dnf install --assumeyes elfutils-libelf-devel
 sudo dnf install --assumeyes zlib-devel
 sudo dnf install --assumeyes @development-tools
+
+# Installing kernel uek devel for Oracle Linux
+if [ "$(get_os_type)" == "ol" ]; then
+  sudo dnf install --assumeyes kernel-uek-devel
+  sudo dnf install --assumeyes kernel-uek-devel-"$(uname -r)"
+fi
 
 sign_virtualbox_modules
 
