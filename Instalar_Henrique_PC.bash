@@ -232,9 +232,6 @@ function run_as_root() {
   # Instalando o PowerShell
   bash ./Install-PowerShell.bash
 
-  # Instalando o Brave Browser
-  bash ./Install-Brave.bash
-
   # Instalando o Secure Delete
   bash ./Install-Srm.bash
 
