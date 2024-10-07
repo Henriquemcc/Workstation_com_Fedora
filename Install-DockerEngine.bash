@@ -23,8 +23,15 @@ dnf config-manager --assumeyes --add-repo "https://download.docker.com/linux/${o
 dnf install --allowerasing --assumeyes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Enabling Docker
-systemctl enable --now docker
+systemctl enable --now docker containerd.service
 
 # Adding user group
 groupadd docker
 usermod -aG docker "$SUDO_USER"
+
+# Configuring to run in rootless mode
+sh -eux <<EOF
+# Load ip_tables module
+modprobe ip_tables
+EOF
+sudo -u "$SUDO_USER" dockerd-rootless-setuptool.sh install
