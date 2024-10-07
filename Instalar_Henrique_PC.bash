@@ -173,6 +173,11 @@ function run_as_root() {
     while true; do
       snap install postman && break
     done
+    
+    while true; do
+      snap install webstorm --classic && break
+    done
+
   }
 
   # Instala pacotes flatpak
