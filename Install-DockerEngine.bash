@@ -34,4 +34,5 @@ sh -eux <<EOF
 # Load ip_tables module
 modprobe ip_tables
 EOF
+setenforce 0
 sudo -u "$SUDO_USER" dockerd-rootless-setuptool.sh install
