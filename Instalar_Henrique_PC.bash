@@ -197,6 +197,9 @@ function run_as_root() {
 
     # Instalando o Discord
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.discordapp.Discord.flatpakref
+    
+    # Instalando o Stremio
+    flatpak install https://dl.flathub.org/repo/appstream/com.stremio.Stremio.flatpakref
   }
 
   # Configurando Firewalld
