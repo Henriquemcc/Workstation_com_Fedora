@@ -173,6 +173,11 @@ function run_as_root() {
     while true; do
       snap install postman && break
     done
+    
+    while true; do
+      snap install webstorm --classic && break
+    done
+
   }
 
   # Instala pacotes flatpak
@@ -197,6 +202,9 @@ function run_as_root() {
 
     # Instalando o Discord
     flatpak install --assumeyes https://dl.flathub.org/repo/appstream/com.discordapp.Discord.flatpakref
+    
+    # Instalando o Stremio
+    flatpak install https://dl.flathub.org/repo/appstream/com.stremio.Stremio.flatpakref
   }
 
   # Configurando Firewalld
