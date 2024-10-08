@@ -281,6 +281,9 @@ bash ./ConfigurarGnomeShell.bash
 # Instalando o TechnicLauncher
 bash ./Install-TechnicLauncher.bash
 
+# Instalando o Ffmpeg
+bash ./Install-Ffmpeg.bash
+
 # Instalando programas como root
 if [ "$(whoami)" == "root" ]; then
    bash -c "$(declare -f run_as_root); run_as_root"
