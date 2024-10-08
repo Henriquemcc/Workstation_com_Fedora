@@ -7,10 +7,27 @@ source OsInfo.bash
 # Running as root
 run_as_root
 
-# Habilitando repositório Code Ready Builder
+# Installing requirements
+dnf install --assumeyes 'dnf-command(config-manager)'
+
+# Getting the name of the Code Ready Builder repository
+repository_name=""
+
+# Oracle Linux
 if [ "$(get_os_type)" == "ol" ]; then
-    dnf config-manager --enable ol9_codeready_builder
+  repository_name="ol$(get_os_version)_codeready_builder"
+
+# AlmaLinux
+elif [ "$(get_os_type)" == "almalinux" ]; then
+  if [ "$(get_os_version)" == "9" ]; then
+    repository_name="crb"
+  else
+    repository_name="powertools"
+  fi
 fi
 
-# Instalando ffmpeg
+# Enabling Code Ready Builder repository
+dnf config-manager --set-enabled "$repository_name"
+
+# Installing ffmpeg
 dnf install --allowerasing --assumeyes ffmpeg
