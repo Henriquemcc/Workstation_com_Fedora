@@ -17,6 +17,8 @@ os_version="$(get_os_version)"
 
 if [ "$os_type" == "almalinux" ]; then
   os_type="alma"
+elif [ "$os_type" == "ol" ]; then
+  os_type="rhel"
 fi
 
 # Register the Microsoft RedHat repository
