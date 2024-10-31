@@ -213,6 +213,9 @@ function run_as_root() {
   # Desabilitando o Cockpit
   bash ./Disable-Cockpit.bash
 
+  # Desabilitando o sshd
+  bash ./DesabilitarSshd.bash
+
   # Alterando o nome do computador
   hostnamectl set-hostname --static henrique-pc
   hostnamectl set-hostname --pretty HENRIQUE-PC
