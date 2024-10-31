@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Importing function run_as_root
+source RunAsRoot.bash
+
+# Running as root
+run_as_root
+
+# Desabilitando serviço
+systemctl disable --now sshd
+
+# Removendo serviço do Firewall
+firewall-cmd --remove-service=ssh --permanent
+firewall-cmd --reload
+
+# Alterando o arquivo de configuração
+cp "/etc/ssh/sshd_config" "/etc/ssh/sshd_config.backup.$(date "+%d-%m-%Y_%H:%M:%S")"
+{
+  echo "Include /etc/ssh/sshd_config.d/*.conf"
+  echo "PubkeyAuthentication yes"
+  echo "AuthorizedKeysFile	.ssh/authorized_keys"
+  echo "PasswordAuthentication no"
+  echo "Subsystem	sftp	/usr/libexec/openssh/sftp-server"
+} > "/etc/ssh/sshd_config"
+
+# Desinstalando sshd
+dnf autoremove --assumeyes openssh-server
