@@ -10,4 +10,4 @@ run_as_root
 bash ./Install-DockerEngine.bash
 
 # Installing Docker desktop
-dnf install --assumeyes https://desktop.docker.com/linux/main/amd64/docker-desktop-4.26.1-x86_64.rpm
+dnf install --assumeyes https://desktop.docker.com/linux/main/amd64/docker-desktop-x86_64.rpm
