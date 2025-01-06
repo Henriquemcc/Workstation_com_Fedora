@@ -10,6 +10,11 @@ run_as_root
 dnf --assumeyes install dnf-plugins-core
 
 # Installing Brave Browser
-dnf --assumeyes config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+if [ "$(command -v dnf4)" ]; then
+  dnf4 --assumeyes config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+else
+  dnf --assumeyes config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+fi
+
 rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 dnf --assumeyes install brave-browser

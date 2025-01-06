@@ -12,7 +12,11 @@ dnf install --assumeyes git
 dnf install --assumeyes git-lfs
 
 # Adding GitHub Cli repository
-dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo --assumeyes
+if [ "$(command -v dnf4)" ]; then
+  dnf4 config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo --assumeyes
+else
+  dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo --assumeyes
+fi
 
 # Installing GitHub Cli.
 dnf install --assumeyes gh
