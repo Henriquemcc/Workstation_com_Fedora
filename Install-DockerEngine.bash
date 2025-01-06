@@ -17,7 +17,11 @@ if [ "$os_type" == "almalinux" ] || [ "$os_type" == "ol" ]; then
 fi
 
 # Adding Docker repository
-dnf config-manager --assumeyes --add-repo "https://download.docker.com/linux/${os_type}/docker-ce.repo"
+if [ "$(command -v dnf4)" ]; then
+  dnf4 config-manager --assumeyes --add-repo "https://download.docker.com/linux/${os_type}/docker-ce.repo"
+else
+  dnf config-manager --assumeyes --add-repo "https://download.docker.com/linux/${os_type}/docker-ce.repo"
+fi
 
 # Installing Docker Engine
 dnf install --allowerasing --assumeyes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin

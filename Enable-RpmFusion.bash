@@ -23,5 +23,9 @@ dnf install --assumeyes rpmfusion-nonfree-release-tainted
 
 # Using openh264 library
 if [ "$(get_os_type)" == "fedora" ]; then
-  dnf config-manager --enable --assumeyes fedora-cisco-openh264
+  if [ "$(command -v dnf4)" ]; then
+    dnf4 config-manager --enable --assumeyes fedora-cisco-openh264
+  else
+    dnf config-manager --enable --assumeyes fedora-cisco-openh264
+  fi
 fi
